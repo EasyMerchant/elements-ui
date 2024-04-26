@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+:root {
+  --background-main: #edeff2;
+  --primary-color: #1757d9;
+  --primary-hover: #3a70df;
+  --success: #22c215;
+  --success-light: #22c2151a;
+  --error: #e93939;
+  --gray: #666666;
+  --gray-light: #d6d6d6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+input {
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--gray-light);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+select {
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--gray-light);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  background-color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("./assets/chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: 95%;
+}
+
+button {
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-outline {
+  background-color: white;
+  border: 1px solid var(--gray-light);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-main);
+}
+
+.form-container {
+  padding: 32px;
+  width: 640px;
+  height: 90%;
+  overflow-y: scroll;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  text-transform: capitalize;
+}
+
+.label::after {
+  content: "*";
+  color: red;
+  margin-left: 4px; /* Adjust spacing between label text and asterisk */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fields {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-container .payment-method {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payment-method .methods {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+/* METHOD CARD START */
+
+.methods .method-card {
+  padding: 12px;
+  min-width: 120px;
+  border: 2px solid var(--gray-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.method-card .card-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  color: var(--gray);
+}
+
+.method-card.selected {
+  border: 2px solid var(--primary-color);
+}
+
+.method-card.selected .no-stroke path {
+  fill: var(--primary-color);
+  fill-opacity: 1;
+}
+
+.method-card.selected .with-stroke path {
+  stroke: var(--primary-color);
+  stroke-opacity: 1;
+}
+
+.method-card.selected .card-label {
+  font-weight: 600;
+  color: black;
+}
+
+.method-card:hover {
+  border: 2px solid var(--primary-color);
+}
+
+.method-card:hover .no-stroke path {
+  fill: var(--primary-color);
+  fill-opacity: 1;
+}
+
+.method-card:hover .with-stroke path {
+  stroke: var(--primary-color);
+  stroke-opacity: 1;
+}
+
+.method-card:hover .card-label {
+  font-weight: 600;
+  color: black;
+}
+
+/* METHOD CARD END */
+
+/* FORM FIELD START */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.two-fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.two-fields .form-field {
+  width: 100%;
+}
+/* FORM FIELD END */
+
+.tnc {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.tnc p {
+  text-transform: uppercase;
+  color: #00000061;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.52px;
+}
+
+.tnc p a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.action-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer {
+  margin-top: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.52px;
+  color: #00000061;
+}

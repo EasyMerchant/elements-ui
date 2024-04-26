@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <form action="" class="form">
+          <div class="payment-method">
+            <p class="label">Choose your payment method</p>
+            <div class="methods">
+              <div class="method-card selected" data-method="card">
+                <svg
+                  class="with-stroke"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 4.5H3C1.89543 4.5 1 5.39543 1 6.5V18.5C1 19.6046 1.89543 20.5 3 20.5H21C22.1046 20.5 23 19.6046 23 18.5V6.5C23 5.39543 22.1046 4.5 21 4.5Z"
+                    stroke="black"
+                    stroke-opacity="0.6"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M1 10.5H23"
+                    stroke="black"
+                    stroke-opacity="0.6"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <p class="card-label">Card</p>
+              </div>
+              <div class="method-card" data-method="bank">
+                <svg
+                  class="no-stroke"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.5586 3.08966L3.68456 6.46499C3.19243 6.67594 2.91824 7.20334 3.02721 7.7237C3.13618 8.24407 3.59316 8.62379 4.12747 8.62379V8.90507C4.12747 9.37269 4.5036 9.7489 4.97112 9.7489H19.032C19.4995 9.7489 19.8756 9.37269 19.8756 8.90507V8.62379C20.4099 8.62379 20.8704 8.24758 20.9759 7.7237C21.0813 7.19982 20.8072 6.67243 20.3185 6.46499L12.4445 3.08966C12.1632 2.97011 11.8398 2.97011 11.5586 3.08966ZM7.50208 10.874H5.25234V17.7759C5.23125 17.7864 5.21016 17.8005 5.18907 17.8145L3.50176 18.9396C3.09048 19.2139 2.90418 19.7272 3.0483 20.2019C3.19243 20.6765 3.63183 21 4.12747 21H19.8756C20.3713 21 20.8072 20.6765 20.9513 20.2019C21.0954 19.7272 20.9126 19.2139 20.4978 18.9396L18.8105 17.8145C18.7894 17.8005 18.7683 17.7899 18.7472 17.7759V10.874H16.501V17.6247H15.0949V10.874H12.8452V17.6247H11.1579V10.874H8.90816V17.6247H7.50208V10.874ZM12.0015 5.24846C12.2999 5.24846 12.586 5.367 12.7969 5.578C13.0079 5.789 13.1264 6.07517 13.1264 6.37357C13.1264 6.67197 13.0079 6.95815 12.7969 7.16914C12.586 7.38014 12.2999 7.49868 12.0015 7.49868C11.7032 7.49868 11.4171 7.38014 11.2061 7.16914C10.9952 6.95815 10.8767 6.67197 10.8767 6.37357C10.8767 6.07517 10.9952 5.789 11.2061 5.578C11.4171 5.367 11.7032 5.24846 12.0015 5.24846Z"
+                    fill="black"
+                    fill-opacity="0.6"
+                  />
+                </svg>
+                <p class="card-label">Bank</p>
+              </div>
+              <div class="method-card" data-method="crypto">
+                <svg
+                  class="no-stroke"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 12C21 16.9706 16.9706 21 12 21C7.02942 21 3 16.9706 3 12C3 7.02942 7.02942 3 12 3C16.9706 3 21 7.02942 21 12ZM15.8594 10.7179C16.0386 9.52032 15.1267 8.87653 13.8798 8.44707L14.2843 6.82482L13.2967 6.57873L12.9029 8.15823C12.6433 8.09353 12.3767 8.03252 12.1117 7.97206L12.5083 6.38219L11.5213 6.1361L11.1165 7.75777C10.9016 7.70881 10.6907 7.66044 10.4859 7.60956L10.4871 7.60448L9.12508 7.26444L8.86237 8.31911C8.86237 8.31911 9.59511 8.48702 9.57965 8.4974C9.97964 8.59724 10.0519 8.8619 10.0398 9.0717L9.57907 10.9198C9.60665 10.9268 9.64236 10.9369 9.68174 10.9527C9.64882 10.9445 9.61366 10.9355 9.57737 10.9268L8.93154 13.5157C8.88259 13.6372 8.75855 13.8195 8.47897 13.7503C8.4888 13.7646 7.76115 13.5711 7.76115 13.5711L7.27086 14.7015L8.55605 15.0218C8.79513 15.0817 9.02946 15.1444 9.26008 15.2035L8.85138 16.8442L9.83782 17.0903L10.2426 15.467C10.5042 15.5379 10.7665 15.6059 11.0296 15.6712L10.6262 17.2869L11.6138 17.533L12.0225 15.8953C13.7065 16.214 14.9729 16.0854 15.5059 14.5625C15.9354 13.3362 15.4845 12.6289 14.5985 12.1676C15.2437 12.0189 15.7298 11.5945 15.8594 10.7179ZM13.603 13.8816C13.2978 15.1079 11.233 14.445 10.5635 14.2787L11.1058 12.105C11.7753 12.272 13.922 12.6028 13.603 13.8816ZM13.9085 10.7002C13.63 11.8156 11.9114 11.2489 11.3539 11.1099L11.8455 9.1384C12.4031 9.27732 14.1985 9.53661 13.9085 10.7002Z"
+                    fill="black"
+                    fill-opacity="0.6"
+                  />
+                </svg>
+                <p class="card-label">Crypto</p>
+              </div>
+              <div class="method-card" data-method="wallet">
+                <svg
+                  class="no-stroke"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.125 3C2.67715 3 1.5 4.15313 1.5 5.57143V18.4286C1.5 19.8469 2.67715 21 4.125 21H19.875C21.3229 21 22.5 19.8469 22.5 18.4286V9.42857C22.5 8.01027 21.3229 6.85714 19.875 6.85714H4.78125C4.42031 6.85714 4.125 6.56786 4.125 6.21429C4.125 5.86071 4.42031 5.57143 4.78125 5.57143H19.875C20.601 5.57143 21.1875 4.99688 21.1875 4.28571C21.1875 3.57455 20.601 3 19.875 3H4.125ZM18.5625 12.6429C18.9106 12.6429 19.2444 12.7783 19.4906 13.0194C19.7367 13.2606 19.875 13.5876 19.875 13.9286C19.875 14.2696 19.7367 14.5966 19.4906 14.8377C19.2444 15.0788 18.9106 15.2143 18.5625 15.2143C18.2144 15.2143 17.8806 15.0788 17.6344 14.8377C17.3883 14.5966 17.25 14.2696 17.25 13.9286C17.25 13.5876 17.3883 13.2606 17.6344 13.0194C17.8806 12.7783 18.2144 12.6429 18.5625 12.6429Z"
+                    fill="black"
+                    fill-opacity="0.6"
+                  />
+                </svg>
+                <p class="card-label">Wallet</p>
+              </div>
+            </div>
+          </div>
+          <div class="fields" data-method="card">
+            <div class="form-field">
+              <p class="label">card number</p>
+              <input type="text" placeholder="5555 5555 5555 4444" />
+            </div>
+            <div class="two-fields">
+              <div class="form-field">
+                <p class="label">expiry</p>
+                <select name="" id="">
+                  <option value="" disabled selected>MM/YY</option>
+                  <option value="">Option 1</option>
+                  <option value="">Option 2</option>
+                  <option value="">Option 3</option>
+                  <option value="">Option 4</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <p class="label">security code</p>
+                <input type="text" placeholder="CVV" />
+              </div>
+            </div>
+            <div class="form-field">
+              <p class="label">name on card</p>
+              <input type="text" placeholder="Name" />
+            </div>
+            <div class="form-field">
+              <p class="label">address</p>
+              <input type="text" placeholder="Address" />
+            </div>
+            <div class="form-field">
+              <p class="label">country</p>
+              <select name="" id="">
+                <option value="" disabled selected>United States</option>
+                <option value="">Option 1</option>
+                <option value="">Option 2</option>
+                <option value="">Option 3</option>
+                <option value="">Option 4</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <p class="label">state</p>
+              <select name="" id="">
+                <option value="" disabled selected>State</option>
+                <option value="">Option 1</option>
+                <option value="">Option 2</option>
+                <option value="">Option 3</option>
+                <option value="">Option 4</option>
+              </select>
+            </div>
+            <div class="two-fields">
+              <div class="form-field">
+                <p class="label">city</p>
+                <select name="" id="">
+                  <option value="" disabled selected>City</option>
+                  <option value="">Option 1</option>
+                  <option value="">Option 2</option>
+                  <option value="">Option 3</option>
+                  <option value="">Option 4</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <p class="label">zip</p>
+                <input type="text" placeholder="Zip" />
+              </div>
+            </div>
+          </div>
+          <div class="fields" data-method="bank">
+            <div class="form-field">
+              <p class="label">account holder name</p>
+              <input type="text" placeholder="Name" />
+            </div>
+            <div class="form-field">
+              <p class="label">account type</p>
+              <select name="" id="">
+                <option value="" disabled selected>Type</option>
+                <option value="">Option 1</option>
+                <option value="">Option 2</option>
+                <option value="">Option 3</option>
+                <option value="">Option 4</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <p class="label">account number</p>
+              <input type="text" placeholder="Number" />
+            </div>
+            <div class="form-field">
+              <p class="label">routing number</p>
+              <input type="text" placeholder="Number" />
+            </div>
+            <div class="tnc">
+              <input type="checkbox" />
+              <p>i agree to the <a href="#">terms and conditions.</a></p>
+            </div>
+          </div>
+          <div class="action-btn">
+            <button class="btn-primary">Pay Now</button>
+            <button class="btn-outline">Pay Later</button>
+          </div>
+        </form>
+        <div class="footer">
+          <p>Powered by: Lyfecycle Payments</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
