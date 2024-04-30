@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Lyfecycle Payments Js-Sdk</title>
     <link rel="stylesheet" href="index.css" />
-    <script defer src="/index.js"></script>
+    <script defer src="./index.js"></script>
   </head>
   <body>
     <div class="container">
@@ -13,6 +13,7 @@
         <form action="" class="form">
           <div class="payment-method">
             <p class="label">Choose your payment method</p>
+            <!-- PAYMENT METHODS CARDS START -->
             <div class="methods">
               <div class="method-card selected" data-method="card">
                 <svg
@@ -94,7 +95,10 @@
                 <p class="card-label">Wallet</p>
               </div>
             </div>
+            <!-- PAYMENT METHODS CARDS END -->
           </div>
+
+          <!-- CARD METHOD FIELDS START -->
           <div class="fields" data-method="card">
             <div class="form-field">
               <p class="label">card number</p>
@@ -161,6 +165,9 @@
               </div>
             </div>
           </div>
+          <!-- CARD METHOD FIELDS END -->
+
+          <!-- BANK METHOD FIELDS END -->
           <div class="fields" data-method="bank">
             <div class="form-field">
               <p class="label">account holder name</p>
@@ -189,10 +196,14 @@
               <p>i agree to the <a href="#">terms and conditions.</a></p>
             </div>
           </div>
+          <!-- BANK METHOD FIELDS END -->
+
+          <!-- FORM ACTION BUTTONS START -->
           <div class="action-btn">
             <button class="btn-primary">Pay Now</button>
             <button class="btn-outline">Pay Later</button>
           </div>
+          <!-- FORM ACTION BUTTONS END -->
         </form>
         <div class="footer">
           <p>Powered by: Lyfecycle Payments</p>

@@ -21,6 +21,7 @@
       }
     });
   }
+
   allMethods.forEach((element) => {
     element.addEventListener("click", () => {
       element.classList.add("selected");

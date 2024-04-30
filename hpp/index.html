@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyfecycle Payments HPP</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="config.js"></script>
+    <script defer src="index.js"></script>
+  </head>
+  <body class="bg-background min-h-screen">
+    <header id="header" class="bg-white">
+      <!-- MAIN NAVIGATION START -->
+      <nav
+        class="w-full h-[72px] lg:border border-light-200 border-b-light-200 flex items-center justify-between px-4 md:px-16 lg:px-40 py-4 border-solid"
+      >
+        <!-- LOGO CONTAINER START -->
+        <div class="flex items-center gap-5">
+          <span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M19 12H5"
+                  stroke="black"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 19L5 12L12 5"
+                  stroke="black"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+            </svg>
+          </span>
+          <div
+            class="flex items-center justify-center bg-light-100 rounded-lg w-32 lg:w-40 h-10"
+          >
+            <p class="uppercase text-xs font-semibold">Logo</p>
+          </div>
+        </div>
+        <!-- LOGO CONTAINER END -->
+
+        <!-- PROGRESS BAR START -->
+        <div class="flex items-center gap-3">
+          <!-- SINGLE STEP START -->
+          <div
+            class="step flex items-center gap-3 cursor-pointer"
+            data-name="billing"
+          >
+            <svg
+              class="stroke-primary-300"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1.5"
+                y="1.5"
+                width="13"
+                height="13"
+                rx="6.5"
+                stroke-width="3"
+              />
+            </svg>
+            <p class="hidden lg:block font-medium text-xs text-primary-300">
+              Billing Details
+            </p>
+            <hr
+              class="hidden md:block w-10 border-primary-300 border-t-2 border-dotted"
+            />
+          </div>
+          <!-- SINGLE STEP END -->
+
+          <!-- SINGLE STEP START -->
+          <div
+            class="step flex items-center gap-3 cursor-pointer"
+            data-name="payment"
+          >
+            <svg
+              class="stroke-light-300"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1.5"
+                y="1.5"
+                width="13"
+                height="13"
+                rx="6.5"
+                stroke-width="3"
+              />
+            </svg>
+            <p class="hidden lg:block font-medium text-xs text-light-300">
+              Payment Details
+            </p>
+            <hr
+              class="hidden md:block w-10 border-light-300 border-t-2 border-dotted"
+            />
+          </div>
+          <!-- SINGLE STEP END -->
+
+          <!-- SINGLE STEP START -->
+          <div class="step flex items-center gap-3 cursor-pointer">
+            <svg
+              class="stroke-light-300"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1.5"
+                y="1.5"
+                width="13"
+                height="13"
+                rx="6.5"
+                stroke-width="3"
+              />
+            </svg>
+            <p class="hidden lg:block font-medium text-xs text-light-300">
+              Review
+            </p>
+          </div>
+          <!-- SINGLE STEP END -->
+        </div>
+        <!-- PROGRESS BAR END -->
+      </nav>
+      <!-- MAIN NAVIGATION END -->
+    </header>
+    <main class="relative h-full w-full">
+      <div
+        id="mobile-summary-card"
+        class="block lg:hidden w-full lg:w-[448px] rounded-lg px-4 md:px-16 p-6 bg-white"
+      >
+        <div class="flex justify-between">
+          <p class="text-sm font-medium pb-6">Summary</p>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.83594 7.62891L10.0708 12.5713L14.1685 7.51464"
+              stroke="black"
+              stroke-opacity="0.87"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="flex flex-col gap-6">
+          <div class="w-full flex justify-between">
+            <div class="flex gap-4">
+              <div>
+                <img
+                  src="./assets/product.png"
+                  alt="product-img"
+                  class="rounded-lg"
+                />
+              </div>
+              <div class="flex flex-col text-[16px] font-normal">
+                <p>Flat white medium coffee</p>
+                <p class="text-light-50">$9.99</p>
+              </div>
+            </div>
+            <div class="hidden self-start flex gap-4 items-center">
+              <button
+                class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
+              >
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 12L18 12"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <p>1</p>
+              <button
+                class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
+              >
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 12H18M12 6V18"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr class="hidden my-6" />
+        <div class="flex hidden justify-between items-center">
+          <p class="text-sm font-normal">Total Price:</p>
+          <p class="text-primary-300 font-medium">$12.99</p>
+        </div>
+      </div>
+      <div
+        id="pay-section"
+        class="w-full h-full flex flex-col gap-4 lg:flex-row-reverse lg:justify-between lg:pt-8 px-4 md:px-16 lg:px-40 lg:py-4 mt-5"
+      >
+        <div
+          class="hidden lg:block w-full lg:w-[448px] h-[210px] rounded-lg p-6 bg-white"
+        >
+          <p class="text-sm font-medium pb-6">Summary</p>
+          <div class="flex flex-col gap-6">
+            <div class="w-full flex justify-between">
+              <div class="flex gap-4">
+                <div>
+                  <img
+                    src="./assets/product.png"
+                    alt="product-img"
+                    class="rounded-lg"
+                  />
+                </div>
+                <div class="flex flex-col text-[16px] font-normal">
+                  <p>Flat white medium coffee</p>
+                  <p class="text-light-50">$9.99</p>
+                </div>
+              </div>
+              <div class="self-start flex gap-4 items-center">
+                <button
+                  class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
+                >
+                  <svg
+                    width="20px"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 12L18 12"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <p>1</p>
+                <button
+                  class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
+                >
+                  <svg
+                    width="20px"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 12H18M12 6V18"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-6" />
+          <div class="flex justify-between items-center">
+            <p class="text-sm font-normal">Total Price:</p>
+            <p class="text-primary-300 font-medium">$12.99</p>
+          </div>
+        </div>
+        <div class="w-full h-full lg:w-[640px] rounded-lg p-4 lg:p-8 bg-white">
+          <p class="form-title text-[16px] font-medium capitalize pb-8">
+            Shipping Details
+          </p>
+          <form action="" class="form flex flex-col gap-4">
+            <!-- CARD METHOD FIELDS START -->
+            <div class="fields hidden flex-col gap-4" data-name="billing">
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">name</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="text"
+                  placeholder="Name"
+                />
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">email</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="flex items-center gap-4">
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="checkbox"
+                />
+                <p class="text-light-50 uppercase font-medium text-xs">
+                  send invoice via email
+                </p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">address</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="text"
+                  placeholder="Address"
+                />
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">country</p>
+                <select
+                  class="border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                  name=""
+                  id=""
+                >
+                  <option value="" disabled selected>United States</option>
+                  <option value="">Option 1</option>
+                  <option value="">Option 2</option>
+                  <option value="">Option 3</option>
+                  <option value="">Option 4</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">state</p>
+                <select
+                  class="border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                  name=""
+                  id=""
+                >
+                  <option value="" disabled selected>State</option>
+                  <option value="">Option 1</option>
+                  <option value="">Option 2</option>
+                  <option value="">Option 3</option>
+                  <option value="">Option 4</option>
+                </select>
+              </div>
+              <div class="w-full flex justify-between items-center gap-4">
+                <div class="flex flex-col gap-2 w-full">
+                  <p class="text-sm font-semibold capitalize">city</p>
+                  <select
+                    class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                    name=""
+                    id=""
+                  >
+                    <option value="" disabled selected>City</option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                    <option value="">Option 3</option>
+                    <option value="">Option 4</option>
+                  </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">zip</p>
+                  <input
+                    class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="text"
+                    placeholder="Zip"
+                  />
+                </div>
+              </div>
+              <!-- FORM ACTION BUTTONS START -->
+              <div class="w-full flex flex-col gap-2">
+                <button
+                  id="continue-btn"
+                  class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+                >
+                  Continue
+                </button>
+              </div>
+              <!-- FORM ACTION BUTTONS END -->
+            </div>
+            <div class="fields hidden flex-col gap-4" data-name="payment">
+              <!-- PAYMENT METHODS CARDS START -->
+              <div class="methods flex gap-3 overflow-x-auto">
+                <div
+                  class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                  data-method="card"
+                >
+                  <svg
+                    class="with-stroke"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="group-hover:stroke-primary-300"
+                      d="M21 4.5H3C1.89543 4.5 1 5.39543 1 6.5V18.5C1 19.6046 1.89543 20.5 3 20.5H21C22.1046 20.5 23 19.6046 23 18.5V6.5C23 5.39543 22.1046 4.5 21 4.5Z"
+                      stroke="black"
+                      stroke-opacity="0.6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      class="group-hover:stroke-primary-300"
+                      d="M1 10.5H23"
+                      stroke="black"
+                      stroke-opacity="0.6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p
+                    class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
+                  >
+                    Card
+                  </p>
+                </div>
+                <div
+                  class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                  data-method="bank"
+                >
+                  <svg
+                    class="no-stroke"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="group-hover:fill-primary-300"
+                      d="M11.5586 3.08966L3.68456 6.46499C3.19243 6.67594 2.91824 7.20334 3.02721 7.7237C3.13618 8.24407 3.59316 8.62379 4.12747 8.62379V8.90507C4.12747 9.37269 4.5036 9.7489 4.97112 9.7489H19.032C19.4995 9.7489 19.8756 9.37269 19.8756 8.90507V8.62379C20.4099 8.62379 20.8704 8.24758 20.9759 7.7237C21.0813 7.19982 20.8072 6.67243 20.3185 6.46499L12.4445 3.08966C12.1632 2.97011 11.8398 2.97011 11.5586 3.08966ZM7.50208 10.874H5.25234V17.7759C5.23125 17.7864 5.21016 17.8005 5.18907 17.8145L3.50176 18.9396C3.09048 19.2139 2.90418 19.7272 3.0483 20.2019C3.19243 20.6765 3.63183 21 4.12747 21H19.8756C20.3713 21 20.8072 20.6765 20.9513 20.2019C21.0954 19.7272 20.9126 19.2139 20.4978 18.9396L18.8105 17.8145C18.7894 17.8005 18.7683 17.7899 18.7472 17.7759V10.874H16.501V17.6247H15.0949V10.874H12.8452V17.6247H11.1579V10.874H8.90816V17.6247H7.50208V10.874ZM12.0015 5.24846C12.2999 5.24846 12.586 5.367 12.7969 5.578C13.0079 5.789 13.1264 6.07517 13.1264 6.37357C13.1264 6.67197 13.0079 6.95815 12.7969 7.16914C12.586 7.38014 12.2999 7.49868 12.0015 7.49868C11.7032 7.49868 11.4171 7.38014 11.2061 7.16914C10.9952 6.95815 10.8767 6.67197 10.8767 6.37357C10.8767 6.07517 10.9952 5.789 11.2061 5.578C11.4171 5.367 11.7032 5.24846 12.0015 5.24846Z"
+                      fill="black"
+                      fill-opacity="0.6"
+                    />
+                  </svg>
+                  <p
+                    class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
+                  >
+                    Bank
+                  </p>
+                </div>
+                <div
+                  class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3 selected"
+                  data-method="crypto"
+                >
+                  <svg
+                    class="no-stroke"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="group-hover:fill-primary-300"
+                      d="M21 12C21 16.9706 16.9706 21 12 21C7.02942 21 3 16.9706 3 12C3 7.02942 7.02942 3 12 3C16.9706 3 21 7.02942 21 12ZM15.8594 10.7179C16.0386 9.52032 15.1267 8.87653 13.8798 8.44707L14.2843 6.82482L13.2967 6.57873L12.9029 8.15823C12.6433 8.09353 12.3767 8.03252 12.1117 7.97206L12.5083 6.38219L11.5213 6.1361L11.1165 7.75777C10.9016 7.70881 10.6907 7.66044 10.4859 7.60956L10.4871 7.60448L9.12508 7.26444L8.86237 8.31911C8.86237 8.31911 9.59511 8.48702 9.57965 8.4974C9.97964 8.59724 10.0519 8.8619 10.0398 9.0717L9.57907 10.9198C9.60665 10.9268 9.64236 10.9369 9.68174 10.9527C9.64882 10.9445 9.61366 10.9355 9.57737 10.9268L8.93154 13.5157C8.88259 13.6372 8.75855 13.8195 8.47897 13.7503C8.4888 13.7646 7.76115 13.5711 7.76115 13.5711L7.27086 14.7015L8.55605 15.0218C8.79513 15.0817 9.02946 15.1444 9.26008 15.2035L8.85138 16.8442L9.83782 17.0903L10.2426 15.467C10.5042 15.5379 10.7665 15.6059 11.0296 15.6712L10.6262 17.2869L11.6138 17.533L12.0225 15.8953C13.7065 16.214 14.9729 16.0854 15.5059 14.5625C15.9354 13.3362 15.4845 12.6289 14.5985 12.1676C15.2437 12.0189 15.7298 11.5945 15.8594 10.7179ZM13.603 13.8816C13.2978 15.1079 11.233 14.445 10.5635 14.2787L11.1058 12.105C11.7753 12.272 13.922 12.6028 13.603 13.8816ZM13.9085 10.7002C13.63 11.8156 11.9114 11.2489 11.3539 11.1099L11.8455 9.1384C12.4031 9.27732 14.1985 9.53661 13.9085 10.7002Z"
+                      fill="black"
+                      fill-opacity="0.6"
+                    />
+                  </svg>
+                  <p
+                    class="card-label text-sm font-medium text-light-400 hover:text-primary-300"
+                  >
+                    Crypto
+                  </p>
+                </div>
+                <div
+                  class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3 selected"
+                  data-method="wallet"
+                >
+                  <svg
+                    class="no-stroke"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="group-hover:fill-primary-300"
+                      d="M4.125 3C2.67715 3 1.5 4.15313 1.5 5.57143V18.4286C1.5 19.8469 2.67715 21 4.125 21H19.875C21.3229 21 22.5 19.8469 22.5 18.4286V9.42857C22.5 8.01027 21.3229 6.85714 19.875 6.85714H4.78125C4.42031 6.85714 4.125 6.56786 4.125 6.21429C4.125 5.86071 4.42031 5.57143 4.78125 5.57143H19.875C20.601 5.57143 21.1875 4.99688 21.1875 4.28571C21.1875 3.57455 20.601 3 19.875 3H4.125ZM18.5625 12.6429C18.9106 12.6429 19.2444 12.7783 19.4906 13.0194C19.7367 13.2606 19.875 13.5876 19.875 13.9286C19.875 14.2696 19.7367 14.5966 19.4906 14.8377C19.2444 15.0788 18.9106 15.2143 18.5625 15.2143C18.2144 15.2143 17.8806 15.0788 17.6344 14.8377C17.3883 14.5966 17.25 14.2696 17.25 13.9286C17.25 13.5876 17.3883 13.2606 17.6344 13.0194C17.8806 12.7783 18.2144 12.6429 18.5625 12.6429Z"
+                      fill="black"
+                      fill-opacity="0.6"
+                    />
+                  </svg>
+                  <p
+                    class="card-label text-sm font-medium text-light-400 hover:text-primary-300"
+                  >
+                    Wallet
+                  </p>
+                </div>
+              </div>
+              <!-- PAYMENT METHODS CARDS END -->
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">card number</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="number"
+                  placeholder="5555 5555 4444 6555"
+                />
+              </div>
+              <div class="flex justify-between items-center gap-4">
+                <div class="flex flex-col gap-2 w-full">
+                  <p class="text-sm font-semibold capitalize">expiry</p>
+                  <select
+                    class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                    name=""
+                    id=""
+                  >
+                    <option value="" disabled selected>MM/YY</option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                    <option value="">Option 3</option>
+                    <option value="">Option 4</option>
+                  </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">security code</p>
+                  <input
+                    class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="text"
+                    placeholder="CVV"
+                  />
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <input
+                  id="billing-info"
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="checkbox"
+                />
+                <p class="text-light-50 uppercase font-medium text-xs">
+                  billing info. same as shipping details
+                </p>
+              </div>
+              <div id="card-name" class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">name on card</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="text"
+                  placeholder="Name"
+                />
+              </div>
+              <div
+                id="address-details"
+                class="flex justify-between items-center gap-4"
+              >
+                <div class="flex flex-col gap-2 w-full">
+                  <p class="text-sm font-semibold capitalize">country</p>
+                  <select
+                    class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                    name=""
+                    id=""
+                  >
+                    <option value="" disabled selected>United States</option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                    <option value="">Option 3</option>
+                    <option value="">Option 4</option>
+                  </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">zip</p>
+                  <input
+                    class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="text"
+                    placeholder="Zip"
+                  />
+                </div>
+              </div>
+              <!-- FORM ACTION BUTTONS START -->
+              <div class="w-full flex flex-col gap-2">
+                <button
+                  id="pay-now"
+                  class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+                >
+                  Pay Now
+                </button>
+                <button
+                  id="pay-later"
+                  class="bg-white hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
+                >
+                  Pay Later
+                </button>
+              </div>
+              <!-- FORM ACTION BUTTONS END -->
+            </div>
+            <!-- CARD METHOD FIELDS END -->
+          </form>
+          <div
+            class="mt-8 text-center uppercase font-medium text-xs text-light-50"
+          >
+            <p>Powered by: Lyfecycle Payments</p>
+          </div>
+        </div>
+      </div>
+      <div
+        id="review-section"
+        class="hidden absolute left-1/2 transform -translate-x-1/2 max-w-xl w-[350px] md:w-[544px] p-8 rounded-lg mt-[104px] bg-white"
+      >
+        <div class="flex gap-5 flex-col w-full">
+          <p class="font-medium text-[16px]">Review</p>
+          <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2 mt-4 text-[16px]">
+              <div class="flex gap-2 lg:items-center">
+                <p class="min-w-20 text-gray-700">Name:</p>
+                <p class="">Shantanu</p>
+              </div>
+              <div class="flex gap-2 lg:items-center">
+                <p class="min-w-20 text-gray-700">Email:</p>
+                <p class="">shantanu@mail.com</p>
+              </div>
+              <div class="flex gap-2 lg:items-center">
+                <p class="min-w-20 text-gray-700">Address:</p>
+                <p class="">123 West Elm Street, San Jose, California</p>
+              </div>
+              <div class="flex gap-2 lg:items-center">
+                <p class="min-w-20 text-gray-700">Pay with:</p>
+                <p class="">**** **** **** 4444</p>
+              </div>
+            </div>
+            <hr />
+            <p class="text-sm font-medium pb-1">Summary</p>
+            <div class="flex flex-col gap-6">
+              <div class="w-full flex justify-between">
+                <div class="flex gap-4">
+                  <div>
+                    <img
+                      src="./assets/product.png"
+                      alt="product-img"
+                      class="rounded-lg"
+                    />
+                  </div>
+                  <div class="flex flex-col text-[16px] font-normal">
+                    <p>Flat white medium coffee</p>
+                    <p class="text-light-50">$9.99 X 1</p>
+                  </div>
+                </div>
+                <div class="self-start">
+                  <p>$9.99</p>
+                </div>
+              </div>
+            </div>
+            <button
+              id="pay-btn"
+              class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="done-section"
+        class="hidden absolute inset-0 flex justify-center items-center min-h-screen"
+      >
+        <div
+          class="max-w-xl w-[350px] h-fit md:w-[544px] mx-auto p-8 rounded-lg mt-[104px] bg-white flex justify-center items-center"
+        >
+          <div class="flex flex-col w-full md:w-[350px]">
+            <div
+              class="bg-success-200 h-[160px] w-[160px] rounded-full flex justify-center items-center self-center"
+            >
+              <svg
+                width="67"
+                height="50"
+                viewBox="0 0 67 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M61.0562 5L23.1648 45L5.94141 26.8182"
+                  stroke="#22C215"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="mt-5 flex flex-col gap-4">
+              <p class="text-[16px] font-medium text-center">
+                Payment Successful !!
+              </p>
+              <p class="text-sm font-normal text-center opacity-60">
+                You have successfully completed your payment. Transaction
+                Number: 1232322
+              </p>
+            </div>
+            <button
+              class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white mt-8"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="loader"
+        class="hidden absolute inset-0 flex justify-center items-center min-h-screen"
+      >
+        <div class="min-w-44">
+          <img src="./assets/Loading.png" class="loader" alt="loader" />
+          <p class="text-[16px] font-medium text-center mt-5">
+            Payment processing...
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

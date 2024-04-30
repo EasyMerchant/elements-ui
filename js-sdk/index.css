@@ -117,7 +117,7 @@ button {
 .label::after {
   content: "*";
   color: red;
-  margin-left: 4px; /* Adjust spacing between label text and asterisk */
+  margin-left: 4px;
 }
 
 .form {
