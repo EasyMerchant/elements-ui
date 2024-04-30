@@ -147,89 +147,19 @@
     <main class="relative h-full w-full">
       <div
         id="mobile-summary-card"
-        class="block lg:hidden w-full lg:w-[448px] rounded-lg px-4 md:px-16 p-6 bg-white"
+        class="block lg:hidden w-full lg:w-[448px] h-fit rounded-lg px-4 md:px-16 p-6 bg-white"
       >
-        <div class="flex justify-between">
-          <p class="text-sm font-medium pb-6">Summary</p>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.83594 7.62891L10.0708 12.5713L14.1685 7.51464"
-              stroke="black"
-              stroke-opacity="0.87"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
-        <div class="flex flex-col gap-6">
-          <div class="w-full flex justify-between">
-            <div class="flex gap-4">
-              <div>
-                <img
-                  src="./assets/product.png"
-                  alt="product-img"
-                  class="rounded-lg"
-                />
-              </div>
-              <div class="flex flex-col text-[16px] font-normal">
-                <p>Flat white medium coffee</p>
-                <p class="text-light-50">$9.99</p>
-              </div>
-            </div>
-            <div class="hidden self-start flex gap-4 items-center">
-              <button
-                class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
-              >
-                <svg
-                  width="20px"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 12L18 12"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-              <p>1</p>
-              <button
-                class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
-              >
-                <svg
-                  width="20px"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 12H18M12 6V18"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+        <p class="text-sm font-medium pb-6">Summary</p>
+        <div class="flex gap-4">
+          <div class="w-[56px] lg:w-[100px] h-[66px]">
+            <img src="./assets/summary.jpeg" alt="summary" class="rounded-lg" />
           </div>
-        </div>
-        <hr class="hidden my-6" />
-        <div class="flex hidden justify-between items-center">
-          <p class="text-sm font-normal">Total Price:</p>
-          <p class="text-primary-300 font-medium">$12.99</p>
+          <div class="flex flex-col text-[16px] font-normal">
+            <p>Donate for Cause</p>
+            <p class="opacity-60">
+              Lorem ipsum dolor sit amet consecte it nean sagittis maecenas.
+            </p>
+          </div>
         </div>
       </div>
       <div
@@ -237,72 +167,23 @@
         class="w-full h-full flex flex-col gap-4 lg:flex-row-reverse lg:justify-between lg:pt-8 px-4 md:px-16 lg:px-40 lg:py-4 mt-5"
       >
         <div
-          class="hidden lg:block w-full lg:w-[448px] h-[210px] rounded-lg p-6 bg-white"
+          class="hidden lg:block w-full lg:w-[448px] h-fit rounded-lg p-6 bg-white"
         >
           <p class="text-sm font-medium pb-6">Summary</p>
-          <div class="flex flex-col gap-6">
-            <div class="w-full flex justify-between">
-              <div class="flex gap-4">
-                <div>
-                  <img
-                    src="./assets/product.png"
-                    alt="product-img"
-                    class="rounded-lg"
-                  />
-                </div>
-                <div class="flex flex-col text-[16px] font-normal">
-                  <p>Flat white medium coffee</p>
-                  <p class="text-light-50">$9.99</p>
-                </div>
-              </div>
-              <div class="self-start flex gap-4 items-center">
-                <button
-                  class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
-                >
-                  <svg
-                    width="20px"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M6 12L18 12"
-                      stroke="#000000"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-                <p>1</p>
-                <button
-                  class="rounded-lg bg-light-200 w-6 h-6 flex items-center justify-center"
-                >
-                  <svg
-                    width="20px"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M6 12H18M12 6V18"
-                      stroke="#000000"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
+          <div class="flex gap-4">
+            <div class="w-[56px] lg:w-[100px] h-[66px]">
+              <img
+                src="./assets/summary.jpeg"
+                alt="summary"
+                class="rounded-lg"
+              />
             </div>
-          </div>
-
-          <hr class="my-6" />
-          <div class="flex justify-between items-center">
-            <p class="text-sm font-normal">Total Price:</p>
-            <p class="text-primary-300 font-medium">$12.99</p>
+            <div class="flex flex-col text-[16px] font-normal">
+              <p>Donate for Cause</p>
+              <p class="opacity-60">
+                Lorem ipsum dolor sit amet consecte it nean sagittis maecenas.
+              </p>
+            </div>
           </div>
         </div>
         <div class="w-full h-full lg:w-[640px] rounded-lg p-4 lg:p-8 bg-white">
@@ -409,6 +290,26 @@
               <!-- FORM ACTION BUTTONS END -->
             </div>
             <div class="fields hidden flex-col gap-4" data-name="payment">
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold capitalize">amount</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="number"
+                  placeholder="$10"
+                />
+              </div>
+              <div class="flex flex-col gap-2 w-full">
+                <p class="text-sm font-semibold capitalize">choose your plan</p>
+                <select
+                  class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                  name=""
+                  id=""
+                >
+                  <option value="" disabled selected>Monthly</option>
+                  <option value="">Monthly</option>
+                  <option value="">Yearly</option>
+                </select>
+              </div>
               <!-- PAYMENT METHODS CARDS START -->
               <div class="methods flex gap-3 overflow-x-auto">
                 <div

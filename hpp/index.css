@@ -40,7 +40,6 @@ select {
   background-repeat: no-repeat;
   background-position: 95%;
 }
-/* FORM CONTAINER START */
 
 .label::after {
   content: "*";
@@ -48,4 +47,19 @@ select {
   margin-left: 4px;
 }
 
-/* FORM CONTAINER END */
+.stroke-opacity-1 {
+  stroke-opacity: 1;
+}
+
+.loader {
+  animation: spin 1s linear infinite; /* Spin animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
