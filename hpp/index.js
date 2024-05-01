@@ -15,6 +15,9 @@
   const doneSection = document.querySelector("#done-section");
   const loader = document.querySelector("#loader");
 
+  const allMethodsFields = document.querySelector(".form-fields");
+  const allMethods = document.querySelector(".method-card");
+
   allFields[0].style.display = "flex";
 
   function removeActive(id) {
@@ -97,5 +100,11 @@
       cardOnNameField.style.display = "flex";
       addressField.style.display = "flex";
     }
+  });
+
+  allMethods.forEach((method) => {
+    method?.addEventListener("click", (e) => {
+      // Code for Active state...
+    });
   });
 })();
