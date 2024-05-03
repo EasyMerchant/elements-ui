@@ -6,16 +6,36 @@
     <title>Lyfecycle Payments Js-Sdk</title>
     <link rel="stylesheet" href="index.css" />
     <script defer src="./index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/config.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <div class="form-container">
-        <form action="" class="form">
-          <div class="payment-method">
-            <p class="label">Choose your payment method</p>
+  <body class="relative">
+    <div class="h-screen flex justify-center items-center p-4 bg-background">
+      <!-- PAY BUTTON START -->
+      <button
+        id="pay-now-main"
+        class="w-48 bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+      >
+        Pay: $99
+      </button>
+      <!-- PAY BUTTON ENDS -->
+
+      <!-- FORM SECTION START -->
+      <div
+        id="pay-section"
+        class="hidden form-container max-h-[90%] h-fit overflow-y-scroll p-8 w-full lg:w-[640px] bg-white rounded-lg"
+      >
+        <form action="" class="form flex flex-col gap-4">
+          <div class="payment-method flex flex-col gap-2">
+            <p class="label capitalize font-semibold text-sm">
+              Choose your payment method
+            </p>
             <!-- PAYMENT METHODS CARDS START -->
-            <div class="methods">
-              <div class="method-card selected" data-method="card">
+            <div class="methods flex gap-3 overflow-y-auto">
+              <div
+                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                data-method="card"
+              >
                 <svg
                   class="with-stroke"
                   width="24"
@@ -25,6 +45,7 @@
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
+                    class="group-hover:stroke-primary-300"
                     d="M21 4.5H3C1.89543 4.5 1 5.39543 1 6.5V18.5C1 19.6046 1.89543 20.5 3 20.5H21C22.1046 20.5 23 19.6046 23 18.5V6.5C23 5.39543 22.1046 4.5 21 4.5Z"
                     stroke="black"
                     stroke-opacity="0.6"
@@ -33,6 +54,7 @@
                     stroke-linejoin="round"
                   />
                   <path
+                    class="group-hover:stroke-primary-300"
                     d="M1 10.5H23"
                     stroke="black"
                     stroke-opacity="0.6"
@@ -41,9 +63,16 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p class="card-label">Card</p>
+                <p
+                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
+                >
+                  Card
+                </p>
               </div>
-              <div class="method-card" data-method="bank">
+              <div
+                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                data-method="bank"
+              >
                 <svg
                   class="no-stroke"
                   width="24"
@@ -53,14 +82,22 @@
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
+                    class="group-hover:fill-primary-300"
                     d="M11.5586 3.08966L3.68456 6.46499C3.19243 6.67594 2.91824 7.20334 3.02721 7.7237C3.13618 8.24407 3.59316 8.62379 4.12747 8.62379V8.90507C4.12747 9.37269 4.5036 9.7489 4.97112 9.7489H19.032C19.4995 9.7489 19.8756 9.37269 19.8756 8.90507V8.62379C20.4099 8.62379 20.8704 8.24758 20.9759 7.7237C21.0813 7.19982 20.8072 6.67243 20.3185 6.46499L12.4445 3.08966C12.1632 2.97011 11.8398 2.97011 11.5586 3.08966ZM7.50208 10.874H5.25234V17.7759C5.23125 17.7864 5.21016 17.8005 5.18907 17.8145L3.50176 18.9396C3.09048 19.2139 2.90418 19.7272 3.0483 20.2019C3.19243 20.6765 3.63183 21 4.12747 21H19.8756C20.3713 21 20.8072 20.6765 20.9513 20.2019C21.0954 19.7272 20.9126 19.2139 20.4978 18.9396L18.8105 17.8145C18.7894 17.8005 18.7683 17.7899 18.7472 17.7759V10.874H16.501V17.6247H15.0949V10.874H12.8452V17.6247H11.1579V10.874H8.90816V17.6247H7.50208V10.874ZM12.0015 5.24846C12.2999 5.24846 12.586 5.367 12.7969 5.578C13.0079 5.789 13.1264 6.07517 13.1264 6.37357C13.1264 6.67197 13.0079 6.95815 12.7969 7.16914C12.586 7.38014 12.2999 7.49868 12.0015 7.49868C11.7032 7.49868 11.4171 7.38014 11.2061 7.16914C10.9952 6.95815 10.8767 6.67197 10.8767 6.37357C10.8767 6.07517 10.9952 5.789 11.2061 5.578C11.4171 5.367 11.7032 5.24846 12.0015 5.24846Z"
                     fill="black"
                     fill-opacity="0.6"
                   />
                 </svg>
-                <p class="card-label">Bank</p>
+                <p
+                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
+                >
+                  Bank
+                </p>
               </div>
-              <div class="method-card" data-method="crypto">
+              <div
+                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                data-method="crypto"
+              >
                 <svg
                   class="no-stroke"
                   width="24"
@@ -70,14 +107,22 @@
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
+                    class="group-hover:fill-primary-300"
                     d="M21 12C21 16.9706 16.9706 21 12 21C7.02942 21 3 16.9706 3 12C3 7.02942 7.02942 3 12 3C16.9706 3 21 7.02942 21 12ZM15.8594 10.7179C16.0386 9.52032 15.1267 8.87653 13.8798 8.44707L14.2843 6.82482L13.2967 6.57873L12.9029 8.15823C12.6433 8.09353 12.3767 8.03252 12.1117 7.97206L12.5083 6.38219L11.5213 6.1361L11.1165 7.75777C10.9016 7.70881 10.6907 7.66044 10.4859 7.60956L10.4871 7.60448L9.12508 7.26444L8.86237 8.31911C8.86237 8.31911 9.59511 8.48702 9.57965 8.4974C9.97964 8.59724 10.0519 8.8619 10.0398 9.0717L9.57907 10.9198C9.60665 10.9268 9.64236 10.9369 9.68174 10.9527C9.64882 10.9445 9.61366 10.9355 9.57737 10.9268L8.93154 13.5157C8.88259 13.6372 8.75855 13.8195 8.47897 13.7503C8.4888 13.7646 7.76115 13.5711 7.76115 13.5711L7.27086 14.7015L8.55605 15.0218C8.79513 15.0817 9.02946 15.1444 9.26008 15.2035L8.85138 16.8442L9.83782 17.0903L10.2426 15.467C10.5042 15.5379 10.7665 15.6059 11.0296 15.6712L10.6262 17.2869L11.6138 17.533L12.0225 15.8953C13.7065 16.214 14.9729 16.0854 15.5059 14.5625C15.9354 13.3362 15.4845 12.6289 14.5985 12.1676C15.2437 12.0189 15.7298 11.5945 15.8594 10.7179ZM13.603 13.8816C13.2978 15.1079 11.233 14.445 10.5635 14.2787L11.1058 12.105C11.7753 12.272 13.922 12.6028 13.603 13.8816ZM13.9085 10.7002C13.63 11.8156 11.9114 11.2489 11.3539 11.1099L11.8455 9.1384C12.4031 9.27732 14.1985 9.53661 13.9085 10.7002Z"
                     fill="black"
                     fill-opacity="0.6"
                   />
                 </svg>
-                <p class="card-label">Crypto</p>
+                <p
+                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
+                >
+                  Crypto
+                </p>
               </div>
-              <div class="method-card" data-method="wallet">
+              <div
+                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                data-method="wallet"
+              >
                 <svg
                   class="no-stroke"
                   width="24"
@@ -92,22 +137,34 @@
                     fill-opacity="0.6"
                   />
                 </svg>
-                <p class="card-label">Wallet</p>
+                <p
+                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
+                >
+                  Wallet
+                </p>
               </div>
             </div>
             <!-- PAYMENT METHODS CARDS END -->
           </div>
 
           <!-- CARD METHOD FIELDS START -->
-          <div class="fields" data-method="card">
-            <div class="form-field">
-              <p class="label">card number</p>
-              <input type="text" placeholder="5555 5555 5555 4444" />
+          <div class="fields hidden flex flex-col gap-4" data-method="card">
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">card number</p>
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="text"
+                placeholder="5555 5555 5555 4444"
+              />
             </div>
-            <div class="two-fields">
-              <div class="form-field">
-                <p class="label">expiry</p>
-                <select name="" id="">
+            <div class="two-fields flex justify-between items-center gap-4">
+              <div class="form-field flex flex-col gap-2 w-full">
+                <p class="label capitalize font-semibold text-sm">expiry</p>
+                <select
+                  class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                  name=""
+                  id=""
+                >
                   <option value="" disabled selected>MM/YY</option>
                   <option value="">Option 1</option>
                   <option value="">Option 2</option>
@@ -115,22 +172,40 @@
                   <option value="">Option 4</option>
                 </select>
               </div>
-              <div class="form-field">
-                <p class="label">security code</p>
-                <input type="text" placeholder="CVV" />
+              <div class="form-field flex flex-col gap-2">
+                <p class="label capitalize font-semibold text-sm">
+                  security code
+                </p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="text"
+                  placeholder="CVV"
+                />
               </div>
             </div>
-            <div class="form-field">
-              <p class="label">name on card</p>
-              <input type="text" placeholder="Name" />
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">name on card</p>
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="text"
+                placeholder="Name"
+              />
             </div>
-            <div class="form-field">
-              <p class="label">address</p>
-              <input type="text" placeholder="Address" />
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">address</p>
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="text"
+                placeholder="Address"
+              />
             </div>
-            <div class="form-field">
-              <p class="label">country</p>
-              <select name="" id="">
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">country</p>
+              <select
+                class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                name=""
+                id=""
+              >
                 <option value="" disabled selected>United States</option>
                 <option value="">Option 1</option>
                 <option value="">Option 2</option>
@@ -138,9 +213,13 @@
                 <option value="">Option 4</option>
               </select>
             </div>
-            <div class="form-field">
-              <p class="label">state</p>
-              <select name="" id="">
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">state</p>
+              <select
+                class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                name=""
+                id=""
+              >
                 <option value="" disabled selected>State</option>
                 <option value="">Option 1</option>
                 <option value="">Option 2</option>
@@ -148,10 +227,14 @@
                 <option value="">Option 4</option>
               </select>
             </div>
-            <div class="two-fields">
-              <div class="form-field">
-                <p class="label">city</p>
-                <select name="" id="">
+            <div class="two-fields flex justify-between items-center gap-4">
+              <div class="form-field flex flex-col gap-2 w-full">
+                <p class="label capitalize font-semibold text-sm">city</p>
+                <select
+                  class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                  name=""
+                  id=""
+                >
                   <option value="" disabled selected>City</option>
                   <option value="">Option 1</option>
                   <option value="">Option 2</option>
@@ -159,23 +242,53 @@
                   <option value="">Option 4</option>
                 </select>
               </div>
-              <div class="form-field">
-                <p class="label">zip</p>
-                <input type="text" placeholder="Zip" />
+              <div class="form-field flex flex-col gap-2">
+                <p class="label capitalize font-semibold text-sm">zip</p>
+                <input
+                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                  type="text"
+                  placeholder="Zip"
+                />
               </div>
             </div>
+            <!-- FORM ACTION BUTTONS START -->
+            <div class="w-full flex flex-col gap-2">
+              <button
+                id="pay-now"
+                class="pay-now bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+              >
+                Pay Now
+              </button>
+              <button
+                id="pay-later"
+                class="bg-white hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
+              >
+                Pay Later
+              </button>
+            </div>
+            <!-- FORM ACTION BUTTONS END -->
           </div>
           <!-- CARD METHOD FIELDS END -->
 
-          <!-- BANK METHOD FIELDS END -->
-          <div class="fields" data-method="bank">
-            <div class="form-field">
-              <p class="label">account holder name</p>
-              <input type="text" placeholder="Name" />
+          <!-- BANK METHOD FIELDS START -->
+          <div class="fields hidden flex flex-col gap-4" data-method="bank">
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">
+                account holder name
+              </p>
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="text"
+                placeholder="Name"
+              />
             </div>
-            <div class="form-field">
-              <p class="label">account type</p>
-              <select name="" id="">
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">account type</p>
+              <select
+                class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                name=""
+                id=""
+              >
                 <option value="" disabled selected>Type</option>
                 <option value="">Option 1</option>
                 <option value="">Option 2</option>
@@ -183,32 +296,424 @@
                 <option value="">Option 4</option>
               </select>
             </div>
-            <div class="form-field">
-              <p class="label">account number</p>
-              <input type="text" placeholder="Number" />
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">
+                account number
+              </p>
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="text"
+                placeholder="Number"
+              />
             </div>
-            <div class="form-field">
-              <p class="label">routing number</p>
-              <input type="text" placeholder="Number" />
+            <div class="form-field flex flex-col gap-2">
+              <p class="label capitalize font-semibold text-sm">
+                routing number
+              </p>
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="text"
+                placeholder="Number"
+              />
             </div>
-            <div class="tnc">
-              <input type="checkbox" />
-              <p>i agree to the <a href="#">terms and conditions.</a></p>
+            <div class="tnc flex items-center gap-4">
+              <input
+                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                type="checkbox"
+              />
+              <p class="uppercase font-medium text-xs">
+                i agree to the
+                <a class="text-primary-300" id="tnc" href="#"
+                  >terms and conditions.</a
+                >
+              </p>
             </div>
+            <!-- FORM ACTION BUTTONS START -->
+            <div class="w-full flex flex-col gap-2">
+              <button
+                id="pay-now"
+                class="pay-now bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+              >
+                Pay Now
+              </button>
+              <button
+                id="pay-later"
+                class="bg-white hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
+              >
+                Pay Later
+              </button>
+            </div>
+            <!-- FORM ACTION BUTTONS END -->
           </div>
           <!-- BANK METHOD FIELDS END -->
 
-          <!-- FORM ACTION BUTTONS START -->
-          <div class="action-btn">
-            <button class="btn-primary">Pay Now</button>
-            <button class="btn-outline">Pay Later</button>
+          <!-- CRYPTO METHOD FIELDS START -->
+          <div class="fields hidden flex flex-col gap-4" data-method="crypto">
+            <div class="flex flex-col gap-8">
+              <div class="flex flex-col gap-2">
+                <p class="text-[16px] font-medium">
+                  0.00002054 BTC = $1.28 USD
+                </p>
+                <div class="flex gap-2 items-center">
+                  <svg
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.0026 15.1654C11.6845 15.1654 14.6693 12.1806 14.6693 8.4987C14.6693 4.8168 11.6845 1.83203 8.0026 1.83203C4.32071 1.83203 1.33594 4.8168 1.33594 8.4987C1.33594 12.1806 4.32071 15.1654 8.0026 15.1654Z"
+                      stroke="#E93939"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 11.1667V8.5"
+                      stroke="#E93939"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 5.83203H8.01"
+                      stroke="#E93939"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p class="text-sm font-normal">
+                    <span id="countdown" class="text-error">4:23</span>
+                    <span class="opacity-60"
+                      >until the next BTC price change</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div
+                id="crypto-pay"
+                class="w-full mx-auto flex flex-col gap-4 items-center"
+              >
+                <div class="w-[320] h-[320]">
+                  <img
+                    class="qr-img"
+                    src="/assets/qr.png"
+                    alt="QR code"
+                    data-qr="onchain"
+                  />
+                  <img
+                    class="hidden qr-img"
+                    src="/assets/qr2.png"
+                    alt="QR code"
+                    data-qr="lightning"
+                  />
+                </div>
+                <div class="flex items-center gap-1">
+                  <p class="text-sm opacity-60">
+                    BTC Address: 2MzCTW3pxV3Z8uksr6z...
+                  </p>
+                  <svg
+                    class="cursor-pointer"
+                    width="17"
+                    height="16"
+                    viewBox="0 0 17 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.1641 2.66797H12.4974C12.851 2.66797 13.1902 2.80844 13.4402 3.05849C13.6903 3.30854 13.8307 3.64768 13.8307 4.0013V13.3346C13.8307 13.6883 13.6903 14.0274 13.4402 14.2774C13.1902 14.5275 12.851 14.668 12.4974 14.668H4.4974C4.14377 14.668 3.80464 14.5275 3.55459 14.2774C3.30454 14.0274 3.16406 13.6883 3.16406 13.3346V4.0013C3.16406 3.64768 3.30454 3.30854 3.55459 3.05849C3.80464 2.80844 4.14377 2.66797 4.4974 2.66797H5.83073"
+                      stroke="black"
+                      stroke-opacity="0.6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.5026 1.33203H6.5026C6.13441 1.33203 5.83594 1.63051 5.83594 1.9987V3.33203C5.83594 3.70022 6.13441 3.9987 6.5026 3.9987H10.5026C10.8708 3.9987 11.1693 3.70022 11.1693 3.33203V1.9987C11.1693 1.63051 10.8708 1.33203 10.5026 1.33203Z"
+                      stroke="black"
+                      stroke-opacity="0.6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div class="flex">
+                  <button
+                    class="qr-type-btn bg-primary-300 hover:bg-primary-200 rounded-l-lg font-medium text-base leading-[19px] flex items-center justify-center cursor-pointer py-4 px-6 border-[none] text-white"
+                    data-qr="onchain"
+                  >
+                    OnChain
+                  </button>
+                  <button
+                    class="qr-type-btn bg-white hover:bg-primary-200 hover:text-white rounded-r-lg font-medium text-base leading-[19px] flex items-center justify-center cursor-pointer py-4 px-6 border border-light-300"
+                    data-qr="lightning"
+                  >
+                    Lightning
+                  </button>
+                </div>
+              </div>
+              <div id="timeout" class="hidden flex flex-col gap-2">
+                <p class="text-base font-medium">Price Changed!</p>
+                <p class="opacity-60 text-sm">
+                  It appears that the time limit for the price change has
+                  expired on the transaction.
+                </p>
+                <button
+                  id="restart-timer"
+                  class="bg-primary-300 hover:bg-primary-200 font-normal text-base mt-2 leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
           </div>
-          <!-- FORM ACTION BUTTONS END -->
+          <!-- CRYPTO METHOD FIELDS END -->
+
+          <!-- WALLET METHOD FIELDS START -->
+          <div class="fields hidden flex flex-col gap-4" data-method="wallet">
+            <div class="p-4 rounded-lg border border-light-100">
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-4">
+                  <input
+                    type="radio"
+                    class="w-4 h-4"
+                    name="method"
+                    value="apple"
+                  />
+                  <img src="/assets/appleBtn.png" alt="apple pay" />
+                </div>
+                <button
+                  class="pay-now hidden w-full rounded-md bg-black hover:bg-opacity-90 p-4 flex justify-center items-center"
+                  data-wallet="apple"
+                >
+                  <img src="/assets/applePayLight.png" alt="apple pay light" />
+                </button>
+              </div>
+            </div>
+            <div class="p-4 rounded-lg border border-light-100">
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-4">
+                  <input
+                    type="radio"
+                    class="w-4 h-4"
+                    name="method"
+                    value="gpay"
+                  />
+                  <img src="/assets/gpayBtn.png" alt="gpay" />
+                </div>
+                <button
+                  class="pay-now hidden w-full rounded-md bg-black hover:bg-opacity-90 p-4 flex justify-center items-center"
+                  data-wallet="gpay"
+                >
+                  <img src="/assets/gpayLight.png" alt="google pay light" />
+                </button>
+              </div>
+            </div>
+            <div class="p-4 rounded-lg border border-light-100">
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-4">
+                  <input
+                    type="radio"
+                    class="w-4 h-4"
+                    name="method"
+                    value="paypal"
+                  />
+                  <img src="/assets/paypalBtn.png" alt="paypal" />
+                </div>
+                <button
+                  class="pay-now hidden w-full rounded-md bg-[#FFC43A] hover:bg-opacity-80 p-4 flex justify-center items-center"
+                  data-wallet="paypal"
+                >
+                  <img src="/assets/paypalBtn.png" alt="paypal" />
+                </button>
+              </div>
+            </div>
+            <div class="p-4 rounded-lg border border-light-100">
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-4">
+                  <input
+                    type="radio"
+                    class="w-4 h-4"
+                    name="method"
+                    value="venmo"
+                  />
+                  <img src="/assets/venmoBtn.png" alt="venmp" />
+                </div>
+                <button
+                  class="pay-now hidden w-full rounded-md bg-[#3D95CE] hover:bg-opacity-90 p-4 flex justify-center items-center"
+                  data-wallet="venmo"
+                >
+                  <img src="/assets/venmoLight.png" alt="venmo" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- WALLET METHOD FIELDS END -->
         </form>
-        <div class="footer">
+        <div
+          class="mt-8 text-center uppercase font-medium text-xs text-light-50"
+        >
           <p>Powered by: Lyfecycle Payments</p>
         </div>
       </div>
+      <!-- FORM SECTION ENDS -->
+
+      <!-- DONE SECTION START -->
+      <div id="done-section" class="hidden">
+        <div
+          class="max-w-xl w-[350px] h-fit md:w-[544px] mx-auto px-8 py-12 rounded-lg mt-[104px] bg-white flex justify-center items-center"
+        >
+          <div class="flex flex-col w-full md:w-[350px]">
+            <div
+              class="bg-success-200 h-[160px] w-[160px] rounded-full flex justify-center items-center self-center"
+            >
+              <svg
+                width="67"
+                height="50"
+                viewBox="0 0 67 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M61.0562 5L23.1648 45L5.94141 26.8182"
+                  stroke="#22C215"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="mt-5 w-full flex flex-col gap-4">
+              <div
+                class="flex items-center justify-between text-sm font-normal"
+              >
+                <p class="opacity-60">Date</p>
+                <p>04/23/2024</p>
+              </div>
+              <div
+                class="flex items-center justify-between text-sm font-normal"
+              >
+                <p class="opacity-60">Transaction Id</p>
+                <p>1232322</p>
+              </div>
+              <div
+                class="flex items-center justify-between text-sm font-normal"
+              >
+                <p class="opacity-60">Payment Method</p>
+                <p>Card</p>
+              </div>
+              <div
+                class="flex items-center justify-between text-sm font-normal"
+              >
+                <p class="opacity-60">Total</p>
+                <p>$99.00</p>
+              </div>
+            </div>
+            <button
+              class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white mt-8"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- DONE SECTION ENDS -->
+
+      <!-- LOADING START -->
+      <div id="loader" class="hidden flex justify-center items-center">
+        <div class="min-w-44">
+          <img src="/assets/Loading.png" class="loader" alt="loader" />
+          <p class="text-[16px] font-medium text-center mt-5">
+            Payment processing...
+          </p>
+        </div>
+      </div>
+      <!-- LOADING ENDS -->
     </div>
+    <!-- MODAL START -->
+    <div id="modal" class="hidden absolute top-0">
+      <div
+        class="p-4 h-screen w-screen flex justify-center items-center bg-[#00000014]"
+      >
+        <div
+          class="bg-white p-6 lg:p-8 max-h-[95%] overflow-y-auto h-fit w-full lg:w-[544px] rounded-lg"
+        >
+          <div class="flex justify-between items-center">
+            <p class="text-[16] font-medium">Terms & Conditions</p>
+            <svg
+              id="close"
+              class="cursor-pointer"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 8L8.00072 15.9993"
+                stroke="black"
+                stroke-opacity="0.6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M8 8L15.9993 15.9993"
+                stroke="black"
+                stroke-opacity="0.6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mt-4 flex flex-col gap-2">
+            <div class="flex flex-col gap-2 text-sm font-normal">
+              <p class="opacity-60">ACH Authorization Language</p>
+              <p>
+                By clicking the box below and clicking the “Pay Now” button I
+                authorize Ninth Peak Industries to debit the bank account
+                indicated on this form for the noted amount. I understand that
+                in the event this ACH transaction is returned by my financial
+                institution, I may be subject to a returned item fee. I have
+                read and understand the cancellation and return policy outlined
+                in the Terms and Conditions and agree to allow Ninth Peak
+                Industries a reasonable opportunity to act in response it.
+              </p>
+            </div>
+            <div class="flex flex-col gap-2 text-sm font-normal">
+              <p class="opacity-60">ACH Authorization Language</p>
+              <p>
+                By clicking the box below and clicking the “Pay Now” button I
+                authorize Ninth Peak Industries to debit the bank account
+                indicated on this form for the noted amount. I understand that
+                in the event this ACH transaction is returned by my financial
+                institution, I may be subject to a returned item fee. I have
+                read and understand the cancellation and return policy outlined
+                in the Terms and Conditions and agree to allow Ninth Peak
+                Industries a reasonable opportunity to act in response it.
+              </p>
+            </div>
+            <div class="flex flex-col gap-2 text-sm font-normal">
+              <p class="opacity-60">ACH Authorization Language</p>
+              <p>
+                By clicking the box below and clicking the “Pay Now” button I
+                authorize Ninth Peak Industries to debit the bank account
+                indicated on this form for the noted amount. I understand that
+                in the event this ACH transaction is returned by my financial
+                institution, I may be subject to a returned item fee. I have
+                read and understand the cancellation and return policy outlined
+                in the Terms and Conditions and agree to allow Ninth Peak
+                Industries a reasonable opportunity to act in response it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL ENDS -->
   </body>
 </html>

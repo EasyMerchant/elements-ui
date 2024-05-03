@@ -6,7 +6,7 @@
     <title>Lyfecycle Payments HPP</title>
     <link rel="stylesheet" href="index.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="config.js"></script>
+    <script src="/config.js"></script>
     <script defer src="index.js"></script>
   </head>
   <body class="bg-background min-h-screen">
@@ -145,6 +145,7 @@
       <!-- MAIN NAVIGATION END -->
     </header>
     <main class="relative h-full w-full">
+      <!-- SUMMARY FOR MOBILE START -->
       <div
         id="mobile-summary-card"
         class="block lg:hidden w-full lg:w-[448px] rounded-lg px-4 md:px-16 p-6 bg-white"
@@ -173,7 +174,7 @@
             <div class="flex gap-4">
               <div>
                 <img
-                  src="./assets/product.png"
+                  src="/assets/product.png"
                   alt="product-img"
                   class="rounded-lg"
                 />
@@ -232,6 +233,9 @@
           <p class="text-primary-300 font-medium">$12.99</p>
         </div>
       </div>
+      <!-- SUMMARY FOR MOBILE ENDS -->
+
+      <!-- PAY SECTION START -->
       <div
         id="pay-section"
         class="w-full h-full flex flex-col gap-4 lg:flex-row-reverse lg:justify-between lg:pt-8 px-4 md:px-16 lg:px-40 lg:py-4 mt-5"
@@ -245,7 +249,7 @@
               <div class="flex gap-4">
                 <div>
                   <img
-                    src="./assets/product.png"
+                    src="/assets/product.png"
                     alt="product-img"
                     class="rounded-lg"
                   />
@@ -525,23 +529,106 @@
                 </div>
               </div>
               <!-- PAYMENT METHODS CARDS END -->
-              <div class="flex flex-col gap-2">
-                <p class="text-sm font-semibold capitalize">card number</p>
-                <input
-                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                  type="number"
-                  placeholder="5555 5555 4444 6555"
-                />
+              <div class="form-fields flex flex-col gap-4" data-method="card">
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">card number</p>
+                  <input
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="number"
+                    placeholder="5555 5555 4444 6555"
+                  />
+                </div>
+                <div class="flex justify-between items-center gap-4">
+                  <div class="flex flex-col gap-2 w-full">
+                    <p class="text-sm font-semibold capitalize">expiry</p>
+                    <select
+                      class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                      name=""
+                      id=""
+                    >
+                      <option value="" disabled selected>MM/YY</option>
+                      <option value="">Option 1</option>
+                      <option value="">Option 2</option>
+                      <option value="">Option 3</option>
+                      <option value="">Option 4</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <p class="text-sm font-semibold capitalize">
+                      security code
+                    </p>
+                    <input
+                      class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                      type="text"
+                      placeholder="CVV"
+                    />
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <input
+                    id="billing-info"
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="checkbox"
+                  />
+                  <p class="text-light-50 uppercase font-medium text-xs">
+                    billing info. same as shipping details
+                  </p>
+                </div>
+                <div id="card-name" class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">name on card</p>
+                  <input
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="text"
+                    placeholder="Name"
+                  />
+                </div>
+                <div
+                  id="address-details"
+                  class="flex justify-between items-center gap-4"
+                >
+                  <div class="flex flex-col gap-2 w-full">
+                    <p class="text-sm font-semibold capitalize">country</p>
+                    <select
+                      class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
+                      name=""
+                      id=""
+                    >
+                      <option value="" disabled selected>United States</option>
+                      <option value="">Option 1</option>
+                      <option value="">Option 2</option>
+                      <option value="">Option 3</option>
+                      <option value="">Option 4</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <p class="text-sm font-semibold capitalize">zip</p>
+                    <input
+                      class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                      type="text"
+                      placeholder="Zip"
+                    />
+                  </div>
+                </div>
               </div>
-              <div class="flex justify-between items-center gap-4">
-                <div class="flex flex-col gap-2 w-full">
-                  <p class="text-sm font-semibold capitalize">expiry</p>
+              <div class="form-fields flex flex-col gap-4" data-method="bank">
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">
+                    account holder name
+                  </p>
+                  <input
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="text"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-semibold capitalize">account type</p>
                   <select
                     class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
                     name=""
                     id=""
                   >
-                    <option value="" disabled selected>MM/YY</option>
+                    <option value="" disabled selected>Type</option>
                     <option value="">Option 1</option>
                     <option value="">Option 2</option>
                     <option value="">Option 3</option>
@@ -549,57 +636,32 @@
                   </select>
                 </div>
                 <div class="flex flex-col gap-2">
-                  <p class="text-sm font-semibold capitalize">security code</p>
+                  <p class="text-sm font-semibold capitalize">account number</p>
                   <input
-                    class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
                     type="text"
-                    placeholder="CVV"
+                    placeholder="Number"
                   />
-                </div>
-              </div>
-              <div class="flex items-center gap-4">
-                <input
-                  id="billing-info"
-                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                  type="checkbox"
-                />
-                <p class="text-light-50 uppercase font-medium text-xs">
-                  billing info. same as shipping details
-                </p>
-              </div>
-              <div id="card-name" class="flex flex-col gap-2">
-                <p class="text-sm font-semibold capitalize">name on card</p>
-                <input
-                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                  type="text"
-                  placeholder="Name"
-                />
-              </div>
-              <div
-                id="address-details"
-                class="flex justify-between items-center gap-4"
-              >
-                <div class="flex flex-col gap-2 w-full">
-                  <p class="text-sm font-semibold capitalize">country</p>
-                  <select
-                    class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                    name=""
-                    id=""
-                  >
-                    <option value="" disabled selected>United States</option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
-                    <option value="">Option 3</option>
-                    <option value="">Option 4</option>
-                  </select>
                 </div>
                 <div class="flex flex-col gap-2">
-                  <p class="text-sm font-semibold capitalize">zip</p>
+                  <p class="text-sm font-semibold capitalize">routing number</p>
                   <input
-                    class="w-full border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
                     type="text"
-                    placeholder="Zip"
+                    placeholder="Number"
                   />
+                </div>
+                <div class="tnc">
+                  <input
+                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
+                    type="checkbox"
+                  />
+                  <p class="text-light-50 uppercase font-medium text-xs">
+                    i agree to the
+                    <a class="text-primary-300" href="#"
+                      >terms and conditions.</a
+                    >
+                  </p>
                 </div>
               </div>
               <!-- FORM ACTION BUTTONS START -->
@@ -628,6 +690,9 @@
           </div>
         </div>
       </div>
+      <!-- PAY SECTION ENDS -->
+
+      <!-- REVIEW SECTION START -->
       <div
         id="review-section"
         class="hidden absolute left-1/2 transform -translate-x-1/2 max-w-xl w-[350px] md:w-[544px] p-8 rounded-lg mt-[104px] bg-white"
@@ -660,7 +725,7 @@
                 <div class="flex gap-4">
                   <div>
                     <img
-                      src="./assets/product.png"
+                      src="/assets/product.png"
                       alt="product-img"
                       class="rounded-lg"
                     />
@@ -684,6 +749,9 @@
           </div>
         </div>
       </div>
+      <!-- REVIEW SECTION ENDS -->
+
+      <!-- DONE SECTION START -->
       <div
         id="done-section"
         class="hidden absolute inset-0 flex justify-center items-center min-h-screen"
@@ -728,17 +796,21 @@
           </div>
         </div>
       </div>
+      <!-- DONE SECTION ENDS -->
+
+      <!-- LOADER SECTION START -->
       <div
         id="loader"
         class="hidden absolute inset-0 flex justify-center items-center min-h-screen"
       >
         <div class="min-w-44">
-          <img src="./assets/Loading.png" class="loader" alt="loader" />
+          <img src="/assets/Loading.png" class="loader" alt="loader" />
           <p class="text-[16px] font-medium text-center mt-5">
             Payment processing...
           </p>
         </div>
       </div>
+      <!-- LOADER SECTION ENDS -->
     </main>
   </body>
 </html>

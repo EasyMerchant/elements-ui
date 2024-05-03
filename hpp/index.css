@@ -1,16 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-:root {
-  --background-main: #edeff2;
-  --primary-color: #1757d9;
-  --primary-hover: #3a70df;
-  --success: #22c215;
-  --success-light: #22c2151a;
-  --error: #e93939;
-  --gray: #666666;
-  --gray2: #9e9e9e;
-  --gray-light: #d6d6d6;
-  --gray-light2: #efefef;
-}
 
 * {
   margin: 0;
@@ -36,7 +24,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("./assets/chevron-down.svg");
+  background-image: url("/assets/chevron-down.svg");
   background-repeat: no-repeat;
   background-position: 95%;
 }
