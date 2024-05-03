@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lyfecycle Payments HPP</title>
-    <link rel="stylesheet" href="index.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../build.css" />
     <script src="/config.js"></script>
     <script defer src="index.js"></script>
   </head>
-  <body class="bg-background min-h-screen">
+  <body class="bg-background min-h-screen font-inter">
     <header id="header" class="bg-white">
       <!-- MAIN NAVIGATION START -->
       <nav
@@ -240,6 +240,7 @@
         id="pay-section"
         class="w-full h-full flex flex-col gap-4 lg:flex-row-reverse lg:justify-between lg:pt-8 px-4 md:px-16 lg:px-40 lg:py-4 mt-5"
       >
+        <!-- SUMMARY SECTION STARTS -->
         <div
           class="hidden lg:block w-full lg:w-[448px] h-[210px] rounded-lg p-6 bg-white"
         >
@@ -309,9 +310,12 @@
             <p class="text-primary-300 font-medium">$12.99</p>
           </div>
         </div>
+        <!-- SUMMARY SECTION ENDS -->
+
+        <!-- FORM START -->
         <div class="w-full h-full lg:w-[640px] rounded-lg p-4 lg:p-8 bg-white">
           <p class="form-title text-[16px] font-medium capitalize pb-8">
-            Shipping Details
+            Payment Details
           </p>
           <form action="" class="form flex flex-col gap-4">
             <!-- CARD METHOD FIELDS START -->
@@ -610,60 +614,6 @@
                   </div>
                 </div>
               </div>
-              <div class="form-fields flex flex-col gap-4" data-method="bank">
-                <div class="flex flex-col gap-2">
-                  <p class="text-sm font-semibold capitalize">
-                    account holder name
-                  </p>
-                  <input
-                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                    type="text"
-                    placeholder="Name"
-                  />
-                </div>
-                <div class="flex flex-col gap-2">
-                  <p class="text-sm font-semibold capitalize">account type</p>
-                  <select
-                    class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                    name=""
-                    id=""
-                  >
-                    <option value="" disabled selected>Type</option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
-                    <option value="">Option 3</option>
-                    <option value="">Option 4</option>
-                  </select>
-                </div>
-                <div class="flex flex-col gap-2">
-                  <p class="text-sm font-semibold capitalize">account number</p>
-                  <input
-                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                    type="text"
-                    placeholder="Number"
-                  />
-                </div>
-                <div class="flex flex-col gap-2">
-                  <p class="text-sm font-semibold capitalize">routing number</p>
-                  <input
-                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                    type="text"
-                    placeholder="Number"
-                  />
-                </div>
-                <div class="tnc">
-                  <input
-                    class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                    type="checkbox"
-                  />
-                  <p class="text-light-50 uppercase font-medium text-xs">
-                    i agree to the
-                    <a class="text-primary-300" href="#"
-                      >terms and conditions.</a
-                    >
-                  </p>
-                </div>
-              </div>
               <!-- FORM ACTION BUTTONS START -->
               <div class="w-full flex flex-col gap-2">
                 <button
@@ -674,7 +624,7 @@
                 </button>
                 <button
                   id="pay-later"
-                  class="bg-white hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
+                  class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
                 >
                   Pay Later
                 </button>
@@ -689,6 +639,7 @@
             <p>Powered by: Lyfecycle Payments</p>
           </div>
         </div>
+        <!-- FORM ENDS -->
       </div>
       <!-- PAY SECTION ENDS -->
 

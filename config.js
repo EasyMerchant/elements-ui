@@ -1,6 +1,9 @@
 tailwind.config = {
   mode: "jit",
   theme: {
+    fontFamily: {
+      inter: ["Inter", "sans - serif"],
+    },
     extend: {
       colors: {
         primary: {
