@@ -1,5 +1,26 @@
 (function () {
   const allMethods = document.querySelectorAll(".method-card");
+  const paymentmethod = document.querySelector(".payment-method");
+  const savecard = document.querySelector("#save-card");
+  const enterdetails = document.querySelector("#enter-details");
+  const getotp = document.querySelector("#get-otp");
+  const enterotp = document.querySelector("#enter-otp");
+  const cardspage = document.querySelector("#cards-page");
+  const changecard = document.querySelector("#change-card");
+  const cardoption = document.querySelector("#card-option");
+  const options = document.querySelectorAll(".option");
+  const updatecard = document.querySelector("#update-card");
+  const updatecarddetails = document.querySelector("#update-card-details");
+  const carddetail = document.querySelector("#card-details");
+  const newcard = document.querySelector("#new-card");
+  const newcarddetails = document.querySelector("#new-card-details");
+  const addressdata = document.querySelector("#address-data");
+  const addressdetails = document.querySelector("#address-details");
+  const backcarddetails = document.querySelector("#back-card-details");
+  const ownersdata = document.querySelector("#owners-data");
+  const cardownerdetails = document.querySelector("#card-owner-details");
+  const backaddressdetails = document.querySelector("#back-address-details");
+  const paysectionform = document.querySelector("#pay-section-form");
   const allFields = document.querySelectorAll(".fields");
   const tnc = document.querySelector("#tnc");
   const modal = document.querySelector("#modal");
@@ -29,7 +50,9 @@
   function removeActive(name, items, className) {
     items.forEach((el) => {
       if (el?.dataset?.method !== name) {
-        el.classList.remove(className);
+        className.forEach(element => {
+          el.classList.remove(element);
+        });
       }
     });
   }
@@ -78,8 +101,8 @@
 
   allMethods?.forEach((element) => {
     element.addEventListener("click", () => {
-      element.classList.add("selected");
-      removeActive(element.dataset?.method, allMethods, "selected");
+      element.classList.add("selected", 'border-primary-300',"font-semibold","text-light-500","!stroke-primary-300" ,"!fill-primary-300");
+      removeActive(element.dataset?.method, allMethods, ["selected", "border-primary-300","font-semibold","text-light-500","!stroke-primary-300","!fill-primary-300"] );
       renderFields(element.dataset?.method);
     });
   });
@@ -91,6 +114,85 @@
   closeModal?.addEventListener("click", (e) => {
     modal.classList.add("hidden");
   });
+
+  savecard?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    paysectionform?.classList.add("hidden");
+    enterdetails?.classList.remove("hidden");
+  })
+
+  getotp?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    // paysectionform?.classList.add("hidden");
+    enterdetails?.classList.add("hidden");
+    enterotp?.classList.remove("hidden");
+  })
+  
+  addressdata?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    paymentmethod?.classList.add("hidden");
+    carddetail?.classList.add("hidden");
+    addressdetails?.classList.remove("hidden");
+  })
+
+  backcarddetails?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    paymentmethod?.classList.remove("hidden");
+    carddetail?.classList.remove("hidden");
+    addressdetails?.classList.add("hidden");
+  })
+
+  ownersdata?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    addressdetails?.classList.add("hidden");
+    cardownerdetails?.classList.remove("hidden");
+  })
+
+  backaddressdetails?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    addressdetails?.classList.remove("hidden");
+    cardownerdetails?.classList.add("hidden");
+  })
+
+  changecard?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    enterotp?.classList.add("hidden");
+    cardoption?.classList.remove('hidden');
+    cardspage?.classList.add("hidden");
+  })
+
+  options?.forEach(option => {
+    option.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // Get the next sibling element (which is the corresponding option-data)
+        const correspondingOptionData = option.previousElementSibling;
+        
+        if (correspondingOptionData) {
+            correspondingOptionData.classList.toggle('hidden');
+        } else {
+            console.error('No corresponding option-data found');
+        }
+    });
+});
+
+
+  // options?.addEventListener("click", (e)=>{
+  //   e.preventDefault();
+  //   optiondata?.classList.remove("hidden");
+  // })
+
+  updatecard?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    updatecarddetails?.classList.remove("hidden");
+    cardoption?.classList.add("hidden");
+  })
+
+  newcard?.addEventListener("click", (e)=>{
+    e.preventDefault();
+    newcarddetails?.classList.remove("hidden");
+    cardoption?.classList.add("hidden");
+  })
 
   payNowBtn?.forEach((btn) => {
     btn?.addEventListener("click", (e) => {
@@ -182,3 +284,134 @@
     });
   });
 })();
+
+
+let digitValidate = function(ele){
+  console.log(ele.value);
+  ele.value = ele.value.replace(/[^0-9]/g,'');
+}
+
+let tabChange = function(val){
+    let ele = document.querySelectorAll('.otp');
+    if(ele[val-1].value != ''){
+      ele[val].focus();
+    }else if(ele[val-1].value == ''){
+      ele[val-2].focus();
+    }   
+ }
+
+ var timeLimitInMinutes = 3;
+var timeLimitInSeconds = timeLimitInMinutes * 60;
+var timerElement = document.getElementById('timer');
+
+function startTimer() {
+  timeLimitInSeconds--;
+  var minutes = Math.floor(timeLimitInSeconds / 60);
+  var seconds = timeLimitInSeconds % 60;
+
+  if (timeLimitInSeconds < 0) {
+    timerElement.textContent = '00:00';
+    clearInterval(timerInterval);
+    return;
+  }
+
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  timerElement.textContent = minutes + ':' + seconds;
+}
+
+var timerInterval = setInterval(startTimer, 1000);
+
+var btn = document.querySelector("#setting-menu");
+var setting = document.querySelector("#setting");
+var closesetting = document.querySelector("#close-setting");
+var overlay = document.querySelector("#overlay");
+
+function toggleModal() {
+  closesetting.addEventListener("click", (e) => {
+    e.preventDefault();
+    setting.style.transition = "opacity 0.3s ease-in-out, bottom 0.3s ease-in-out"; // Add transitions
+    setting.style.opacity = "0"; // Fade out the modal
+    setting.style.pointerEvents = "none"; // Disable pointer events during transition
+    setting.style.bottom = '-27%'; // Slide modal downwards
+
+    overlay.style.opacity = "0"; // Fade out the overlay
+
+    setTimeout(() => {
+      setting.style.display = "none"; // Hide the modal after the transition
+      setting.style.opacity = "1"; // Reset opacity
+      setting.style.pointerEvents = "auto"; // Re-enable pointer events
+      setting.style.bottom = '8%'; // Reset modal position
+
+      overlay.style.display = "none"; // Hide the overlay
+    }, 300); // Match the timeout with the transition duration
+  });
+
+  if (setting.style.display === "block") {
+    // Logic to handle when the modal is already open
+  } else {
+    setting.style.display = "block";
+    overlay.style.display = "block"; // Show the overlay
+    overlay.style.opacity = "1"; // Fade in the overlay
+
+    setting.style.transition = "opacity 0.3s ease-in-out, bottom 0.3s ease-in-out"; // Add transitions
+    setting.style.opacity = "0"; // Start with zero opacity
+    setting.style.pointerEvents = "none"; // Disable pointer events during transition
+    setting.style.bottom = '0px'; // Slide modal upwards
+
+    setTimeout(() => {
+      setting.style.opacity = "1"; // Fade in the modal
+      setting.style.pointerEvents = "auto"; // Re-enable pointer events
+      setting.style.bottom = '8%'; // Reset modal position
+      setting.style.left = '27.75%';
+    }, 100);
+  }
+}
+
+// When the user clicks the button, toggle the modal
+btn.onclick = function () {
+  toggleModal();
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == setting) {
+    setting.style.display = "none";
+    overlay.style.display = "none";
+  }
+};
+
+function selectImage(imageSrc, name, price,  event) {
+  // Select the target div
+  const targetDiv = document.getElementById('targetDiv');
+  
+  // Clear the target div and set new image and name
+ price,  targetDiv.innerHTML = `
+  <div class="flex justify-between w-full items-center">
+  <div class="flex gap-3 items-center">
+    <img src="${imageSrc}" alt="Selected Image" class="w-8 h-8">
+    <p class="text-sm leading-5 font-inter text-light-500">${name}</p></div>
+    <p class="text-sm leading-16-94 font-inter text-light-500">${price}</p></div>
+  `;
+
+  // Remove border from all images
+  document.querySelectorAll('.border-black').forEach(div => {
+    div.classList.remove('border-black');
+    div.classList.add('border-transparent');
+  });
+
+  // Add black border to the clicked image
+  event.currentTarget.classList.remove('border-transparent');
+  event.currentTarget.classList.add('border-black');
+  
+  // Remove the specific paragraph
+  const paragraph = document.querySelector('.font-inter.text-xs.leading-4.text-light-400');
+  if (paragraph) {
+    paragraph.remove();
+  }
+}

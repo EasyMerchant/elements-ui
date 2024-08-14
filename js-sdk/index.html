@@ -1,569 +1,1299 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lyfecycle Payments Js-Sdk</title>
-    <link rel="stylesheet" href="../index.css" />
-    <link rel="stylesheet" href="../build.css" />
-    <script defer src="./index.js"></script>
-    <script src="/config.js"></script>
-  </head>
-  <body class="relative">
-    <div class="h-screen flex justify-center items-center p-4 bg-background">
-      <!-- PAY BUTTON START -->
-      <button
-        id="pay-now-main"
-        class="w-48 bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
-      >
-        Pay: $99
-      </button>
-      <!-- PAY BUTTON ENDS -->
 
-      <!-- FORM SECTION START -->
-      <div
-        id="pay-section"
-        class="hidden form-container max-h-[90%] h-fit overflow-y-scroll p-8 w-full lg:w-[640px] bg-white rounded-lg"
-      >
-        <form action="" class="form flex flex-col gap-4">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyfecycle Payments Js-Sdk</title>
+  <link rel="stylesheet" href="../index.css" />
+  <link rel="stylesheet" href="../build.css" />
+  <script defer src="./index.js"></script>
+  <script src="/config.js"></script>
+</head>
+
+<body class="relative">
+  <div class="h-screen flex justify-center items-center p-4 bg-background">
+    <!-- PAY BUTTON START -->
+    <button id="pay-now-main"
+      class="w-48 bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+      Pay: $99
+    </button>
+    <!-- PAY BUTTON ENDS -->
+
+    <!-- FORM SECTION START -->
+    <div id="pay-section" class="hidden form-container max-h-[90%] h-fit overflow-y-scroll p-8 w-full lg:w-[640px] bg-white rounded-lg">
+      <form action="" class="form flex flex-col gap-4" id="pay-section-form">
           <div class="payment-method flex flex-col gap-2">
-            <p class="label capitalize font-semibold text-sm">
-              Choose your payment method
-            </p>
-            <!-- PAYMENT METHODS CARDS START -->
-            <div class="methods flex gap-3 overflow-y-auto">
-              <div
-                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
-                data-method="card"
-              >
-                <svg
-                  class="with-stroke"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    class="group-hover:stroke-primary-300"
-                    d="M21 4.5H3C1.89543 4.5 1 5.39543 1 6.5V18.5C1 19.6046 1.89543 20.5 3 20.5H21C22.1046 20.5 23 19.6046 23 18.5V6.5C23 5.39543 22.1046 4.5 21 4.5Z"
-                    stroke="black"
-                    stroke-opacity="0.6"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    class="group-hover:stroke-primary-300"
-                    d="M1 10.5H23"
-                    stroke="black"
-                    stroke-opacity="0.6"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p
-                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
-                >
-                  Card
-                </p>
+              <p class="label capitalize font-semibold text-sm">
+                  Choose your payment method
+              </p>
+              <!-- PAYMENT METHODS CARDS START -->
+              <div class="methods flex gap-3 overflow-y-auto">
+                  <div class="method-card stroke-light-400 font-medium text-light-400 group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="card">
+                      <svg class="with-stroke" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              class="group-hover:stroke-primary-300"
+                              d="M21 4.5H3C1.89543 4.5 1 5.39543 1 6.5V18.5C1 19.6046 1.89543 20.5 3 20.5H21C22.1046 20.5 23 19.6046 23 18.5V6.5C23 5.39543 22.1046 4.5 21 4.5Z"
+                              stroke="inherit"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                          />
+                          <path class="group-hover:stroke-primary-300" d="M1 10.5H23" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                          Card
+                      </p>
+                  </div>
+                  <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="bank">
+                      <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              class="group-hover:fill-primary-300"
+                              d="M11.5586 3.08966L3.68456 6.46499C3.19243 6.67594 2.91824 7.20334 3.02721 7.7237C3.13618 8.24407 3.59316 8.62379 4.12747 8.62379V8.90507C4.12747 9.37269 4.5036 9.7489 4.97112 9.7489H19.032C19.4995 9.7489 19.8756 9.37269 19.8756 8.90507V8.62379C20.4099 8.62379 20.8704 8.24758 20.9759 7.7237C21.0813 7.19982 20.8072 6.67243 20.3185 6.46499L12.4445 3.08966C12.1632 2.97011 11.8398 2.97011 11.5586 3.08966ZM7.50208 10.874H5.25234V17.7759C5.23125 17.7864 5.21016 17.8005 5.18907 17.8145L3.50176 18.9396C3.09048 19.2139 2.90418 19.7272 3.0483 20.2019C3.19243 20.6765 3.63183 21 4.12747 21H19.8756C20.3713 21 20.8072 20.6765 20.9513 20.2019C21.0954 19.7272 20.9126 19.2139 20.4978 18.9396L18.8105 17.8145C18.7894 17.8005 18.7683 17.7899 18.7472 17.7759V10.874H16.501V17.6247H15.0949V10.874H12.8452V17.6247H11.1579V10.874H8.90816V17.6247H7.50208V10.874ZM12.0015 5.24846C12.2999 5.24846 12.586 5.367 12.7969 5.578C13.0079 5.789 13.1264 6.07517 13.1264 6.37357C13.1264 6.67197 13.0079 6.95815 12.7969 7.16914C12.586 7.38014 12.2999 7.49868 12.0015 7.49868C11.7032 7.49868 11.4171 7.38014 11.2061 7.16914C10.9952 6.95815 10.8767 6.67197 10.8767 6.37357C10.8767 6.07517 10.9952 5.789 11.2061 5.578C11.4171 5.367 11.7032 5.24846 12.0015 5.24846Z"
+                              fill="inherit"
+                          />
+                      </svg>
+                      <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                          Bank
+                      </p>
+                  </div>
+                  <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="crypto">
+                      <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              class="group-hover:fill-primary-300"
+                              d="M21 12C21 16.9706 16.9706 21 12 21C7.02942 21 3 16.9706 3 12C3 7.02942 7.02942 3 12 3C16.9706 3 21 7.02942 21 12ZM15.8594 10.7179C16.0386 9.52032 15.1267 8.87653 13.8798 8.44707L14.2843 6.82482L13.2967 6.57873L12.9029 8.15823C12.6433 8.09353 12.3767 8.03252 12.1117 7.97206L12.5083 6.38219L11.5213 6.1361L11.1165 7.75777C10.9016 7.70881 10.6907 7.66044 10.4859 7.60956L10.4871 7.60448L9.12508 7.26444L8.86237 8.31911C8.86237 8.31911 9.59511 8.48702 9.57965 8.4974C9.97964 8.59724 10.0519 8.8619 10.0398 9.0717L9.57907 10.9198C9.60665 10.9268 9.64236 10.9369 9.68174 10.9527C9.64882 10.9445 9.61366 10.9355 9.57737 10.9268L8.93154 13.5157C8.88259 13.6372 8.75855 13.8195 8.47897 13.7503C8.4888 13.7646 7.76115 13.5711 7.76115 13.5711L7.27086 14.7015L8.55605 15.0218C8.79513 15.0817 9.02946 15.1444 9.26008 15.2035L8.85138 16.8442L9.83782 17.0903L10.2426 15.467C10.5042 15.5379 10.7665 15.6059 11.0296 15.6712L10.6262 17.2869L11.6138 17.533L12.0225 15.8953C13.7065 16.214 14.9729 16.0854 15.5059 14.5625C15.9354 13.3362 15.4845 12.6289 14.5985 12.1676C15.2437 12.0189 15.7298 11.5945 15.8594 10.7179ZM13.603 13.8816C13.2978 15.1079 11.233 14.445 10.5635 14.2787L11.1058 12.105C11.7753 12.272 13.922 12.6028 13.603 13.8816ZM13.9085 10.7002C13.63 11.8156 11.9114 11.2489 11.3539 11.1099L11.8455 9.1384C12.4031 9.27732 14.1985 9.53661 13.9085 10.7002Z"
+                              fill="inherit"
+                          />
+                      </svg>
+                      <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                          Crypto
+                      </p>
+                  </div>
+                  <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="wallet">
+                      <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              class="group-hover:fill-primary-300"
+                              d="M4.125 3C2.67715 3 1.5 4.15313 1.5 5.57143V18.4286C1.5 19.8469 2.67715 21 4.125 21H19.875C21.3229 21 22.5 19.8469 22.5 18.4286V9.42857C22.5 8.01027 21.3229 6.85714 19.875 6.85714H4.78125C4.42031 6.85714 4.125 6.56786 4.125 6.21429C4.125 5.86071 4.42031 5.57143 4.78125 5.57143H19.875C20.601 5.57143 21.1875 4.99688 21.1875 4.28571C21.1875 3.57455 20.601 3 19.875 3H4.125ZM18.5625 12.6429C18.9106 12.6429 19.2444 12.7783 19.4906 13.0194C19.7367 13.2606 19.875 13.5876 19.875 13.9286C19.875 14.2696 19.7367 14.5966 19.4906 14.8377C19.2444 15.0788 18.9106 15.2143 18.5625 15.2143C18.2144 15.2143 17.8806 15.0788 17.6344 14.8377C17.3883 14.5966 17.25 14.2696 17.25 13.9286C17.25 13.5876 17.3883 13.2606 17.6344 13.0194C17.8806 12.7783 18.2144 12.6429 18.5625 12.6429Z"
+                              fill="inherit"
+                          />
+                      </svg>
+                      <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                          Wallet
+                      </p>
+                  </div>
               </div>
-              <div
-                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
-                data-method="bank"
-              >
-                <svg
-                  class="no-stroke"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    class="group-hover:fill-primary-300"
-                    d="M11.5586 3.08966L3.68456 6.46499C3.19243 6.67594 2.91824 7.20334 3.02721 7.7237C3.13618 8.24407 3.59316 8.62379 4.12747 8.62379V8.90507C4.12747 9.37269 4.5036 9.7489 4.97112 9.7489H19.032C19.4995 9.7489 19.8756 9.37269 19.8756 8.90507V8.62379C20.4099 8.62379 20.8704 8.24758 20.9759 7.7237C21.0813 7.19982 20.8072 6.67243 20.3185 6.46499L12.4445 3.08966C12.1632 2.97011 11.8398 2.97011 11.5586 3.08966ZM7.50208 10.874H5.25234V17.7759C5.23125 17.7864 5.21016 17.8005 5.18907 17.8145L3.50176 18.9396C3.09048 19.2139 2.90418 19.7272 3.0483 20.2019C3.19243 20.6765 3.63183 21 4.12747 21H19.8756C20.3713 21 20.8072 20.6765 20.9513 20.2019C21.0954 19.7272 20.9126 19.2139 20.4978 18.9396L18.8105 17.8145C18.7894 17.8005 18.7683 17.7899 18.7472 17.7759V10.874H16.501V17.6247H15.0949V10.874H12.8452V17.6247H11.1579V10.874H8.90816V17.6247H7.50208V10.874ZM12.0015 5.24846C12.2999 5.24846 12.586 5.367 12.7969 5.578C13.0079 5.789 13.1264 6.07517 13.1264 6.37357C13.1264 6.67197 13.0079 6.95815 12.7969 7.16914C12.586 7.38014 12.2999 7.49868 12.0015 7.49868C11.7032 7.49868 11.4171 7.38014 11.2061 7.16914C10.9952 6.95815 10.8767 6.67197 10.8767 6.37357C10.8767 6.07517 10.9952 5.789 11.2061 5.578C11.4171 5.367 11.7032 5.24846 12.0015 5.24846Z"
-                    fill="black"
-                    fill-opacity="0.6"
-                  />
-                </svg>
-                <p
-                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
-                >
-                  Bank
-                </p>
-              </div>
-              <div
-                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
-                data-method="crypto"
-              >
-                <svg
-                  class="no-stroke"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    class="group-hover:fill-primary-300"
-                    d="M21 12C21 16.9706 16.9706 21 12 21C7.02942 21 3 16.9706 3 12C3 7.02942 7.02942 3 12 3C16.9706 3 21 7.02942 21 12ZM15.8594 10.7179C16.0386 9.52032 15.1267 8.87653 13.8798 8.44707L14.2843 6.82482L13.2967 6.57873L12.9029 8.15823C12.6433 8.09353 12.3767 8.03252 12.1117 7.97206L12.5083 6.38219L11.5213 6.1361L11.1165 7.75777C10.9016 7.70881 10.6907 7.66044 10.4859 7.60956L10.4871 7.60448L9.12508 7.26444L8.86237 8.31911C8.86237 8.31911 9.59511 8.48702 9.57965 8.4974C9.97964 8.59724 10.0519 8.8619 10.0398 9.0717L9.57907 10.9198C9.60665 10.9268 9.64236 10.9369 9.68174 10.9527C9.64882 10.9445 9.61366 10.9355 9.57737 10.9268L8.93154 13.5157C8.88259 13.6372 8.75855 13.8195 8.47897 13.7503C8.4888 13.7646 7.76115 13.5711 7.76115 13.5711L7.27086 14.7015L8.55605 15.0218C8.79513 15.0817 9.02946 15.1444 9.26008 15.2035L8.85138 16.8442L9.83782 17.0903L10.2426 15.467C10.5042 15.5379 10.7665 15.6059 11.0296 15.6712L10.6262 17.2869L11.6138 17.533L12.0225 15.8953C13.7065 16.214 14.9729 16.0854 15.5059 14.5625C15.9354 13.3362 15.4845 12.6289 14.5985 12.1676C15.2437 12.0189 15.7298 11.5945 15.8594 10.7179ZM13.603 13.8816C13.2978 15.1079 11.233 14.445 10.5635 14.2787L11.1058 12.105C11.7753 12.272 13.922 12.6028 13.603 13.8816ZM13.9085 10.7002C13.63 11.8156 11.9114 11.2489 11.3539 11.1099L11.8455 9.1384C12.4031 9.27732 14.1985 9.53661 13.9085 10.7002Z"
-                    fill="black"
-                    fill-opacity="0.6"
-                  />
-                </svg>
-                <p
-                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
-                >
-                  Crypto
-                </p>
-              </div>
-              <div
-                class="method-card group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
-                data-method="wallet"
-              >
-                <svg
-                  class="no-stroke"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    class="group-hover:fill-primary-300"
-                    d="M4.125 3C2.67715 3 1.5 4.15313 1.5 5.57143V18.4286C1.5 19.8469 2.67715 21 4.125 21H19.875C21.3229 21 22.5 19.8469 22.5 18.4286V9.42857C22.5 8.01027 21.3229 6.85714 19.875 6.85714H4.78125C4.42031 6.85714 4.125 6.56786 4.125 6.21429C4.125 5.86071 4.42031 5.57143 4.78125 5.57143H19.875C20.601 5.57143 21.1875 4.99688 21.1875 4.28571C21.1875 3.57455 20.601 3 19.875 3H4.125ZM18.5625 12.6429C18.9106 12.6429 19.2444 12.7783 19.4906 13.0194C19.7367 13.2606 19.875 13.5876 19.875 13.9286C19.875 14.2696 19.7367 14.5966 19.4906 14.8377C19.2444 15.0788 18.9106 15.2143 18.5625 15.2143C18.2144 15.2143 17.8806 15.0788 17.6344 14.8377C17.3883 14.5966 17.25 14.2696 17.25 13.9286C17.25 13.5876 17.3883 13.2606 17.6344 13.0194C17.8806 12.7783 18.2144 12.6429 18.5625 12.6429Z"
-                    fill="black"
-                    fill-opacity="0.6"
-                  />
-                </svg>
-                <p
-                  class="card-label text-sm font-medium text-light-400 group-hover:text-primary-300"
-                >
-                  Wallet
-                </p>
-              </div>
-            </div>
-            <!-- PAYMENT METHODS CARDS END -->
+              <!-- PAYMENT METHODS CARDS END -->
           </div>
-
+  
           <!-- CARD METHOD FIELDS START -->
-          <div class="fields hidden flex flex-col gap-4" data-method="card">
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">card number</p>
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="text"
-                placeholder="5555 5555 5555 4444"
-              />
-            </div>
-            <div class="two-fields flex justify-between items-center gap-4">
-              <div class="form-field flex flex-col gap-2 w-full">
-                <p class="label capitalize font-semibold text-sm">expiry</p>
-                <select
-                  class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                  name=""
-                  id=""
+          <div class="fields hidden" data-method="card">
+              <div class="flex flex-col gap-4 pt-8 w-full" id="card-details">
+                  <div class="">
+                      <a href="#" id="save-card" class="bg-bright-gray rounded-lg flex justify-center items-center gap-2 py-4">
+                          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <g clip-path="url(#clip0_2346_1395)">
+                                  <path
+                                      d="M12.6667 7.83203H3.33333C2.59695 7.83203 2 8.42898 2 9.16536V13.832C2 14.5684 2.59695 15.1654 3.33333 15.1654H12.6667C13.403 15.1654 14 14.5684 14 13.832V9.16536C14 8.42898 13.403 7.83203 12.6667 7.83203Z"
+                                      stroke="#1757D9"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                                  <path
+                                      d="M4.66797 7.83203V5.16536C4.66797 4.28131 5.01916 3.43346 5.64428 2.80834C6.2694 2.18322 7.11725 1.83203 8.0013 1.83203C8.88536 1.83203 9.7332 2.18322 10.3583 2.80834C10.9834 3.43346 11.3346 4.28131 11.3346 5.16536V7.83203"
+                                      stroke="#1757D9"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                              </g>
+                              <defs>
+                                  <clipPath id="clip0_2346_1395">
+                                      <rect width="16" height="16" fill="white" transform="translate(0 0.5)" />
+                                  </clipPath>
+                              </defs>
+                          </svg>
+                          <p class="text-sm font-inter text-primary-300 font-medium">Show Saved Cards</p>
+                      </a>
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">card number <span class="text-deep-carmine-pink">*</span></p>
+                      <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="5555 5555 5555 4444" />
+                  </div>
+                  <div class="two-fields flex justify-between items-center gap-4">
+                      <div class="form-field flex flex-col gap-2 w-full">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Expiry <span class="text-deep-carmine-pink">*</span></p>
+                          <select required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" name="" id="">
+                              <option value="" disabled selected>MM/YY</option>
+                              <option value="">Option 1</option>
+                              <option value="">Option 2</option>
+                              <option value="">Option 3</option>
+                              <option value="">Option 4</option>
+                          </select>
+                      </div>
+                      <div class="form-field flex flex-col gap-2">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Security Code <span class="text-deep-carmine-pink">*</span></p>
+                          <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="CVV" />
+                      </div>
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Name on Card <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="Name" />
+                  </div>
+                  <div class="tnc flex items-center gap-4">
+                      <input checked id="red-checkbox" type="checkbox" value="" class="w-6 h-6 text-white !border-primary-300 border-2 rounded-lg" />
+                      <p class="uppercase font-medium text-xs text-light-500">Save card securely for future payments.</p>
+                  </div>
+                  <!-- FORM ACTION BUTTONS START -->
+                  <div class="w-full flex flex-col gap-2">
+                      <button id="address-data" class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Continue
+                      </button>
+                      <!-- <button
+                  id="pay-later"
+                  class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
                 >
-                  <option value="" disabled selected>MM/YY</option>
-                  <option value="">Option 1</option>
-                  <option value="">Option 2</option>
-                  <option value="">Option 3</option>
-                  <option value="">Option 4</option>
-                </select>
+                  Pay Later
+                </button> -->
+                  </div>
+                  <!-- FORM ACTION BUTTONS END -->
               </div>
-              <div class="form-field flex flex-col gap-2">
-                <p class="label capitalize font-semibold text-sm">
-                  security code
-                </p>
-                <input
-                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                  type="text"
-                  placeholder="CVV"
-                />
+              <div class="flex flex-col gap-4 w-full hidden" id="address-details">
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Address <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" type="text" placeholder="Address" value="123 Street" />
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Country <span class="text-deep-carmine-pink">*</span></p>
+                      <select class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" name="" id="">
+                          <option value="" disabled selected>USA</option>
+                          <option value="">Option 1</option>
+                          <option value="">Option 2</option>
+                          <option value="">Option 3</option>
+                          <option value="">Option 4</option>
+                      </select>
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">State <span class="text-deep-carmine-pink">*</span></p>
+                      <select class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" name="" id="">
+                          <option value="" disabled selected>Texas</option>
+                          <option value="">Option 1</option>
+                          <option value="">Option 2</option>
+                          <option value="">Option 3</option>
+                          <option value="">Option 4</option>
+                      </select>
+                  </div>
+                  <div class="two-fields flex justify-between items-center gap-4">
+                      <div class="form-field flex flex-col gap-2 w-full">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">City <span class="text-deep-carmine-pink">*</span></p>
+                          <select class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" name="" id="">
+                              <option value="" disabled selected>Austin</option>
+                              <option value="">Option 1</option>
+                              <option value="">Option 2</option>
+                              <option value="">Option 3</option>
+                              <option value="">Option 4</option>
+                          </select>
+                      </div>
+                      <div class="form-field flex flex-col gap-2">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Zip <span class="text-deep-carmine-pink">*</span></p>
+                          <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" type="text" placeholder="Zip" value="91423" />
+                      </div>
+                  </div>
+                  <div class="two-fields flex justify-between items-center gap-4">
+                      <button id="back-card-details" class="w-full border-light-50 text-primary-300 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border">
+                          Back
+                      </button>
+                      <button id="owners-data" class="w-full bg-primary-300 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Continue
+                      </button>
+                  </div>
               </div>
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">name on card</p>
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="text"
-                placeholder="Name"
-              />
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">address</p>
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="text"
-                placeholder="Address"
-              />
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">country</p>
-              <select
-                class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                name=""
-                id=""
-              >
-                <option value="" disabled selected>United States</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
-                <option value="">Option 3</option>
-                <option value="">Option 4</option>
-              </select>
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">state</p>
-              <select
-                class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                name=""
-                id=""
-              >
-                <option value="" disabled selected>State</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
-                <option value="">Option 3</option>
-                <option value="">Option 4</option>
-              </select>
-            </div>
-            <div class="two-fields flex justify-between items-center gap-4">
-              <div class="form-field flex flex-col gap-2 w-full">
-                <p class="label capitalize font-semibold text-sm">city</p>
-                <select
-                  class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                  name=""
-                  id=""
-                >
-                  <option value="" disabled selected>City</option>
-                  <option value="">Option 1</option>
-                  <option value="">Option 2</option>
-                  <option value="">Option 3</option>
-                  <option value="">Option 4</option>
-                </select>
+              <div class="flex flex-col gap-4 pt-8 w-full hidden" id="card-owner-details">
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Name <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" type="text" placeholder="Name" />
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Email <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" type="email" placeholder="Email" />
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Phone <span class="text-deep-carmine-pink">*</span></p>
+                      <div class="flex items-center">
+                          <button
+                              id="dropdown-phone-button"
+                              data-dropdown-toggle="dropdown-phone"
+                              class="flex-shrink-0 z-10 inline-flex items-center px-4 py-017 text-sm leading-16-94 font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg border-r-0 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                              type="button"
+                          >
+                              <svg fill="none" aria-hidden="true" class="h-4 w-4 me-2" viewBox="0 0 20 15">
+                                  <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                  </mask>
+                                  <g mask="url(#a)">
+                                      <path
+                                          fill="#D02F44"
+                                          fill-rule="evenodd"
+                                          d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z"
+                                          clip-rule="evenodd"
+                                      />
+                                      <path fill="#46467F" d="M0 .5h8.4v6.533H0z" />
+                                      <g filter="url(#filter0_d_343_121520)">
+                                          <path
+                                              fill="url(#paint0_linear_343_121520)"
+                                              fill-rule="evenodd"
+                                              d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z"
+                                              clip-rule="evenodd"
+                                          />
+                                      </g>
+                                  </g>
+                                  <defs>
+                                      <linearGradient id="paint0_linear_343_121520" x1=".933" x2=".933" y1="1.433" y2="6.1" gradientUnits="userSpaceOnUse">
+                                          <stop stop-color="#fff" />
+                                          <stop offset="1" stop-color="#F0F0F0" />
+                                      </linearGradient>
+                                      <filter id="filter0_d_343_121520" width="6.533" height="5.667" x=".933" y="1.433" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                          <feOffset dy="1" />
+                                          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_343_121520" />
+                                          <feBlend in="SourceGraphic" in2="effect1_dropShadow_343_121520" result="shape" />
+                                      </filter>
+                                  </defs>
+                              </svg>
+                              +1
+                              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                              </svg>
+                          </button>
+                          <div id="dropdown-phone" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700">
+                              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
+                                  <li>
+                                      <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                          <span class="inline-flex items-center">
+                                              <svg fill="none" aria-hidden="true" class="h-4 w-4 me-2" viewBox="0 0 20 15">
+                                                  <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  </mask>
+                                                  <g mask="url(#a)">
+                                                      <path
+                                                          fill="#D02F44"
+                                                          fill-rule="evenodd"
+                                                          d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z"
+                                                          clip-rule="evenodd"
+                                                      />
+                                                      <path fill="#46467F" d="M0 .5h8.4v6.533H0z" />
+                                                      <g filter="url(#filter0_d_343_121520)">
+                                                          <path
+                                                              fill="url(#paint0_linear_343_121520)"
+                                                              fill-rule="evenodd"
+                                                              d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z"
+                                                              clip-rule="evenodd"
+                                                          />
+                                                      </g>
+                                                  </g>
+                                                  <defs>
+                                                      <linearGradient id="paint0_linear_343_121520" x1=".933" x2=".933" y1="1.433" y2="6.1" gradientUnits="userSpaceOnUse">
+                                                          <stop stop-color="#fff" />
+                                                          <stop offset="1" stop-color="#F0F0F0" />
+                                                      </linearGradient>
+                                                      <filter id="filter0_d_343_121520" width="6.533" height="5.667" x=".933" y="1.433" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                                          <feOffset dy="1" />
+                                                          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                                          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_343_121520" />
+                                                          <feBlend in="SourceGraphic" in2="effect1_dropShadow_343_121520" result="shape" />
+                                                      </filter>
+                                                  </defs>
+                                              </svg>
+                                              United States (+1)
+                                          </span>
+                                      </button>
+                                  </li>
+                                  <li>
+                                      <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                          <span class="inline-flex items-center">
+                                              <svg class="h-4 w-4 me-2" fill="none" viewBox="0 0 20 15">
+                                                  <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  </mask>
+                                                  <g mask="url(#a)">
+                                                      <path fill="#0A17A7" d="M0 .5h19.6v14H0z" />
+                                                      <path
+                                                          fill="#fff"
+                                                          fill-rule="evenodd"
+                                                          d="M-.898-.842L7.467 4.8V-.433h4.667V4.8l8.364-5.642L21.542.706l-6.614 4.46H19.6v4.667h-4.672l6.614 4.46-1.044 1.549-8.365-5.642v5.233H7.467V10.2l-8.365 5.642-1.043-1.548 6.613-4.46H0V5.166h4.672L-1.941.706-.898-.842z"
+                                                          clip-rule="evenodd"
+                                                      />
+                                                      <path stroke="#DB1F35" stroke-linecap="round" stroke-width=".667" d="M13.067 4.933L21.933-.9M14.009 10.088l7.947 5.357M5.604 4.917L-2.686-.67M6.503 10.024l-9.189 6.093" />
+                                                      <path fill="#E6273E" fill-rule="evenodd" d="M0 8.9h8.4v5.6h2.8V8.9h8.4V6.1h-8.4V.5H8.4v5.6H0v2.8z" clip-rule="evenodd" />
+                                                  </g>
+                                              </svg>
+                                              United Kingdom (+44)
+                                          </span>
+                                      </button>
+                                  </li>
+                                  <li>
+                                      <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                          <span class="inline-flex items-center">
+                                              <svg class="h-4 w-4 me-2" fill="none" viewBox="0 0 20 15" xmlns="http://www.w3.org/2000/svg">
+                                                  <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  </mask>
+                                                  <g mask="url(#a)">
+                                                      <path fill="#0A17A7" d="M0 .5h19.6v14H0z" />
+                                                      <path
+                                                          fill="#fff"
+                                                          stroke="#fff"
+                                                          stroke-width=".667"
+                                                          d="M0 .167h-.901l.684.586 3.15 2.7v.609L-.194 6.295l-.14.1v1.24l.51-.319L3.83 5.033h.73L7.7 7.276a.488.488 0 00.601-.767L5.467 4.08v-.608l2.987-2.134a.667.667 0 00.28-.543V-.1l-.51.318L4.57 2.5h-.73L.66.229.572.167H0z"
+                                                      />
+                                                      <path
+                                                          fill="url(#paint0_linear_374_135177)"
+                                                          fill-rule="evenodd"
+                                                          d="M0 2.833V4.7h3.267v2.133c0 .369.298.667.666.667h.534a.667.667 0 00.666-.667V4.7H8.2a.667.667 0 00.667-.667V3.5a.667.667 0 00-.667-.667H5.133V.5H3.267v2.333H0z"
+                                                          clip-rule="evenodd"
+                                                      />
+                                                      <path fill="url(#paint1_linear_374_135177)" fill-rule="evenodd" d="M0 3.3h3.733V.5h.934v2.8H8.4v.933H4.667v2.8h-.934v-2.8H0V3.3z" clip-rule="evenodd" />
+                                                      <path
+                                                          fill="#fff"
+                                                          fill-rule="evenodd"
+                                                          d="M4.2 11.933l-.823.433.157-.916-.666-.65.92-.133.412-.834.411.834.92.134-.665.649.157.916-.823-.433zm9.8.7l-.66.194.194-.66-.194-.66.66.193.66-.193-.193.66.193.66-.66-.194zm0-8.866l-.66.193.194-.66-.194-.66.66.193.66-.193-.193.66.193.66-.66-.193zm2.8 2.8l-.66.193.193-.66-.193-.66.66.193.66-.193-.193.66.193.66-.66-.193zm-5.6.933l-.66.193.193-.66-.193-.66.66.194.66-.194-.193.66.193.66-.66-.193zm4.2 1.167l-.33.096.096-.33-.096-.33.33.097.33-.097-.097.33.097.33-.33-.096z"
+                                                          clip-rule="evenodd"
+                                                      />
+                                                  </g>
+                                                  <defs>
+                                                      <linearGradient id="paint0_linear_374_135177" x1="0" x2="0" y1=".5" y2="7.5" gradientUnits="userSpaceOnUse">
+                                                          <stop stop-color="#fff" />
+                                                          <stop offset="1" stop-color="#F0F0F0" />
+                                                      </linearGradient>
+                                                      <linearGradient id="paint1_linear_374_135177" x1="0" x2="0" y1=".5" y2="7.033" gradientUnits="userSpaceOnUse">
+                                                          <stop stop-color="#FF2E3B" />
+                                                          <stop offset="1" stop-color="#FC0D1B" />
+                                                      </linearGradient>
+                                                  </defs>
+                                              </svg>
+                                              Australia (+61)
+                                          </span>
+                                      </button>
+                                  </li>
+                                  <li>
+                                      <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                          <span class="inline-flex items-center">
+                                              <svg class="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
+                                                  <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  </mask>
+                                                  <g mask="url(#a)">
+                                                      <path fill="#262626" fill-rule="evenodd" d="M0 5.167h19.6V.5H0v4.667z" clip-rule="evenodd" />
+                                                      <g filter="url(#filter0_d_374_135180)">
+                                                          <path fill="#F01515" fill-rule="evenodd" d="M0 9.833h19.6V5.167H0v4.666z" clip-rule="evenodd" />
+                                                      </g>
+                                                      <g filter="url(#filter1_d_374_135180)">
+                                                          <path fill="#FFD521" fill-rule="evenodd" d="M0 14.5h19.6V9.833H0V14.5z" clip-rule="evenodd" />
+                                                      </g>
+                                                  </g>
+                                                  <defs>
+                                                      <filter id="filter0_d_374_135180" width="19.6" height="4.667" x="0" y="5.167" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                                          <feOffset />
+                                                          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                                          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180" />
+                                                          <feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape" />
+                                                      </filter>
+                                                      <filter id="filter1_d_374_135180" width="19.6" height="4.667" x="0" y="9.833" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                                          <feOffset />
+                                                          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                                          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180" />
+                                                          <feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape" />
+                                                      </filter>
+                                                  </defs>
+                                              </svg>
+                                              Germany (+49)
+                                          </span>
+                                      </button>
+                                  </li>
+                                  <li>
+                                      <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                          <span class="inline-flex items-center">
+                                              <svg class="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
+                                                  <rect width="19.1" height="13.5" x=".25" y=".75" fill="#fff" stroke="#F5F5F5" stroke-width=".5" rx="1.75" />
+                                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                                      <rect width="19.1" height="13.5" x=".25" y=".75" fill="#fff" stroke="#fff" stroke-width=".5" rx="1.75" />
+                                                  </mask>
+                                                  <g mask="url(#a)">
+                                                      <path fill="#F44653" d="M13.067.5H19.6v14h-6.533z" />
+                                                      <path fill="#1035BB" fill-rule="evenodd" d="M0 14.5h6.533V.5H0v14z" clip-rule="evenodd" />
+                                                  </g>
+                                              </svg>
+                                              France (+33)
+                                          </span>
+                                      </button>
+                                  </li>
+                                  <li>
+                                      <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                          <span class="inline-flex items-center">
+                                              <svg class="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
+                                                  <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  <mask id="a" style="mask-type: luminance;" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                                  </mask>
+                                                  <g mask="url(#a)">
+                                                      <path fill="#262626" fill-rule="evenodd" d="M0 5.167h19.6V.5H0v4.667z" clip-rule="evenodd" />
+                                                      <g filter="url(#filter0_d_374_135180)">
+                                                          <path fill="#F01515" fill-rule="evenodd" d="M0 9.833h19.6V5.167H0v4.666z" clip-rule="evenodd" />
+                                                      </g>
+                                                      <g filter="url(#filter1_d_374_135180)">
+                                                          <path fill="#FFD521" fill-rule="evenodd" d="M0 14.5h19.6V9.833H0V14.5z" clip-rule="evenodd" />
+                                                      </g>
+                                                  </g>
+                                                  <defs>
+                                                      <filter id="filter0_d_374_135180" width="19.6" height="4.667" x="0" y="5.167" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                                          <feOffset />
+                                                          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                                          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180" />
+                                                          <feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape" />
+                                                      </filter>
+                                                      <filter id="filter1_d_374_135180" width="19.6" height="4.667" x="0" y="9.833" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                                          <feOffset />
+                                                          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                                          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180" />
+                                                          <feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape" />
+                                                      </filter>
+                                                  </defs>
+                                              </svg>
+                                              Germany (+49)
+                                          </span>
+                                      </button>
+                                  </li>
+                              </ul>
+                          </div>
+                          <label for="phone-input" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Phone number:</label>
+  
+                          <input
+                              type="text"
+                              id="phone-input"
+                              class="w-full border border-light-200 text-base font-normal leading-[19px] p-4 rounded-tr-lg rounded-br-lg border-solid placeholder:text-light-400 text-light-500"
+                              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                              placeholder="123-456-7890"
+                              required
+                          />
+                      </div>
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Description <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" type="text" placeholder="Description" />
+                  </div>
+                  <div class="bg-bright-gray rounded-lg p-4 flex flex-col gap-6">
+                    <div class="flex justify-between gap-8">
+                      <div class="flex flex-col gap-2">
+                          <p class="font-inter text-sm leading-16-94 text-light-500">Round up and Donate:</p>
+                          <p class="font-inter text-xs leading-4 text-light-400">Would you like to round up your purchase and support an organization of your choice.</p>
+                        </div>
+                      
+                      <div>
+                          <a href="#" data-modal-target="default-modal" data-modal-toggle="default-modal" class="font-inter text-sm leading-16-94 font-medium text-primary-300">Choose</a>
+                          <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-auto">
+                              <div class="relative p-4 w-full max-w-2xl h-fit">
+                                  <!-- Modal content -->
+                                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 h-[380px]">
+                                      <!-- Modal header -->
+                                      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                              Round up and Donate:
+                                          </h3>
+                                          <button
+                                              type="button"
+                                              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                              data-modal-hide="default-modal"
+                                          >
+                                              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                              </svg>
+                                              <span class="sr-only">Close modal</span>
+                                          </button>
+                                      </div>
+                                      <div class="grid grid-cols-3 p-4 h-80">
+                                        <!-- Image 1 -->
+                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
+                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
+                                          <p class="text-center mt-2 text-sm">Cause Name</p>
+                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                        </div>
+                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
+                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
+                                          <p class="text-center mt-2 text-sm">Cause Name</p>
+                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                        </div>
+                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
+                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
+                                          <p class="text-center mt-2 text-sm">Cause Name</p>
+                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                        </div>
+                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
+                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
+                                          <p class="text-center mt-2 text-sm">Cause Name</p>
+                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                        </div>
+                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
+                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
+                                          <p class="text-center mt-2 text-sm">Cause Name</p>
+                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                        </div>
+                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
+                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
+                                          <p class="text-center mt-2 text-sm">Cause Name</p>
+                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                        </div>
+                                    
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div id="targetDiv" class="flex justify-between">
+                      <!-- Selected image and description will be displayed here -->
+                    </div>
+                  </div>
+
+                  <div class="two-fields flex justify-between items-center gap-4">
+                      <button id="back-address-details" class="w-full border-light-50 text-primary-300 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border">
+                          Back
+                      </button>
+                      <button id="" class="pay-now w-full bg-primary-300 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Pay Now ($825.78)
+                      </button>
+                  </div>
               </div>
-              <div class="form-field flex flex-col gap-2">
-                <p class="label capitalize font-semibold text-sm">zip</p>
-                <input
-                  class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                  type="text"
-                  placeholder="Zip"
-                />
-              </div>
-            </div>
-            <!-- FORM ACTION BUTTONS START -->
-            <div class="w-full flex flex-col gap-2">
-              <button
-                id="pay-now"
-                class="pay-now bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
-              >
-                Pay Now
-              </button>
-              <button
-                id="pay-later"
-                class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
-              >
-                Pay Later
-              </button>
-            </div>
-            <!-- FORM ACTION BUTTONS END -->
           </div>
           <!-- CARD METHOD FIELDS END -->
-
+  
           <!-- BANK METHOD FIELDS START -->
           <div class="fields hidden flex flex-col gap-4" data-method="bank">
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">
-                account holder name
-              </p>
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="text"
-                placeholder="Name"
-              />
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">account type</p>
-              <select
-                class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid"
-                name=""
-                id=""
-              >
-                <option value="" disabled selected>Type</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
-                <option value="">Option 3</option>
-                <option value="">Option 4</option>
-              </select>
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">
-                account number
-              </p>
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="text"
-                placeholder="Number"
-              />
-            </div>
-            <div class="form-field flex flex-col gap-2">
-              <p class="label capitalize font-semibold text-sm">
-                routing number
-              </p>
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="text"
-                placeholder="Number"
-              />
-            </div>
-            <div class="tnc flex items-center gap-4">
-              <input
-                class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid"
-                type="checkbox"
-              />
-              <p class="uppercase font-medium text-xs">
-                i agree to the
-                <a class="text-primary-300" id="tnc" href="#"
-                  >terms and conditions.</a
-                >
-              </p>
-            </div>
-            <!-- FORM ACTION BUTTONS START -->
-            <div class="w-full flex flex-col gap-2">
-              <button
-                id="pay-now"
-                class="pay-now bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
-              >
-                Pay Now
-              </button>
-              <button
+              <div class="form-field flex flex-col gap-2">
+                  <p class="label capitalize font-semibold text-sm">
+                      account holder name
+                  </p>
+                  <input class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid" type="text" placeholder="Name" />
+              </div>
+              <div class="form-field flex flex-col gap-2">
+                  <p class="label capitalize font-semibold text-sm">account type</p>
+                  <select class="w-full border border-[color:var(--gray-light)] text-base font-normal leading-[19px] bg-[white] p-4 rounded-lg border-solid" name="" id="">
+                      <option value="" disabled selected>Type</option>
+                      <option value="">Option 1</option>
+                      <option value="">Option 2</option>
+                      <option value="">Option 3</option>
+                      <option value="">Option 4</option>
+                  </select>
+              </div>
+              <div class="form-field flex flex-col gap-2">
+                  <p class="label capitalize font-semibold text-sm">
+                      account number
+                  </p>
+                  <input class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid" type="text" placeholder="Number" />
+              </div>
+              <div class="form-field flex flex-col gap-2">
+                  <p class="label capitalize font-semibold text-sm">
+                      routing number
+                  </p>
+                  <input class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid" type="text" placeholder="Number" />
+              </div>
+              <div class="tnc flex items-center gap-4">
+                  <input class="border border-light-300 text-base font-normal leading-[19px] p-4 rounded-lg border-solid" type="checkbox" />
+                  <p class="uppercase font-medium text-xs">
+                      i agree to the
+                      <a class="text-primary-300" id="tnc" href="#">terms and conditions.</a>
+                  </p>
+              </div>
+              <!-- FORM ACTION BUTTONS START -->
+              <div class="w-full flex flex-col gap-2">
+                  <button id="pay-now" class="pay-now bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                      Pay Now
+                  </button>
+                  <button id="pay-later" class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300">
+                      Pay Later
+                  </button>
+              </div>
+              <!-- FORM ACTION BUTTONS END -->
+          </div>
+          <!-- BANK METHOD FIELDS END -->
+  
+          <!-- CRYPTO METHOD FIELDS START -->
+          <div class="fields hidden flex flex-col gap-4" data-method="crypto">
+              <div class="flex flex-col gap-8">
+                  <div class="flex flex-col gap-2">
+                      <p class="text-[16px] font-medium">
+                          0.00002054 BTC = $1.28 USD
+                      </p>
+                      <div class="flex gap-2 items-center">
+                          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M8.0026 15.1654C11.6845 15.1654 14.6693 12.1806 14.6693 8.4987C14.6693 4.8168 11.6845 1.83203 8.0026 1.83203C4.32071 1.83203 1.33594 4.8168 1.33594 8.4987C1.33594 12.1806 4.32071 15.1654 8.0026 15.1654Z"
+                                  stroke="#E93939"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                              />
+                              <path d="M8 11.1667V8.5" stroke="#E93939" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M8 5.83203H8.01" stroke="#E93939" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <p class="text-sm font-normal">
+                              <span id="countdown" class="text-error">4:23</span>
+                              <span class="opacity-60">until the next BTC price change</span>
+                          </p>
+                      </div>
+                  </div>
+                  <div id="crypto-pay" class="w-full mx-auto flex flex-col gap-4 items-center">
+                      <div class="w-[320] h-[320]">
+                          <img class="qr-img" src="/assets/qr.png" alt="QR code" data-qr="onchain" />
+                          <img class="hidden qr-img" src="/assets/qr2.png" alt="QR code" data-qr="lightning" />
+                      </div>
+                      <div class="flex items-center gap-1">
+                          <p class="text-sm opacity-60">
+                              BTC Address: 2MzCTW3pxV3Z8uksr6z...
+                          </p>
+                          <svg class="cursor-pointer" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M11.1641 2.66797H12.4974C12.851 2.66797 13.1902 2.80844 13.4402 3.05849C13.6903 3.30854 13.8307 3.64768 13.8307 4.0013V13.3346C13.8307 13.6883 13.6903 14.0274 13.4402 14.2774C13.1902 14.5275 12.851 14.668 12.4974 14.668H4.4974C4.14377 14.668 3.80464 14.5275 3.55459 14.2774C3.30454 14.0274 3.16406 13.6883 3.16406 13.3346V4.0013C3.16406 3.64768 3.30454 3.30854 3.55459 3.05849C3.80464 2.80844 4.14377 2.66797 4.4974 2.66797H5.83073"
+                                  stroke="black"
+                                  stroke-opacity="0.6"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                              />
+                              <path
+                                  d="M10.5026 1.33203H6.5026C6.13441 1.33203 5.83594 1.63051 5.83594 1.9987V3.33203C5.83594 3.70022 6.13441 3.9987 6.5026 3.9987H10.5026C10.8708 3.9987 11.1693 3.70022 11.1693 3.33203V1.9987C11.1693 1.63051 10.8708 1.33203 10.5026 1.33203Z"
+                                  stroke="black"
+                                  stroke-opacity="0.6"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                              />
+                          </svg>
+                      </div>
+                      <div class="flex">
+                          <button class="qr-type-btn bg-primary-300 hover:bg-primary-200 rounded-l-lg font-medium text-base leading-[19px] flex items-center justify-center cursor-pointer py-4 px-6 border-[none] text-white" data-qr="onchain">
+                              OnChain
+                          </button>
+                          <button
+                              class="qr-type-btn bg-white hover:bg-primary-200 hover:text-white rounded-r-lg font-medium text-base leading-[19px] flex items-center justify-center cursor-pointer py-4 px-6 border border-light-300"
+                              data-qr="lightning"
+                          >
+                              Lightning
+                          </button>
+                      </div>
+                  </div>
+                  <div id="timeout" class="hidden flex flex-col gap-2">
+                      <p class="text-base font-medium">Price Changed!</p>
+                      <p class="opacity-60 text-sm">
+                          It appears that the time limit for the price change has expired on the transaction.
+                      </p>
+                      <button id="restart-timer" class="bg-primary-300 hover:bg-primary-200 font-normal text-base mt-2 leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Try Again
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <!-- CRYPTO METHOD FIELDS END -->
+  
+          <!-- WALLET METHOD FIELDS START -->
+          <div class="fields hidden flex flex-col gap-4" data-method="wallet">
+              <div class="p-4 rounded-lg border border-light-100">
+                  <div class="flex flex-col gap-6">
+                      <div class="flex items-center gap-4">
+                          <input type="radio" class="w-4 h-4" name="method" value="apple" />
+                          <img src="/assets/appleBtn.png" alt="apple pay" />
+                      </div>
+                      <button class="pay-now hidden w-full rounded-md bg-black hover:bg-opacity-90 p-4 flex justify-center items-center" data-wallet="apple">
+                          <img src="/assets/applePayLight.png" alt="apple pay light" />
+                      </button>
+                  </div>
+              </div>
+              <div class="p-4 rounded-lg border border-light-100">
+                  <div class="flex flex-col gap-6">
+                      <div class="flex items-center gap-4">
+                          <input type="radio" class="w-4 h-4" name="method" value="gpay" />
+                          <img src="/assets/gpayBtn.png" alt="gpay" />
+                      </div>
+                      <button class="pay-now hidden w-full rounded-md bg-black hover:bg-opacity-90 p-4 flex justify-center items-center" data-wallet="gpay">
+                          <img src="/assets/gpayLight.png" alt="google pay light" />
+                      </button>
+                  </div>
+              </div>
+              <div class="p-4 rounded-lg border border-light-100">
+                  <div class="flex flex-col gap-6">
+                      <div class="flex items-center gap-4">
+                          <input type="radio" class="w-4 h-4" name="method" value="paypal" />
+                          <img src="/assets/paypalBtn.png" alt="paypal" />
+                      </div>
+                      <button class="pay-now hidden w-full rounded-md bg-[#FFC43A] hover:bg-opacity-80 p-4 flex justify-center items-center" data-wallet="paypal">
+                          <img src="/assets/paypalBtn.png" alt="paypal" />
+                      </button>
+                  </div>
+              </div>
+              <div class="p-4 rounded-lg border border-light-100">
+                  <div class="flex flex-col gap-6">
+                      <div class="flex items-center gap-4">
+                          <input type="radio" class="w-4 h-4" name="method" value="venmo" />
+                          <img src="/assets/venmoBtn.png" alt="venmp" />
+                      </div>
+                      <button class="pay-now hidden w-full rounded-md bg-[#3D95CE] hover:bg-opacity-90 p-4 flex justify-center items-center" data-wallet="venmo">
+                          <img src="/assets/venmoLight.png" alt="venmo" />
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <!-- WALLET METHOD FIELDS END -->
+      </form>
+  
+      <!-- save details section starts -->
+      <!-- savecard details starts -->
+      <div id="enter-details" class="hidden">
+          <div class="flex flex-col gap-8">
+              <div class="flex flex-row justify-between w-full">
+                  <div class="flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm">
+                          Show Saved Cards
+                      </p>
+                      <p class="font-inter text-sm text-light-400">Enter email/ mobile no. to access saved cards</p>
+                  </div>
+                  <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16.7852" cy="15" r="15" fill="black" fill-opacity="0.08" />
+                      <path
+                          d="M11.707 20.4531C11.5768 20.3229 11.4909 20.1719 11.4492 20C11.4076 19.8229 11.4076 19.6484 11.4492 19.4766C11.4909 19.3047 11.5742 19.1562 11.6992 19.0312L15.3633 15.3672L11.6992 11.7109C11.5742 11.5859 11.4909 11.4375 11.4492 11.2656C11.4076 11.0938 11.4076 10.9219 11.4492 10.75C11.4909 10.5729 11.5768 10.4193 11.707 10.2891C11.832 10.1641 11.9805 10.0807 12.1523 10.0391C12.3294 9.99219 12.5039 9.99219 12.6758 10.0391C12.8529 10.0807 13.0039 10.1615 13.1289 10.2812L16.7852 13.9453L20.4492 10.2891C20.5742 10.1641 20.7201 10.0807 20.8867 10.0391C21.0586 9.99219 21.2305 9.99219 21.4023 10.0391C21.5794 10.0807 21.7305 10.1667 21.8555 10.2969C21.9909 10.4219 22.0794 10.5729 22.1211 10.75C22.1628 10.9219 22.1628 11.0938 22.1211 11.2656C22.0794 11.4375 21.9935 11.5859 21.8633 11.7109L18.2148 15.3672L21.8633 19.0312C21.9935 19.1562 22.0794 19.3047 22.1211 19.4766C22.1628 19.6484 22.1628 19.8229 22.1211 20C22.0794 20.1719 21.9909 20.3203 21.8555 20.4453C21.7305 20.5755 21.5794 20.6641 21.4023 20.7109C21.2305 20.7526 21.0586 20.7526 20.8867 20.7109C20.7201 20.6693 20.5742 20.5833 20.4492 20.4531L16.7852 16.7969L13.1289 20.4609C13.0039 20.5807 12.8529 20.6641 12.6758 20.7109C12.5039 20.7526 12.3294 20.7526 12.1523 20.7109C11.9805 20.6641 11.832 20.5781 11.707 20.4531Z"
+                          fill="black"
+                          fill-opacity="0.38"
+                      />
+                  </svg>
+              </div>
+              <div class="flex flex-col gap-4">
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Email/ Mobile Number <span class="text-deep-carmine-pink">*</span></p>
+                      <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="Email/ Mobile Number" />
+                  </div>
+                  <div class="w-full flex flex-col gap-2">
+                      <button id="get-otp" class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Get OTP
+                      </button>
+                      <!-- <button
+                      id="pay-later"
+                      class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
+                    >
+                      Pay Later
+                    </button> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- savecard details ends -->
+      <!-- save details section ends -->
+  
+      <!-- otp form starts-->
+      <div id="enter-otp" class="hidden">
+          <div class="flex flex-col gap-8">
+              <div class="flex flex-row justify-between w-full">
+                  <div class="flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm">
+                          Show Saved Cards
+                      </p>
+                      <p class="font-inter text-sm text-light-400">Enter OTP sent to your email/ mobile no.</p>
+                  </div>
+                  <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16.7852" cy="15" r="15" fill="black" fill-opacity="0.08" />
+                      <path
+                          d="M11.707 20.4531C11.5768 20.3229 11.4909 20.1719 11.4492 20C11.4076 19.8229 11.4076 19.6484 11.4492 19.4766C11.4909 19.3047 11.5742 19.1562 11.6992 19.0312L15.3633 15.3672L11.6992 11.7109C11.5742 11.5859 11.4909 11.4375 11.4492 11.2656C11.4076 11.0938 11.4076 10.9219 11.4492 10.75C11.4909 10.5729 11.5768 10.4193 11.707 10.2891C11.832 10.1641 11.9805 10.0807 12.1523 10.0391C12.3294 9.99219 12.5039 9.99219 12.6758 10.0391C12.8529 10.0807 13.0039 10.1615 13.1289 10.2812L16.7852 13.9453L20.4492 10.2891C20.5742 10.1641 20.7201 10.0807 20.8867 10.0391C21.0586 9.99219 21.2305 9.99219 21.4023 10.0391C21.5794 10.0807 21.7305 10.1667 21.8555 10.2969C21.9909 10.4219 22.0794 10.5729 22.1211 10.75C22.1628 10.9219 22.1628 11.0938 22.1211 11.2656C22.0794 11.4375 21.9935 11.5859 21.8633 11.7109L18.2148 15.3672L21.8633 19.0312C21.9935 19.1562 22.0794 19.3047 22.1211 19.4766C22.1628 19.6484 22.1628 19.8229 22.1211 20C22.0794 20.1719 21.9909 20.3203 21.8555 20.4453C21.7305 20.5755 21.5794 20.6641 21.4023 20.7109C21.2305 20.7526 21.0586 20.7526 20.8867 20.7109C20.7201 20.6693 20.5742 20.5833 20.4492 20.4531L16.7852 16.7969L13.1289 20.4609C13.0039 20.5807 12.8529 20.6641 12.6758 20.7109C12.5039 20.7526 12.3294 20.7526 12.1523 20.7109C11.9805 20.6641 11.832 20.5781 11.707 20.4531Z"
+                          fill="black"
+                          fill-opacity="0.38"
+                      />
+                  </svg>
+              </div>
+              <div class="flex flex-col justify-center items-center gap-4">
+                  <div class="form-field flex flex-row justify-center gap-2">
+                      <input
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          type="text"
+                          oninput="digitValidate(this)"
+                          onkeyup="tabChange(1)"
+                          maxlength="1"
+                      />
+                      <input
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          type="text"
+                          oninput="digitValidate(this)"
+                          onkeyup="tabChange(2)"
+                          maxlength="1"
+                      />
+                      <input
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          type="text"
+                          oninput="digitValidate(this)"
+                          onkeyup="tabChange(3)"
+                          maxlength="1"
+                      />
+                      <input
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          type="text"
+                          oninput="digitValidate(this)"
+                          onkeyup="tabChange(4)"
+                          maxlength="1"
+                      />
+                      <input
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          type="text"
+                          oninput="digitValidate(this)"
+                          onkeyup="tabChange(5)"
+                          maxlength="1"
+                      />
+                      <input
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          type="text"
+                          oninput="digitValidate(this)"
+                          onkeyup="tabChange(6)"
+                          maxlength="1"
+                      />
+                  </div>
+                  <div>
+                      <p class="flex gap-1 font-inter text-sm leading-16-94 font-normal text-light-400">
+                          <span>
+                              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                      d="M7.4987 14.1654C11.1806 14.1654 14.1654 11.1806 14.1654 7.4987C14.1654 3.8168 11.1806 0.832031 7.4987 0.832031C3.8168 0.832031 0.832031 3.8168 0.832031 7.4987C0.832031 11.1806 3.8168 14.1654 7.4987 14.1654Z"
+                                      stroke="#E93939"
+                                      stroke-width="1.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                                  <path d="M7.5 10.1667V7.5" stroke="#E93939" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                  <path d="M7.5 4.83203H7.51" stroke="#E93939" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                          </span>
+                          <span id="timer" class="font-inter text-sm leading-16-94 font-normal text-deep-carmine-pink">3:00</span> until Resend OTP
+                      </p>
+                  </div>
+                  <div role="status">
+                      <svg class="animate-spin" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <mask id="path-1-inside-1_2346_1318" fill="white">
+                              <path
+                                  d="M14.6284 3.3577C13.404 1.89852 11.6991 0.924102 9.82038 0.609715C7.94168 0.295328 6.01245 0.661604 4.3797 1.64266C2.74694 2.62372 1.51782 4.15517 0.913411 5.96156C0.309001 7.76795 0.368969 9.73073 1.08253 11.4969C1.79609 13.263 3.11641 14.7165 4.80601 15.5961C6.49561 16.4756 8.4436 16.7235 10.2996 16.295C12.1556 15.8665 13.7978 14.7898 14.9309 13.2586C16.0639 11.7274 16.6134 9.84213 16.4805 7.94195L14.4854 8.08146C14.585 9.5066 14.1729 10.9205 13.3231 12.0689C12.4734 13.2173 11.2417 14.0249 9.84971 14.3462C8.4577 14.6676 6.99671 14.4817 5.72951 13.8221C4.46231 13.1624 3.47207 12.0722 2.9369 10.7476C2.40173 9.42305 2.35675 7.95096 2.81006 6.59617C3.26337 5.24138 4.18521 4.09279 5.40977 3.357C6.63434 2.6212 8.08126 2.3465 9.49029 2.58229C10.8993 2.81808 12.178 3.54889 13.0963 4.64327L14.6284 3.3577Z"
+                              />
+                          </mask>
+                          <path
+                              d="M14.6284 3.3577C13.404 1.89852 11.6991 0.924102 9.82038 0.609715C7.94168 0.295328 6.01245 0.661604 4.3797 1.64266C2.74694 2.62372 1.51782 4.15517 0.913411 5.96156C0.309001 7.76795 0.368969 9.73073 1.08253 11.4969C1.79609 13.263 3.11641 14.7165 4.80601 15.5961C6.49561 16.4756 8.4436 16.7235 10.2996 16.295C12.1556 15.8665 13.7978 14.7898 14.9309 13.2586C16.0639 11.7274 16.6134 9.84213 16.4805 7.94195L14.4854 8.08146C14.585 9.5066 14.1729 10.9205 13.3231 12.0689C12.4734 13.2173 11.2417 14.0249 9.84971 14.3462C8.4577 14.6676 6.99671 14.4817 5.72951 13.8221C4.46231 13.1624 3.47207 12.0722 2.9369 10.7476C2.40173 9.42305 2.35675 7.95096 2.81006 6.59617C3.26337 5.24138 4.18521 4.09279 5.40977 3.357C6.63434 2.6212 8.08126 2.3465 9.49029 2.58229C10.8993 2.81808 12.178 3.54889 13.0963 4.64327L14.6284 3.3577Z"
+                              stroke="#1757D9"
+                              stroke-width="16"
+                              mask="url(#path-1-inside-1_2346_1318)"
+                          />
+                      </svg>
+                  </div>
+                  <div>
+                      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="8.5" cy="8.5" r="8" fill="#22C215" />
+                          <path d="M11.3008 6.5L7.51953 10.5L5.80078 8.68182" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                  </div>
+              </div>
+          </div>
+          <!--cards-page start-->
+          <div class="flex flex-col gap-8" id="cards-page">
+              <div class="payment-method flex flex-col gap-2">
+                  <p class="label capitalize font-semibold text-sm">
+                      Choose your payment method
+                  </p>
+                  <!-- PAYMENT METHODS CARDS START -->
+                  <div class="methods flex gap-3 overflow-y-auto">
+                      <div class="method-card stroke-primary-300 font-semibold text-light-500 group flex flex-col gap-1 rounded-lg border-2 border-primary-300 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="card">
+                          <svg class="with-stroke" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  class="group-hover:stroke-primary-300"
+                                  d="M21 4.5H3C1.89543 4.5 1 5.39543 1 6.5V18.5C1 19.6046 1.89543 20.5 3 20.5H21C22.1046 20.5 23 19.6046 23 18.5V6.5C23 5.39543 22.1046 4.5 21 4.5Z"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                              />
+                              <path class="group-hover:stroke-primary-300" d="M1 10.5H23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                              Card
+                          </p>
+                      </div>
+                      <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="bank">
+                          <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  class="group-hover:fill-primary-300"
+                                  d="M11.5586 3.08966L3.68456 6.46499C3.19243 6.67594 2.91824 7.20334 3.02721 7.7237C3.13618 8.24407 3.59316 8.62379 4.12747 8.62379V8.90507C4.12747 9.37269 4.5036 9.7489 4.97112 9.7489H19.032C19.4995 9.7489 19.8756 9.37269 19.8756 8.90507V8.62379C20.4099 8.62379 20.8704 8.24758 20.9759 7.7237C21.0813 7.19982 20.8072 6.67243 20.3185 6.46499L12.4445 3.08966C12.1632 2.97011 11.8398 2.97011 11.5586 3.08966ZM7.50208 10.874H5.25234V17.7759C5.23125 17.7864 5.21016 17.8005 5.18907 17.8145L3.50176 18.9396C3.09048 19.2139 2.90418 19.7272 3.0483 20.2019C3.19243 20.6765 3.63183 21 4.12747 21H19.8756C20.3713 21 20.8072 20.6765 20.9513 20.2019C21.0954 19.7272 20.9126 19.2139 20.4978 18.9396L18.8105 17.8145C18.7894 17.8005 18.7683 17.7899 18.7472 17.7759V10.874H16.501V17.6247H15.0949V10.874H12.8452V17.6247H11.1579V10.874H8.90816V17.6247H7.50208V10.874ZM12.0015 5.24846C12.2999 5.24846 12.586 5.367 12.7969 5.578C13.0079 5.789 13.1264 6.07517 13.1264 6.37357C13.1264 6.67197 13.0079 6.95815 12.7969 7.16914C12.586 7.38014 12.2999 7.49868 12.0015 7.49868C11.7032 7.49868 11.4171 7.38014 11.2061 7.16914C10.9952 6.95815 10.8767 6.67197 10.8767 6.37357C10.8767 6.07517 10.9952 5.789 11.2061 5.578C11.4171 5.367 11.7032 5.24846 12.0015 5.24846Z"
+                                  fill="inherit"
+                              />
+                          </svg>
+                          <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                              Bank
+                          </p>
+                      </div>
+                      <div
+                          class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                          data-method="crypto"
+                      >
+                          <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  class="group-hover:fill-primary-300"
+                                  d="M21 12C21 16.9706 16.9706 21 12 21C7.02942 21 3 16.9706 3 12C3 7.02942 7.02942 3 12 3C16.9706 3 21 7.02942 21 12ZM15.8594 10.7179C16.0386 9.52032 15.1267 8.87653 13.8798 8.44707L14.2843 6.82482L13.2967 6.57873L12.9029 8.15823C12.6433 8.09353 12.3767 8.03252 12.1117 7.97206L12.5083 6.38219L11.5213 6.1361L11.1165 7.75777C10.9016 7.70881 10.6907 7.66044 10.4859 7.60956L10.4871 7.60448L9.12508 7.26444L8.86237 8.31911C8.86237 8.31911 9.59511 8.48702 9.57965 8.4974C9.97964 8.59724 10.0519 8.8619 10.0398 9.0717L9.57907 10.9198C9.60665 10.9268 9.64236 10.9369 9.68174 10.9527C9.64882 10.9445 9.61366 10.9355 9.57737 10.9268L8.93154 13.5157C8.88259 13.6372 8.75855 13.8195 8.47897 13.7503C8.4888 13.7646 7.76115 13.5711 7.76115 13.5711L7.27086 14.7015L8.55605 15.0218C8.79513 15.0817 9.02946 15.1444 9.26008 15.2035L8.85138 16.8442L9.83782 17.0903L10.2426 15.467C10.5042 15.5379 10.7665 15.6059 11.0296 15.6712L10.6262 17.2869L11.6138 17.533L12.0225 15.8953C13.7065 16.214 14.9729 16.0854 15.5059 14.5625C15.9354 13.3362 15.4845 12.6289 14.5985 12.1676C15.2437 12.0189 15.7298 11.5945 15.8594 10.7179ZM13.603 13.8816C13.2978 15.1079 11.233 14.445 10.5635 14.2787L11.1058 12.105C11.7753 12.272 13.922 12.6028 13.603 13.8816ZM13.9085 10.7002C13.63 11.8156 11.9114 11.2489 11.3539 11.1099L11.8455 9.1384C12.4031 9.27732 14.1985 9.53661 13.9085 10.7002Z"
+                                  fill="inherit"
+                              />
+                          </svg>
+                          <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                              Crypto
+                          </p>
+                      </div>
+                      <div
+                          class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                          data-method="wallet"
+                      >
+                          <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  class="group-hover:fill-primary-300"
+                                  d="M4.125 3C2.67715 3 1.5 4.15313 1.5 5.57143V18.4286C1.5 19.8469 2.67715 21 4.125 21H19.875C21.3229 21 22.5 19.8469 22.5 18.4286V9.42857C22.5 8.01027 21.3229 6.85714 19.875 6.85714H4.78125C4.42031 6.85714 4.125 6.56786 4.125 6.21429C4.125 5.86071 4.42031 5.57143 4.78125 5.57143H19.875C20.601 5.57143 21.1875 4.99688 21.1875 4.28571C21.1875 3.57455 20.601 3 19.875 3H4.125ZM18.5625 12.6429C18.9106 12.6429 19.2444 12.7783 19.4906 13.0194C19.7367 13.2606 19.875 13.5876 19.875 13.9286C19.875 14.2696 19.7367 14.5966 19.4906 14.8377C19.2444 15.0788 18.9106 15.2143 18.5625 15.2143C18.2144 15.2143 17.8806 15.0788 17.6344 14.8377C17.3883 14.5966 17.25 14.2696 17.25 13.9286C17.25 13.5876 17.3883 13.2606 17.6344 13.0194C17.8806 12.7783 18.2144 12.6429 18.5625 12.6429Z"
+                                  fill="inherit"
+                              />
+                          </svg>
+                          <p class="card-label text-sm group-hover:text-primary-300 leading-16-94">
+                              Wallet
+                          </p>
+                      </div>
+                  </div>
+                  <!-- PAYMENT METHODS CARDS END -->
+              </div>
+              <div class="flex flex-col gap-4">
+                  <div class="bg-bright-gray rounded-lg p-4 flex justify-between">
+                      <div class="flex gap-4 items-start">
+                          <img src="../assets/Mastercard image.svg" class="ma-w-full inline-block align-middle" />
+                          <div class="flex flex-col gap-2">
+                              <p class="font-inter text-sm leading-16-94 text-charleston-green">•••• 4000</p>
+                              <p class="font-inter text-xs leading-3 text-light-400">Exp. 08/24</p>
+                          </div>
+                      </div>
+                      <a href="#" id="change-card" class="font-inter text-sm leading-16-94 font-medium text-primary-300">Change</a>
+                  </div>
+                  <div class="w-full flex flex-col gap-2">
+                      <button id="" class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Continue
+                      </button>
+                      <!-- <button
                 id="pay-later"
                 class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
               >
                 Pay Later
-              </button>
-            </div>
-            <!-- FORM ACTION BUTTONS END -->
+              </button> -->
+                  </div>
+              </div>
           </div>
-          <!-- BANK METHOD FIELDS END -->
-
-          <!-- CRYPTO METHOD FIELDS START -->
-          <div class="fields hidden flex flex-col gap-4" data-method="crypto">
-            <div class="flex flex-col gap-8">
-              <div class="flex flex-col gap-2">
-                <p class="text-[16px] font-medium">
-                  0.00002054 BTC = $1.28 USD
-                </p>
-                <div class="flex gap-2 items-center">
-                  <svg
-                    width="16"
-                    height="17"
-                    viewBox="0 0 16 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.0026 15.1654C11.6845 15.1654 14.6693 12.1806 14.6693 8.4987C14.6693 4.8168 11.6845 1.83203 8.0026 1.83203C4.32071 1.83203 1.33594 4.8168 1.33594 8.4987C1.33594 12.1806 4.32071 15.1654 8.0026 15.1654Z"
-                      stroke="#E93939"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M8 11.1667V8.5"
-                      stroke="#E93939"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M8 5.83203H8.01"
-                      stroke="#E93939"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  <p class="text-sm font-normal">
-                    <span id="countdown" class="text-error">4:23</span>
-                    <span class="opacity-60"
-                      >until the next BTC price change</span
-                    >
-                  </p>
-                </div>
-              </div>
-              <div
-                id="crypto-pay"
-                class="w-full mx-auto flex flex-col gap-4 items-center"
-              >
-                <div class="w-[320] h-[320]">
-                  <img
-                    class="qr-img"
-                    src="/assets/qr.png"
-                    alt="QR code"
-                    data-qr="onchain"
-                  />
-                  <img
-                    class="hidden qr-img"
-                    src="/assets/qr2.png"
-                    alt="QR code"
-                    data-qr="lightning"
-                  />
-                </div>
-                <div class="flex items-center gap-1">
-                  <p class="text-sm opacity-60">
-                    BTC Address: 2MzCTW3pxV3Z8uksr6z...
-                  </p>
-                  <svg
-                    class="cursor-pointer"
-                    width="17"
-                    height="16"
-                    viewBox="0 0 17 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.1641 2.66797H12.4974C12.851 2.66797 13.1902 2.80844 13.4402 3.05849C13.6903 3.30854 13.8307 3.64768 13.8307 4.0013V13.3346C13.8307 13.6883 13.6903 14.0274 13.4402 14.2774C13.1902 14.5275 12.851 14.668 12.4974 14.668H4.4974C4.14377 14.668 3.80464 14.5275 3.55459 14.2774C3.30454 14.0274 3.16406 13.6883 3.16406 13.3346V4.0013C3.16406 3.64768 3.30454 3.30854 3.55459 3.05849C3.80464 2.80844 4.14377 2.66797 4.4974 2.66797H5.83073"
-                      stroke="black"
-                      stroke-opacity="0.6"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M10.5026 1.33203H6.5026C6.13441 1.33203 5.83594 1.63051 5.83594 1.9987V3.33203C5.83594 3.70022 6.13441 3.9987 6.5026 3.9987H10.5026C10.8708 3.9987 11.1693 3.70022 11.1693 3.33203V1.9987C11.1693 1.63051 10.8708 1.33203 10.5026 1.33203Z"
-                      stroke="black"
-                      stroke-opacity="0.6"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div class="flex">
-                  <button
-                    class="qr-type-btn bg-primary-300 hover:bg-primary-200 rounded-l-lg font-medium text-base leading-[19px] flex items-center justify-center cursor-pointer py-4 px-6 border-[none] text-white"
-                    data-qr="onchain"
-                  >
-                    OnChain
-                  </button>
-                  <button
-                    class="qr-type-btn bg-white hover:bg-primary-200 hover:text-white rounded-r-lg font-medium text-base leading-[19px] flex items-center justify-center cursor-pointer py-4 px-6 border border-light-300"
-                    data-qr="lightning"
-                  >
-                    Lightning
-                  </button>
-                </div>
-              </div>
-              <div id="timeout" class="hidden flex flex-col gap-2">
-                <p class="text-base font-medium">Price Changed!</p>
-                <p class="opacity-60 text-sm">
-                  It appears that the time limit for the price change has
-                  expired on the transaction.
-                </p>
-                <button
-                  id="restart-timer"
-                  class="bg-primary-300 hover:bg-primary-200 font-normal text-base mt-2 leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white"
-                >
-                  Try Again
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- CRYPTO METHOD FIELDS END -->
-
-          <!-- WALLET METHOD FIELDS START -->
-          <div class="fields hidden flex flex-col gap-4" data-method="wallet">
-            <div class="p-4 rounded-lg border border-light-100">
-              <div class="flex flex-col gap-6">
-                <div class="flex items-center gap-4">
-                  <input
-                    type="radio"
-                    class="w-4 h-4"
-                    name="method"
-                    value="apple"
-                  />
-                  <img src="/assets/appleBtn.png" alt="apple pay" />
-                </div>
-                <button
-                  class="pay-now hidden w-full rounded-md bg-black hover:bg-opacity-90 p-4 flex justify-center items-center"
-                  data-wallet="apple"
-                >
-                  <img src="/assets/applePayLight.png" alt="apple pay light" />
-                </button>
-              </div>
-            </div>
-            <div class="p-4 rounded-lg border border-light-100">
-              <div class="flex flex-col gap-6">
-                <div class="flex items-center gap-4">
-                  <input
-                    type="radio"
-                    class="w-4 h-4"
-                    name="method"
-                    value="gpay"
-                  />
-                  <img src="/assets/gpayBtn.png" alt="gpay" />
-                </div>
-                <button
-                  class="pay-now hidden w-full rounded-md bg-black hover:bg-opacity-90 p-4 flex justify-center items-center"
-                  data-wallet="gpay"
-                >
-                  <img src="/assets/gpayLight.png" alt="google pay light" />
-                </button>
-              </div>
-            </div>
-            <div class="p-4 rounded-lg border border-light-100">
-              <div class="flex flex-col gap-6">
-                <div class="flex items-center gap-4">
-                  <input
-                    type="radio"
-                    class="w-4 h-4"
-                    name="method"
-                    value="paypal"
-                  />
-                  <img src="/assets/paypalBtn.png" alt="paypal" />
-                </div>
-                <button
-                  class="pay-now hidden w-full rounded-md bg-[#FFC43A] hover:bg-opacity-80 p-4 flex justify-center items-center"
-                  data-wallet="paypal"
-                >
-                  <img src="/assets/paypalBtn.png" alt="paypal" />
-                </button>
-              </div>
-            </div>
-            <div class="p-4 rounded-lg border border-light-100">
-              <div class="flex flex-col gap-6">
-                <div class="flex items-center gap-4">
-                  <input
-                    type="radio"
-                    class="w-4 h-4"
-                    name="method"
-                    value="venmo"
-                  />
-                  <img src="/assets/venmoBtn.png" alt="venmp" />
-                </div>
-                <button
-                  class="pay-now hidden w-full rounded-md bg-[#3D95CE] hover:bg-opacity-90 p-4 flex justify-center items-center"
-                  data-wallet="venmo"
-                >
-                  <img src="/assets/venmoLight.png" alt="venmo" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- WALLET METHOD FIELDS END -->
-        </form>
-        <div
-          class="mt-8 text-center uppercase font-medium text-xs text-light-50"
-        >
-          <p>Powered by: Lyfecycle Payments</p>
-        </div>
+          <!--cards-page ends -->
       </div>
-      <!-- FORM SECTION ENDS -->
+      <!-- otp form ends -->
+  
+      <!-- change-card starts -->
+      <div id="card-option" class="hidden">
+          <div class="flex flex-col gap-8">
+              <div class="flex flex-row justify-between w-full">
+                  <div class="flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm">
+                          Change Card
+                      </p>
+                      <p class="font-inter text-sm text-light-400">Change primary card for future payments</p>
+                  </div>
+                  <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16.7852" cy="15" r="15" fill="black" fill-opacity="0.08" />
+                      <path
+                          d="M11.707 20.4531C11.5768 20.3229 11.4909 20.1719 11.4492 20C11.4076 19.8229 11.4076 19.6484 11.4492 19.4766C11.4909 19.3047 11.5742 19.1562 11.6992 19.0312L15.3633 15.3672L11.6992 11.7109C11.5742 11.5859 11.4909 11.4375 11.4492 11.2656C11.4076 11.0938 11.4076 10.9219 11.4492 10.75C11.4909 10.5729 11.5768 10.4193 11.707 10.2891C11.832 10.1641 11.9805 10.0807 12.1523 10.0391C12.3294 9.99219 12.5039 9.99219 12.6758 10.0391C12.8529 10.0807 13.0039 10.1615 13.1289 10.2812L16.7852 13.9453L20.4492 10.2891C20.5742 10.1641 20.7201 10.0807 20.8867 10.0391C21.0586 9.99219 21.2305 9.99219 21.4023 10.0391C21.5794 10.0807 21.7305 10.1667 21.8555 10.2969C21.9909 10.4219 22.0794 10.5729 22.1211 10.75C22.1628 10.9219 22.1628 11.0938 22.1211 11.2656C22.0794 11.4375 21.9935 11.5859 21.8633 11.7109L18.2148 15.3672L21.8633 19.0312C21.9935 19.1562 22.0794 19.3047 22.1211 19.4766C22.1628 19.6484 22.1628 19.8229 22.1211 20C22.0794 20.1719 21.9909 20.3203 21.8555 20.4453C21.7305 20.5755 21.5794 20.6641 21.4023 20.7109C21.2305 20.7526 21.0586 20.7526 20.8867 20.7109C20.7201 20.6693 20.5742 20.5833 20.4492 20.4531L16.7852 16.7969L13.1289 20.4609C13.0039 20.5807 12.8529 20.6641 12.6758 20.7109C12.5039 20.7526 12.3294 20.7526 12.1523 20.7109C11.9805 20.6641 11.832 20.5781 11.707 20.4531Z"
+                          fill="black"
+                          fill-opacity="0.38"
+                      />
+                  </svg>
+              </div>
+              <form class="flex flex-col gap-4">
+                  <label class="bg-bright-gray rounded-lg p-4 flex justify-between" for="default-radio-1">
+                      <div class="flex gap-8">
+                          <input type="radio" name="default-radio" checked id="default-radio-1" />
+                          <div class="flex gap-4 items-start">
+                              <img src="../assets/Mastercard image.svg" class="ma-w-full inline-block align-middle" />
+                              <div class="flex flex-col gap-2">
+                                  <p class="font-inter text-sm leading-16-94 text-charleston-green">•••• 4242</p>
+                                  <p class="font-inter text-xs leading-3 text-light-400">Exp. 08/24</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="flex justify-center items-center gap-4">
+                          <div class="flex gap-4 hidden option-data">
+                              <p class="text-sm leading-16-94 font-medium font-inter text-deep-carmine-pink">Remove</p>
+                              <p class="text-sm leading-16-94 font-medium font-inter text-primary-300" id="update-card">Update</p>
+                          </div>
+                          <a href="#" class="option font-inter text-sm leading-16-94 font-medium text-primary-300">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                      d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                      stroke="black"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                                  <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                  <path
+                                      d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+                                      stroke="black"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                              </svg>
+                          </a>
+                      </div>
+                  </label>
+                  <label class="bg-bright-gray rounded-lg p-4 flex justify-between" for="default-radio-2">
+                      <div class="flex gap-8">
+                          <input type="radio" name="default-radio" id="default-radio-2" />
+                          <div class="flex gap-4 items-start">
+                              <img src="../assets/Mastercard image.svg" class="ma-w-full inline-block align-middle" />
+                              <div class="flex flex-col gap-2">
+                                  <p class="font-inter text-sm leading-16-94 text-charleston-green">•••• 5000</p>
+                                  <p class="font-inter text-xs leading-3 text-light-400">Exp. 08/24</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="flex justify-center items-center gap-4">
+                          <div class="flex gap-4 hidden option-data">
+                              <p class="text-sm leading-16-94 font-medium font-inter text-deep-carmine-pink">Remove</p>
+                              <p class="text-sm leading-16-94 font-medium font-inter text-primary-300">Update</p>
+                          </div>
+                          <a href="#" class="option font-inter text-sm leading-16-94 font-medium text-primary-300">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                      d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                      stroke="black"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                                  <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                  <path
+                                      d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+                                      stroke="black"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                  />
+                              </svg>
+                          </a>
+                      </div>
+                  </label>
+                  <div class="bg-bright-gray rounded-lg p-4">
+                      <a href="#" id="new-card" class="flex gap-2">
+                          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M14 8.5L2 8.5" stroke="#1757D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M8 2.5L8 14.5" stroke="#1757D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <p class="text-sm leading-16-94 font-medium font-inter text-primary-300" id="">New Card</p>
+                      </a>
+                  </div>
+                  <div class="w-full flex flex-col gap-2">
+                      <button id="" class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Save
+                      </button>
+                      <!-- <button
+                id="pay-later"
+                class="bg-white hover:bg-primary-200 hover:text-white font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border border-primary-300 text-primary-300"
+              >
+                Pay Later
+              </button> -->
+                  </div>
+              </form>
+          </div>
+      </div>
+      <!-- change cards ends -->
+      <!-- update-card start -->
+      <div id="update-card-details" class="hidden">
+          <div class="flex flex-col gap-8">
+              <div class="flex flex-row justify-between w-full">
+                  <div class="flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm">
+                          Update Card
+                      </p>
+                      <p class="font-inter text-sm text-light-400">Update existing card details</p>
+                  </div>
+                  <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16.7852" cy="15" r="15" fill="black" fill-opacity="0.08" />
+                      <path
+                          d="M11.707 20.4531C11.5768 20.3229 11.4909 20.1719 11.4492 20C11.4076 19.8229 11.4076 19.6484 11.4492 19.4766C11.4909 19.3047 11.5742 19.1562 11.6992 19.0312L15.3633 15.3672L11.6992 11.7109C11.5742 11.5859 11.4909 11.4375 11.4492 11.2656C11.4076 11.0938 11.4076 10.9219 11.4492 10.75C11.4909 10.5729 11.5768 10.4193 11.707 10.2891C11.832 10.1641 11.9805 10.0807 12.1523 10.0391C12.3294 9.99219 12.5039 9.99219 12.6758 10.0391C12.8529 10.0807 13.0039 10.1615 13.1289 10.2812L16.7852 13.9453L20.4492 10.2891C20.5742 10.1641 20.7201 10.0807 20.8867 10.0391C21.0586 9.99219 21.2305 9.99219 21.4023 10.0391C21.5794 10.0807 21.7305 10.1667 21.8555 10.2969C21.9909 10.4219 22.0794 10.5729 22.1211 10.75C22.1628 10.9219 22.1628 11.0938 22.1211 11.2656C22.0794 11.4375 21.9935 11.5859 21.8633 11.7109L18.2148 15.3672L21.8633 19.0312C21.9935 19.1562 22.0794 19.3047 22.1211 19.4766C22.1628 19.6484 22.1628 19.8229 22.1211 20C22.0794 20.1719 21.9909 20.3203 21.8555 20.4453C21.7305 20.5755 21.5794 20.6641 21.4023 20.7109C21.2305 20.7526 21.0586 20.7526 20.8867 20.7109C20.7201 20.6693 20.5742 20.5833 20.4492 20.4531L16.7852 16.7969L13.1289 20.4609C13.0039 20.5807 12.8529 20.6641 12.6758 20.7109C12.5039 20.7526 12.3294 20.7526 12.1523 20.7109C11.9805 20.6641 11.832 20.5781 11.707 20.4531Z"
+                          fill="black"
+                          fill-opacity="0.38"
+                      />
+                  </svg>
+              </div>
+              <form class="flex flex-col gap-4">
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">card number <span class="text-deep-carmine-pink">*</span></p>
+                      <input
+                          required
+                          class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400"
+                          type="text"
+                          placeholder="6666 6666 6666 6666"
+                          value="4242 4242 4242 4242"
+                      />
+                  </div>
+                  <div class="two-fields flex justify-between items-center gap-4">
+                      <div class="form-field flex flex-col gap-2 w-full">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Expiry <span class="text-deep-carmine-pink">*</span></p>
+                          <select required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" name="" id="">
+                              <option value="" disabled selected>08/24</option>
+                              <option value="">Option 1</option>
+                              <option value="">Option 2</option>
+                              <option value="">Option 3</option>
+                              <option value="">Option 4</option>
+                          </select>
+                      </div>
+                      <div class="form-field flex flex-col gap-2">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Security Code <span class="text-deep-carmine-pink">*</span></p>
+                          <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="CVV" />
+                      </div>
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Name on Card <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="Name" />
+                  </div>
+                  
+                  <!-- FORM ACTION BUTTONS START -->
+                  <div class="w-full flex flex-col gap-2">
+                      <button id="" class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Update
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <!-- updte-card ends -->
+      <!-- New Card starts -->
+      <div id="new-card-details" class="hidden">
+          <div class="flex flex-col gap-8">
+              <div class="flex flex-row justify-between w-full">
+                  <div class="flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm">
+                          New Card
+                      </p>
+                      <p class="font-inter text-sm text-light-400">Create a new card</p>
+                  </div>
+                  <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16.7852" cy="15" r="15" fill="black" fill-opacity="0.08" />
+                      <path
+                          d="M11.707 20.4531C11.5768 20.3229 11.4909 20.1719 11.4492 20C11.4076 19.8229 11.4076 19.6484 11.4492 19.4766C11.4909 19.3047 11.5742 19.1562 11.6992 19.0312L15.3633 15.3672L11.6992 11.7109C11.5742 11.5859 11.4909 11.4375 11.4492 11.2656C11.4076 11.0938 11.4076 10.9219 11.4492 10.75C11.4909 10.5729 11.5768 10.4193 11.707 10.2891C11.832 10.1641 11.9805 10.0807 12.1523 10.0391C12.3294 9.99219 12.5039 9.99219 12.6758 10.0391C12.8529 10.0807 13.0039 10.1615 13.1289 10.2812L16.7852 13.9453L20.4492 10.2891C20.5742 10.1641 20.7201 10.0807 20.8867 10.0391C21.0586 9.99219 21.2305 9.99219 21.4023 10.0391C21.5794 10.0807 21.7305 10.1667 21.8555 10.2969C21.9909 10.4219 22.0794 10.5729 22.1211 10.75C22.1628 10.9219 22.1628 11.0938 22.1211 11.2656C22.0794 11.4375 21.9935 11.5859 21.8633 11.7109L18.2148 15.3672L21.8633 19.0312C21.9935 19.1562 22.0794 19.3047 22.1211 19.4766C22.1628 19.6484 22.1628 19.8229 22.1211 20C22.0794 20.1719 21.9909 20.3203 21.8555 20.4453C21.7305 20.5755 21.5794 20.6641 21.4023 20.7109C21.2305 20.7526 21.0586 20.7526 20.8867 20.7109C20.7201 20.6693 20.5742 20.5833 20.4492 20.4531L16.7852 16.7969L13.1289 20.4609C13.0039 20.5807 12.8529 20.6641 12.6758 20.7109C12.5039 20.7526 12.3294 20.7526 12.1523 20.7109C11.9805 20.6641 11.832 20.5781 11.707 20.4531Z"
+                          fill="black"
+                          fill-opacity="0.38"
+                      />
+                  </svg>
+              </div>
+              <form class="flex flex-col gap-4">
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">card number <span class="text-deep-carmine-pink">*</span></p>
+                      <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="6666 6666 6666 6666" />
+                  </div>
+                  <div class="two-fields flex justify-between items-center gap-4">
+                      <div class="form-field flex flex-col gap-2 w-full">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Expiry <span class="text-deep-carmine-pink">*</span></p>
+                          <select required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" name="" id="">
+                              <option value="" disabled selected>MM/YY</option>
+                              <option value="">Option 1</option>
+                              <option value="">Option 2</option>
+                              <option value="">Option 3</option>
+                              <option value="">Option 4</option>
+                          </select>
+                      </div>
+                      <div class="form-field flex flex-col gap-2">
+                          <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Security Code <span class="text-deep-carmine-pink">*</span></p>
+                          <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="CVV" />
+                      </div>
+                  </div>
+                  <div class="form-field flex flex-col gap-2">
+                      <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Name on Card <span class="text-deep-carmine-pink">*</span></p>
+                      <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="Name" />
+                  </div>
+                  <div class="tnc flex items-center gap-4">
+                      <input checked id="red-checkbox" type="checkbox" value="" class="w-6 h-6 text-white !border-primary-300 border-2 rounded-lg" />
+                      <p class="uppercase font-medium text-xs text-light-500">Save card securely for future payments.</p>
+                  </div>
+                  <!-- FORM ACTION BUTTONS START -->
+                  <div class="w-full flex flex-col gap-2">
+                      <button id="" class="bg-primary-300 hover:bg-primary-200 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">
+                          Save
+                      </button>
+                  </div>
+              </form>
+          </div>
+          <!-- New Card ends -->
+      </div>
+      <div class="mt-8 text-center uppercase font-medium text-xs text-light-50 flex justify-between items-center">
+        <p class="text-left">Powered by: Lyfecycle Payments</p>
+        <div id="overlay" class="fixed top-0 left-0 h-full w-full bg-light-14 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-999"></div>
+        <a href="#" id="setting-menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_2346_1411)">
+                    <path
+                        d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                        stroke="black"
+                        stroke-opacity="0.6"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                    <path
+                        d="M19.4 15C19.2669 15.3016 19.2272 15.6362 19.286 15.9606C19.3448 16.285 19.4995 16.5843 19.73 16.82L19.79 16.88C19.976 17.0657 20.1235 17.2863 20.2241 17.5291C20.3248 17.7719 20.3766 18.0322 20.3766 18.295C20.3766 18.5578 20.3248 18.8181 20.2241 19.0609C20.1235 19.3037 19.976 19.5243 19.79 19.71C19.6043 19.896 19.3837 20.0435 19.1409 20.1441C18.8981 20.2448 18.6378 20.2966 18.375 20.2966C18.1122 20.2966 17.8519 20.2448 17.6091 20.1441C17.3663 20.0435 17.1457 19.896 16.96 19.71L16.9 19.65C16.6643 19.4195 16.365 19.2648 16.0406 19.206C15.7162 19.1472 15.3816 19.1869 15.08 19.32C14.7842 19.4468 14.532 19.6572 14.3543 19.9255C14.1766 20.1938 14.0813 20.5082 14.08 20.83V21C14.08 21.5304 13.8693 22.0391 13.4942 22.4142C13.1191 22.7893 12.6104 23 12.08 23C11.5496 23 11.0409 22.7893 10.6658 22.4142C10.2907 22.0391 10.08 21.5304 10.08 21V20.91C10.0723 20.579 9.96512 20.258 9.77251 19.9887C9.5799 19.7194 9.31074 19.5143 9 19.4C8.69838 19.2669 8.36381 19.2272 8.03941 19.286C7.71502 19.3448 7.41568 19.4995 7.18 19.73L7.12 19.79C6.93425 19.976 6.71368 20.1235 6.47088 20.2241C6.22808 20.3248 5.96783 20.3766 5.705 20.3766C5.44217 20.3766 5.18192 20.3248 4.93912 20.2241C4.69632 20.1235 4.47575 19.976 4.29 19.79C4.10405 19.6043 3.95653 19.3837 3.85588 19.1409C3.75523 18.8981 3.70343 18.6378 3.70343 18.375C3.70343 18.1122 3.75523 17.8519 3.85588 17.6091C3.95653 17.3663 4.10405 17.1457 4.29 16.96L4.35 16.9C4.58054 16.6643 4.73519 16.365 4.794 16.0406C4.85282 15.7162 4.81312 15.3816 4.68 15.08C4.55324 14.7842 4.34276 14.532 4.07447 14.3543C3.80618 14.1766 3.49179 14.0813 3.17 14.08H3C2.46957 14.08 1.96086 13.8693 1.58579 13.4942C1.21071 13.1191 1 12.6104 1 12.08C1 11.5496 1.21071 11.0409 1.58579 10.6658C1.96086 10.2907 2.46957 10.08 3 10.08H3.09C3.42099 10.0723 3.742 9.96512 4.0113 9.77251C4.28059 9.5799 4.48572 9.31074 4.6 9C4.73312 8.69838 4.77282 8.36381 4.714 8.03941C4.65519 7.71502 4.50054 7.41568 4.27 7.18L4.21 7.12C4.02405 6.93425 3.87653 6.71368 3.77588 6.47088C3.67523 6.22808 3.62343 5.96783 3.62343 5.705C3.62343 5.44217 3.67523 5.18192 3.77588 4.93912C3.87653 4.69632 4.02405 4.47575 4.21 4.29C4.39575 4.10405 4.61632 3.95653 4.85912 3.85588C5.10192 3.75523 5.36217 3.70343 5.625 3.70343C5.88783 3.70343 6.14808 3.75523 6.39088 3.85588C6.63368 3.95653 6.85425 4.10405 7.04 4.29L7.1 4.35C7.33568 4.58054 7.63502 4.73519 7.95941 4.794C8.28381 4.85282 8.61838 4.81312 8.92 4.68H9C9.29577 4.55324 9.54802 4.34276 9.72569 4.07447C9.90337 3.80618 9.99872 3.49179 10 3.17V3C10 2.46957 10.2107 1.96086 10.5858 1.58579C10.9609 1.21071 11.4696 1 12 1C12.5304 1 13.0391 1.21071 13.4142 1.58579C13.7893 1.96086 14 2.46957 14 3V3.09C14.0013 3.41179 14.0966 3.72618 14.2743 3.99447C14.452 4.26276 14.7042 4.47324 15 4.6C15.3016 4.73312 15.6362 4.77282 15.9606 4.714C16.285 4.65519 16.5843 4.50054 16.82 4.27L16.88 4.21C17.0657 4.02405 17.2863 3.87653 17.5291 3.77588C17.7719 3.67523 18.0322 3.62343 18.295 3.62343C18.5578 3.62343 18.8181 3.67523 19.0609 3.77588C19.3037 3.87653 19.5243 4.02405 19.71 4.21C19.896 4.39575 20.0435 4.61632 20.1441 4.85912C20.2448 5.10192 20.2966 5.36217 20.2966 5.625C20.2966 5.88783 20.2448 6.14808 20.1441 6.39088C20.0435 6.63368 19.896 6.85425 19.71 7.04L19.65 7.1C19.4195 7.33568 19.2648 7.63502 19.206 7.95941C19.1472 8.28381 19.1869 8.61838 19.32 8.92V9C19.4468 9.29577 19.6572 9.54802 19.9255 9.72569C20.1938 9.90337 20.5082 9.99872 20.83 10H21C21.5304 10 22.0391 10.2107 22.4142 10.5858C22.7893 10.9609 23 11.4696 23 12C23 12.5304 22.7893 13.0391 22.4142 13.4142C22.0391 13.7893 21.5304 14 21 14H20.91C20.5882 14.0013 20.2738 14.0966 20.0055 14.2743C19.7372 14.452 19.5268 14.7042 19.4 15Z"
+                        stroke="black"
+                        stroke-opacity="0.6"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </g>
+                <defs>
+                    <clipPath id="clip0_2346_1411">
+                        <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </a>
+    </div>
+    <div class="bg-white absolute py-10 w-full lg:w-[640px] px-6 hidden rounded-br-lg rounded-bl-lg fixed z-1000" id="setting">
+        <div class="flex flex-col gap-8">
+            <div class="flex justify-between">
+                <p class="text-base font-semibold text-light-500 leading-5">Settings</p>
+                <a href="#" id="close-setting">
+                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.918 8.01953L8.01847 17.919" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8.01953 8.01953L17.919 17.919" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+            <p class="text-base font-medium text-light-500 leading-5">Change Language</p>
+            <p class="text-base font-medium text-light-500 leading-5">Log out</p>
+        </div>
+    </div>
+  </div>
+  
+      
 
-      <!-- DONE SECTION START -->
-      <div id="done-section" class="hidden">
+    <!-- FORM SECTION ENDS -->
+    <!-- DONE SECTION START -->
+    <div id="done-section" class="hidden">
         <div
           class="max-w-xl w-[350px] h-fit md:w-[544px] mx-auto px-8 py-12 rounded-lg mt-[104px] bg-white flex justify-center items-center"
         >
@@ -621,100 +1351,79 @@
           </div>
         </div>
       </div>
-      <!-- DONE SECTION ENDS -->
+    <!-- DONE SECTION ENDS -->
 
-      <!-- LOADING START -->
-      <div id="loader" class="hidden flex justify-center items-center">
-        <div class="min-w-44">
-          <img src="/assets/Loading.png" class="loader" alt="loader" />
-          <p class="text-[16px] font-medium text-center mt-5">
-            Payment processing...
-          </p>
-        </div>
+    <!-- LOADING START -->
+    <div id="loader" class="hidden flex justify-center items-center">
+      <div class="min-w-44">
+        <img src="../assets/Loading.png" class="loader" alt="loader" />
+        <p class="text-[16px] font-medium text-center mt-5">
+          Payment processing...
+        </p>
       </div>
-      <!-- LOADING ENDS -->
     </div>
-    <!-- MODAL START -->
-    <div id="modal" class="hidden absolute top-0">
-      <div
-        class="p-4 h-screen w-screen flex justify-center items-center bg-[#00000014]"
-      >
-        <div
-          class="bg-white p-6 lg:p-8 max-h-[95%] overflow-y-auto h-fit w-full lg:w-[544px] rounded-lg"
-        >
-          <div class="flex justify-between items-center">
-            <p class="text-[16] font-medium">Terms & Conditions</p>
-            <svg
-              id="close"
-              class="cursor-pointer"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16 8L8.00072 15.9993"
-                stroke="black"
-                stroke-opacity="0.6"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M8 8L15.9993 15.9993"
-                stroke="black"
-                stroke-opacity="0.6"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+    <!-- LOADING ENDS -->
+  </div>
+  <!-- MODAL START -->
+  <div id="modal" class="hidden absolute top-0">
+    <div class="p-4 h-screen w-screen flex justify-center items-center bg-[#00000014]">
+      <div class="bg-white p-6 lg:p-8 max-h-[95%] overflow-y-auto h-fit w-full lg:w-[544px] rounded-lg">
+        <div class="flex justify-between items-center">
+          <p class="text-[16] font-medium">Terms & Conditions</p>
+          <svg id="close" class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8L8.00072 15.9993" stroke="black" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M8 8L15.9993 15.9993" stroke="black" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="mt-4 flex flex-col gap-2">
+          <div class="flex flex-col gap-2 text-sm font-normal">
+            <p class="opacity-60">ACH Authorization Language</p>
+            <p>
+              By clicking the box below and clicking the “Pay Now” button I
+              authorize Ninth Peak Industries to debit the bank account
+              indicated on this form for the noted amount. I understand that
+              in the event this ACH transaction is returned by my financial
+              institution, I may be subject to a returned item fee. I have
+              read and understand the cancellation and return policy outlined
+              in the Terms and Conditions and agree to allow Ninth Peak
+              Industries a reasonable opportunity to act in response it.
+            </p>
           </div>
-          <div class="mt-4 flex flex-col gap-2">
-            <div class="flex flex-col gap-2 text-sm font-normal">
-              <p class="opacity-60">ACH Authorization Language</p>
-              <p>
-                By clicking the box below and clicking the “Pay Now” button I
-                authorize Ninth Peak Industries to debit the bank account
-                indicated on this form for the noted amount. I understand that
-                in the event this ACH transaction is returned by my financial
-                institution, I may be subject to a returned item fee. I have
-                read and understand the cancellation and return policy outlined
-                in the Terms and Conditions and agree to allow Ninth Peak
-                Industries a reasonable opportunity to act in response it.
-              </p>
-            </div>
-            <div class="flex flex-col gap-2 text-sm font-normal">
-              <p class="opacity-60">ACH Authorization Language</p>
-              <p>
-                By clicking the box below and clicking the “Pay Now” button I
-                authorize Ninth Peak Industries to debit the bank account
-                indicated on this form for the noted amount. I understand that
-                in the event this ACH transaction is returned by my financial
-                institution, I may be subject to a returned item fee. I have
-                read and understand the cancellation and return policy outlined
-                in the Terms and Conditions and agree to allow Ninth Peak
-                Industries a reasonable opportunity to act in response it.
-              </p>
-            </div>
-            <div class="flex flex-col gap-2 text-sm font-normal">
-              <p class="opacity-60">ACH Authorization Language</p>
-              <p>
-                By clicking the box below and clicking the “Pay Now” button I
-                authorize Ninth Peak Industries to debit the bank account
-                indicated on this form for the noted amount. I understand that
-                in the event this ACH transaction is returned by my financial
-                institution, I may be subject to a returned item fee. I have
-                read and understand the cancellation and return policy outlined
-                in the Terms and Conditions and agree to allow Ninth Peak
-                Industries a reasonable opportunity to act in response it.
-              </p>
-            </div>
+          <div class="flex flex-col gap-2 text-sm font-normal">
+            <p class="opacity-60">ACH Authorization Language</p>
+            <p>
+              By clicking the box below and clicking the “Pay Now” button I
+              authorize Ninth Peak Industries to debit the bank account
+              indicated on this form for the noted amount. I understand that
+              in the event this ACH transaction is returned by my financial
+              institution, I may be subject to a returned item fee. I have
+              read and understand the cancellation and return policy outlined
+              in the Terms and Conditions and agree to allow Ninth Peak
+              Industries a reasonable opportunity to act in response it.
+            </p>
+          </div>
+          <div class="flex flex-col gap-2 text-sm font-normal">
+            <p class="opacity-60">ACH Authorization Language</p>
+            <p>
+              By clicking the box below and clicking the “Pay Now” button I
+              authorize Ninth Peak Industries to debit the bank account
+              indicated on this form for the noted amount. I understand that
+              in the event this ACH transaction is returned by my financial
+              institution, I may be subject to a returned item fee. I have
+              read and understand the cancellation and return policy outlined
+              in the Terms and Conditions and agree to allow Ninth Peak
+              Industries a reasonable opportunity to act in response it.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <!-- MODAL ENDS -->
-  </body>
+  </div>
+  <!-- MODAL ENDS -->
+  <script src="../node_modules/flowbite/dist/flowbite.js"></script>
+</body>
+
 </html>
