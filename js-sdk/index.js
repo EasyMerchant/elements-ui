@@ -288,7 +288,14 @@
 
 let digitValidate = function(ele){
   console.log(ele.value);
-  ele.value = ele.value.replace(/[^0-9]/g,'');
+  ele.value = ele.value.replace(/[^0-9]/g, '');
+  if (ele.value !== '') {
+    ele.style.backgroundColor = "#0000000a"; 
+    ele.style.fontColor="#000000 !important" // Change to your desired color
+  } else {
+    ele.style.backgroundColor = "";
+    ele.style.fontColor=""  // Reset background color if input is empty
+  }
 }
 
 let tabChange = function(val){
@@ -298,7 +305,8 @@ let tabChange = function(val){
     }else if(ele[val-1].value == ''){
       ele[val-2].focus();
     }   
- }
+}
+
 
  var timeLimitInMinutes = 3;
 var timeLimitInSeconds = timeLimitInMinutes * 60;
@@ -346,7 +354,7 @@ function toggleModal() {
       setting.style.display = "none"; // Hide the modal after the transition
       setting.style.opacity = "1"; // Reset opacity
       setting.style.pointerEvents = "auto"; // Re-enable pointer events
-      setting.style.bottom = '8%'; // Reset modal position
+      setting.style.bottom = '7%'; // Reset modal position
 
       overlay.style.display = "none"; // Hide the overlay
     }, 300); // Match the timeout with the transition duration
@@ -367,7 +375,7 @@ function toggleModal() {
     setTimeout(() => {
       setting.style.opacity = "1"; // Fade in the modal
       setting.style.pointerEvents = "auto"; // Re-enable pointer events
-      setting.style.bottom = '8%'; // Reset modal position
+      setting.style.bottom = '7%'; // Reset modal position
       setting.style.left = '27.75%';
     }, 100);
   }
@@ -394,7 +402,7 @@ function selectImage(imageSrc, name, price,  event) {
  price,  targetDiv.innerHTML = `
   <div class="flex justify-between w-full items-center">
   <div class="flex gap-3 items-center">
-    <img src="${imageSrc}" alt="Selected Image" class="w-8 h-8">
+    <img src="${imageSrc}" alt="Selected Image" class="w-8 h-8 rounded-lg">
     <p class="text-sm leading-5 font-inter text-light-500">${name}</p></div>
     <p class="text-sm leading-16-94 font-inter text-light-500">${price}</p></div>
   `;
@@ -415,3 +423,56 @@ function selectImage(imageSrc, name, price,  event) {
     paragraph.remove();
   }
 }
+
+
+// SVG icon as a string
+const svgIcon = `<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 10.2008L0 6.20078L1.4 4.80078L4 7.40078L10.6 0.800781L12 2.20078L4 10.2008Z" fill="#1757D9"/>
+</svg>`;
+
+// Open the popup when "Choose" is clicked
+document.getElementById('chooseBtn').addEventListener('click', function () {
+    document.getElementById('popup').classList.remove('hidden');
+});
+
+// Close the popup
+document.querySelector('.close-btn').addEventListener('click', function () {
+    document.getElementById('popup').classList.add('hidden');
+});
+
+// Select a cause
+document.querySelectorAll('.select-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        // Mark the current button as selected and add the SVG
+        btn.setAttribute('data-select', 'true');
+        btn.innerHTML = svgIcon + ' Selected'; // Add SVG icon before the "Selected" text
+        btn.classList.add('text-blue-800');
+    });
+});
+
+// Update the selected cause when "Done" is clicked
+document.getElementById('doneBtn').addEventListener('click', function () {
+    const selectedCause = document.querySelector('.select-btn[data-selected="true"]');
+    if (selectedCause) {
+        // Get the selected cause details
+        const causeName = selectedCause.closest('li').querySelector('strong').innerText;
+        const causeImage = selectedCause.closest('li').querySelector('img').src;
+        const causeAmount = selectedCause.closest('li').getAttribute('data-amount');  // Get the dynamic amount
+
+        // Update the displayed cause information
+        document.getElementById('selectedImage').src = causeImage;
+        document.getElementById('selectedName').innerText = causeName;
+        document.getElementById('selectedAmount').innerText = causeAmount;
+    }
+    // Hide the popup after selection
+    document.getElementById('popup').classList.add('hidden');
+});
+
+// Clear selections
+document.getElementById('clearBtn').addEventListener('click', function () {
+    document.querySelectorAll('.select-btn').forEach(function (button) {
+        button.innerHTML = 'Select'; // Reset text to "Select"
+        button.setAttribute('data-select', 'false');
+        button.classList.remove('text-blue-800');
+    });
+});
