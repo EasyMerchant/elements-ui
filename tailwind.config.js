@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./hpp/**/*.{html,js}", "./js-sdk/**/*.{html,js}"],
+  content: ["./hpp/**/*.{html,js}", "./js-sdk/**/*.{html,js}","./node_modules/flowbite/**/*.js"],
   mode: "jit",
   theme: {
     fontFamily: {
@@ -19,17 +19,34 @@ module.exports = {
         },
         error: "#e93939",
         light: {
-          400: "#666666",
+          500: "#000000de",
+          400: "#00000099",
           300: "#9e9e9e",
-          200: "#d6d6d6",
+          200: "#00000029",
           100: "#efefef",
           50: "#00000061",
+          14: "#00000014"
         },
+        "bright-gray":"#EDEFF2",
+        "deep-carmine-pink":'#E93939',
+        "charleston-green":'#2A2A2A',
       },
       maxWidth: {
         105: "105rem",
       },
+      lineHeight:{
+        "16-94":'16.94px',
+      },
+      padding:{
+        "017":'17px',
+      },
+      zIndex:{
+        "999":'999',
+        "1000":'1000'
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+  ],
 };
