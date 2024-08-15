@@ -21,7 +21,7 @@
     <!-- PAY BUTTON ENDS -->
 
     <!-- FORM SECTION START -->
-    <div id="pay-section" class="hidden form-container max-h-[90%] h-fit overflow-y-scroll p-8 w-full lg:w-[640px] bg-white rounded-lg">
+    <div id="pay-section" class="hidden form-container max-h-[90%] h-fit overflow-y-scroll p-8 pb-3 w-full lg:w-[640px] bg-white rounded-lg">
       <form action="" class="form flex flex-col gap-4" id="pay-section-form">
           <div class="payment-method flex flex-col gap-2">
               <p class="label capitalize font-semibold text-sm">
@@ -29,7 +29,7 @@
               </p>
               <!-- PAYMENT METHODS CARDS START -->
               <div class="methods flex gap-3 overflow-y-auto">
-                  <div class="method-card stroke-light-400 font-medium text-light-400 group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="card">
+                  <div class="method-card w-full stroke-light-400 font-medium text-light-400 group flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="card">
                       <svg class="with-stroke" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                               class="group-hover:stroke-primary-300"
@@ -45,7 +45,7 @@
                           Card
                       </p>
                   </div>
-                  <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="bank">
+                  <div class="method-card w-full group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="bank">
                       <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
                           <path
                               class="group-hover:fill-primary-300"
@@ -57,7 +57,7 @@
                           Bank
                       </p>
                   </div>
-                  <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="crypto">
+                  <div class="method-card w-full group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="crypto">
                       <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
                           <path
                               class="group-hover:fill-primary-300"
@@ -69,7 +69,7 @@
                           Crypto
                       </p>
                   </div>
-                  <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="wallet">
+                  <div class="method-card w-full group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="wallet">
                       <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
                           <path
                               class="group-hover:fill-primary-300"
@@ -131,7 +131,7 @@
                               <option value="">Option 4</option>
                           </select>
                       </div>
-                      <div class="form-field flex flex-col gap-2">
+                      <div class="form-field flex flex-col gap-2 w-full">
                           <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Security Code <span class="text-deep-carmine-pink">*</span></p>
                           <input required class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400" type="text" placeholder="CVV" />
                       </div>
@@ -194,7 +194,7 @@
                               <option value="">Option 4</option>
                           </select>
                       </div>
-                      <div class="form-field flex flex-col gap-2">
+                      <div class="form-field flex flex-col gap-2 w-full">
                           <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">Zip <span class="text-deep-carmine-pink">*</span></p>
                           <input class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500" type="text" placeholder="Zip" value="91423" />
                       </div>
@@ -223,7 +223,7 @@
                           <button
                               id="dropdown-phone-button"
                               data-dropdown-toggle="dropdown-phone"
-                              class="flex-shrink-0 z-10 inline-flex items-center px-4 py-017 text-sm leading-16-94 font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg border-r-0 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                              class="flex-shrink-0 inline-flex items-center px-4 py-017 text-sm leading-16-94 font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg border-r-0 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
                               type="button"
                           >
                               <svg fill="none" aria-hidden="true" class="h-4 w-4 me-2" viewBox="0 0 20 15">
@@ -506,64 +506,74 @@
                         </div>
                       
                       <div>
-                          <a href="#" data-modal-target="default-modal" data-modal-toggle="default-modal" class="font-inter text-sm leading-16-94 font-medium text-primary-300">Choose</a>
-                          <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-auto">
-                              <div class="relative p-4 w-full max-w-2xl h-fit">
-                                  <!-- Modal content -->
-                                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 h-[380px]">
-                                      <!-- Modal header -->
-                                      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                              Round up and Donate:
-                                          </h3>
-                                          <button
-                                              type="button"
-                                              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                              data-modal-hide="default-modal"
-                                          >
-                                              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                              </svg>
-                                              <span class="sr-only">Close modal</span>
-                                          </button>
-                                      </div>
-                                      <div class="grid grid-cols-3 p-4 h-80">
-                                        <!-- Image 1 -->
-                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
-                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
-                                          <p class="text-center mt-2 text-sm">Cause Name</p>
-                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                          <a href="#" id="chooseBtn" class="font-inter text-sm leading-16-94 font-medium text-primary-300">Choose</a>
+                          <div id="popup" class="popup hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                            <div class="popup-content bg-white rounded-lg py-8 px-6 shadow-lg w-96">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-base font-semibold text-light-500 leading-5">
+                                      Support a Cause
+                                    </h3>
+                                    <button
+                                        type="button"
+                                        class="close-btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-5 h-5 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="default-modal"
+                                    >
+                                        
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M16 8L8.00072 15.9993" stroke="black" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                          <path d="M8 8L15.9993 15.9993" stroke="black" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg>
+                                    </button>
+                                </div>
+                                <ul id="causeList" class=" flex flex-col gap-4 my-8">
+                                    <li class="flex items-center justify-between items-center gap-4">
+                                        <div class="flex gap-4 items-start">
+                                        <img src="../assets/product.png" alt="Cause Name 2" class="w-8 h-8">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-sm font-inter leading-5 text-light-500">Cause Name</div> 
+                                            <a href="#" class="text-primary-300 text-xs leading-4 font-medium">Learn More</a>
                                         </div>
-                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
-                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
-                                          <p class="text-center mt-2 text-sm">Cause Name</p>
-                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                    </div>
+                                        <button class="select-btn flex gap-3 items-center text-primary-300 text-sm leading-16-94 font-semibold" data-select="false">Select</button>
+                                    </li>
+                                    <li class="flex items-center justify-between items-center gap-4">
+                                        <div class="flex gap-4 items-start">
+                                        <img src="../assets/product.png" alt="Cause Name 2" class="w-8 h-8">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-sm font-inter leading-5 text-light-500">Cause Name</div> 
+                                            <a href="#" class="text-primary-300 text-xs leading-4 font-medium">Learn More</a>
                                         </div>
-                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
-                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
-                                          <p class="text-center mt-2 text-sm">Cause Name</p>
-                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                    </div>
+                                        <button class="select-btn flex gap-3 items-center text-primary-300 text-sm leading-16-94 font-semibold" data-select="false">Select</button>
+                                    </li>
+                                    <li class="flex items-center justify-between items-center gap-4">
+                                        <div class="flex gap-4 items-start">
+                                        <img src="../assets/product.png" alt="Cause Name 2" class="w-8 h-8">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-sm font-inter leading-5 text-light-500">Cause Name</div> 
+                                            <a href="#" class="text-primary-300 text-xs leading-4 font-medium">Learn More</a>
                                         </div>
-                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
-                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
-                                          <p class="text-center mt-2 text-sm">Cause Name</p>
-                                          <p class="text-center mt-2 text-sm">$0.22</p>
+                                    </div>
+                                        <button class="select-btn flex gap-3 items-center text-primary-300 text-sm leading-16-94 font-semibold" data-select="false">Select</button>
+                                    </li>
+                                    <li class="flex items-center justify-between items-center gap-4">
+                                        <div class="flex gap-4 items-start">
+                                        <img src="../assets/product.png" alt="Cause Name 2" class="w-8 h-8">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-sm font-inter leading-5 text-light-500">Cause Name</div> 
+                                            <a href="#" class="text-primary-300 text-xs leading-4 font-medium">Learn More</a>
                                         </div>
-                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
-                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
-                                          <p class="text-center mt-2 text-sm">Cause Name</p>
-                                          <p class="text-center mt-2 text-sm">$0.22</p>
-                                        </div>
-                                        <div class="border-2 border-transparent cursor-pointer flex flex-col justify-center items-center" onclick="selectImage('../assets/product.png', 'Cause Name', '$0.22', event)">
-                                          <img src="../assets/product.png" alt="Image 1" class="w-10 h-10 object-fill">
-                                          <p class="text-center mt-2 text-sm">Cause Name</p>
-                                          <p class="text-center mt-2 text-sm">$0.22</p>
-                                        </div>
-                                    
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                                    </div>
+                                        <button class="select-btn flex gap-3 items-center text-primary-300 text-sm leading-16-94 font-semibold" data-select="false">Select</button>
+                                    </li>
+                                    <!-- Repeat similar list items for more causes -->
+                                </ul>
+                                <div class="flex justify-between items-center gap-4">
+                                    <button id="clearBtn" class="w-full border-light-50 text-primary-300 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border">Clear</button>
+                                    <button id="doneBtn" class="w-full bg-primary-300 font-normal text-base leading-[19px] flex items-center justify-center cursor-pointer p-4 rounded-lg border-[none] text-white">Done</button>
+                                </div>
+                            </div>
+                        </div>
                       </div>
                     </div>
                     <div id="targetDiv" class="flex justify-between">
@@ -825,42 +835,42 @@
               <div class="flex flex-col justify-center items-center gap-4">
                   <div class="form-field flex flex-row justify-center gap-2">
                       <input
-                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-black otp"
                           type="text"
                           oninput="digitValidate(this)"
                           onkeyup="tabChange(1)"
                           maxlength="1"
                       />
                       <input
-                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-black otp"
                           type="text"
                           oninput="digitValidate(this)"
                           onkeyup="tabChange(2)"
                           maxlength="1"
                       />
                       <input
-                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-black otp"
                           type="text"
                           oninput="digitValidate(this)"
                           onkeyup="tabChange(3)"
                           maxlength="1"
                       />
                       <input
-                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-black otp"
                           type="text"
                           oninput="digitValidate(this)"
                           onkeyup="tabChange(4)"
                           maxlength="1"
                       />
                       <input
-                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-black otp"
                           type="text"
                           oninput="digitValidate(this)"
                           onkeyup="tabChange(5)"
                           maxlength="1"
                       />
                       <input
-                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400 otp"
+                          class="w-12 h-[52px] border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-black otp"
                           type="text"
                           oninput="digitValidate(this)"
                           onkeyup="tabChange(6)"
@@ -916,7 +926,7 @@
                   </p>
                   <!-- PAYMENT METHODS CARDS START -->
                   <div class="methods flex gap-3 overflow-y-auto">
-                      <div class="method-card stroke-primary-300 font-semibold text-light-500 group flex flex-col gap-1 rounded-lg border-2 border-primary-300 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="card">
+                      <div class="method-card w-full stroke-primary-300 font-semibold text-light-500 group flex flex-col gap-1 rounded-lg border-2 border-primary-300 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="card">
                           <svg class="with-stroke" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path
                                   class="group-hover:stroke-primary-300"
@@ -931,7 +941,7 @@
                               Card
                           </p>
                       </div>
-                      <div class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="bank">
+                      <div class="method-card w-full group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3" data-method="bank">
                           <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
                               <path
                                   class="group-hover:fill-primary-300"
@@ -944,7 +954,7 @@
                           </p>
                       </div>
                       <div
-                          class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                          class="method-card w-full group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
                           data-method="crypto"
                       >
                           <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
@@ -959,7 +969,7 @@
                           </p>
                       </div>
                       <div
-                          class="method-card group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
+                          class="method-card w-full group !stroke-none fill-light-400 font-medium text-light-400 flex flex-col gap-1 rounded-lg border-2 border-light-200 hover:border-primary-300 cursor-pointer min-w-[120px] p-3"
                           data-method="wallet"
                       >
                           <svg class="no-stroke" width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
@@ -1026,7 +1036,7 @@
               <form class="flex flex-col gap-4">
                   <label class="bg-bright-gray rounded-lg p-4 flex justify-between" for="default-radio-1">
                       <div class="flex gap-8">
-                          <input type="radio" name="default-radio" checked id="default-radio-1" />
+                          <input type="radio" name="default-radio" checked id="default-radio-1" class="focus:!ring-0"/>
                           <div class="flex gap-4 items-start">
                               <img src="../assets/Mastercard image.svg" class="ma-w-full inline-block align-middle" />
                               <div class="flex flex-col gap-2">
@@ -1063,7 +1073,7 @@
                   </label>
                   <label class="bg-bright-gray rounded-lg p-4 flex justify-between" for="default-radio-2">
                       <div class="flex gap-8">
-                          <input type="radio" name="default-radio" id="default-radio-2" />
+                          <input type="radio" name="default-radio" id="default-radio-2" class="focus:!ring-0" />
                           <div class="flex gap-4 items-start">
                               <img src="../assets/Mastercard image.svg" class="ma-w-full inline-block align-middle" />
                               <div class="flex flex-col gap-2">
@@ -1146,10 +1156,10 @@
                       <p class="label capitalize font-semibold text-sm leading-16-94 font-inter text-light-500">card number <span class="text-deep-carmine-pink">*</span></p>
                       <input
                           required
-                          class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-400"
+                          class="border border-light-200 text-base font-normal leading-[19px] p-4 rounded-lg border-solid placeholder:text-light-400 text-light-500"
                           type="text"
                           placeholder="6666 6666 6666 6666"
-                          value="4242 4242 4242 4242"
+                          value="4242 4242 4242 4242" disabled
                       />
                   </div>
                   <div class="two-fields flex justify-between items-center gap-4">

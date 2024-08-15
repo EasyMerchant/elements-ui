@@ -41,6 +41,17 @@ select {
   margin-left: 4px;
 } */
 
+input[type='radio']{
+  border: unset !important;
+}
+
+input[type='radio']:checked{
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxyZWN0IHg9IjAuNSIgeT0iMC41IiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHJ4PSI3LjUiIHN0cm9rZT0iIzE3NTdEOSIvPg0KPHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iIzE3NTdEOSIvPg0KPC9zdmc+DQo=) !important;
+  background-repeat: no-repeat;
+  background-size: 16px 16px !important;
+  background-color: unset !important;
+}
+
 .stroke-opacity-1 {
   stroke-opacity: 1;
 }
