@@ -30,6 +30,7 @@ module.exports = {
         "bright-gray":"#EDEFF2",
         "deep-carmine-pink":'#E93939',
         "charleston-green":'#2A2A2A',
+        "cultured":'#F5F5F5',
       },
       maxWidth: {
         105: "105rem",
