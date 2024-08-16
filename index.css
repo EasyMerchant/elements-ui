@@ -60,6 +60,9 @@ input[type='radio']:checked{
   animation: spin 1s linear infinite; /* Spin animation */
 }
 
+.disabled{
+  background-color: #F5F5F5 !important;
+}
 
 @keyframes spin {
   0% {
