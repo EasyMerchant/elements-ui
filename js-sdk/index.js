@@ -340,7 +340,42 @@ var setting = document.querySelector("#setting");
 var closesetting = document.querySelector("#close-setting");
 var overlay = document.querySelector("#overlay");
 
+function adjustModalStyle() {
+  const screenWidth = window.innerWidth;
+if (screenWidth <= 430){
+  setting.style.width = "92.9%";
+  setting.style.left = "3.7%";
+  setting.style.bottom = "6.9%";
+}
+ else if (screenWidth <= 769) {
+    // Styles for very small screens (like mobile phones)
+    setting.style.width = "95.9%";
+    setting.style.left = "2.1%";
+    setting.style.bottom = "6.9%";
+    setting.style.maxWidth = "unset";
+    setting.style.margin="0";
+  } else if (screenWidth <= 1023) {
+    // Styles for medium screens (like tablets)
+    setting.style.width = "96.8%";
+    setting.style.left = "1.6%";
+    setting.style.bottom = "6.9%";
+    setting.style.maxWidth = "uset";
+    setting.style.margin="0";
+  } else {
+    // Styles for larger screens (like desktops)
+    setting.style.width = "100%";
+    // setting.style.left = "27.75%";
+    setting.style.left="0";
+    setting.style.right="0";
+    setting.style.maxWidth = "640px";
+    setting.style.margin="0 auto";
+    setting.style.bottom = "7%";
+  }
+}
+
 function toggleModal() {
+  adjustModalStyle(); // Apply responsive styles
+
   closesetting.addEventListener("click", (e) => {
     e.preventDefault();
     setting.style.transition = "opacity 0.3s ease-in-out, bottom 0.3s ease-in-out"; // Add transitions
@@ -354,7 +389,6 @@ function toggleModal() {
       setting.style.display = "none"; // Hide the modal after the transition
       setting.style.opacity = "1"; // Reset opacity
       setting.style.pointerEvents = "auto"; // Re-enable pointer events
-      setting.style.bottom = '7%'; // Reset modal position
 
       overlay.style.display = "none"; // Hide the overlay
     }, 300); // Match the timeout with the transition duration
@@ -370,13 +404,11 @@ function toggleModal() {
     setting.style.transition = "opacity 0.3s ease-in-out, bottom 0.3s ease-in-out"; // Add transitions
     setting.style.opacity = "0"; // Start with zero opacity
     setting.style.pointerEvents = "none"; // Disable pointer events during transition
-    setting.style.bottom = '0px'; // Slide modal upwards
+    // setting.style.bottom = '0px'; // Slide modal upwards
 
     setTimeout(() => {
       setting.style.opacity = "1"; // Fade in the modal
       setting.style.pointerEvents = "auto"; // Re-enable pointer events
-      setting.style.bottom = '7%'; // Reset modal position
-      setting.style.left = '27.75%';
     }, 100);
   }
 }
@@ -393,6 +425,15 @@ window.onclick = function (event) {
     overlay.style.display = "none";
   }
 };
+
+// Apply responsive styles on window resize
+window.onresize = function () {
+  adjustModalStyle();
+};
+
+// Initial style adjustment when the page loads
+adjustModalStyle();
+
 
 function selectImage(imageSrc, name, price,  event) {
   // Select the target div
